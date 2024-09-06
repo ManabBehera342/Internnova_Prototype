@@ -1,18 +1,47 @@
 import streamlit as st
 import pandas as pd
+import os
 
-# URL of the CSV file in GitHub (replace with your actual URL)
-csv_url = 'https://raw.githubusercontent.com/ManabBehera342/Listing_App/main/User_data.csv'
+# File path for the CSV file
+csv_path = 'User_data.csv'
 
-# Title of the web page
-st.title("Registered Users")
+# Function to save data to a CSV file
+def save_data(name, email, password):
+    # Check if the file exists
+    if os.path.exists(csv_path):
+        # Load existing data
+        df = pd.read_csv(csv_path)
+    else:
+        # Create a new DataFrame if the file doesn't exist
+        df = pd.DataFrame(columns=['Name', 'Email', 'Password'])
 
-# Load the CSV file into a DataFrame
-try:
-    df = pd.read_csv(csv_url)
-    
-    # Display the DataFrame in the Streamlit app
+    # Add the new entry
+    new_entry = pd.DataFrame({'Name': [name], 'Email': [email], 'Password': [password]})
+    df = df.append(new_entry, ignore_index=True)
+
+    # Save the DataFrame back to the CSV file
+    df.to_csv(csv_path, index=False)
+
+# Streamlit app
+st.title("Sign Up Form")
+
+# Input fields for the sign-up form
+name = st.text_input("Name")
+email = st.text_input("Email")
+password = st.text_input("Password", type="password")
+
+# Submit button
+if st.button("Sign Up"):
+    if name and email and password:
+        save_data(name, email, password)
+        st.success("Sign up successful!")
+    else:
+        st.error("Please fill out all fields.")
+
+# Display existing users (if the CSV file exists and has data)
+if os.path.exists(csv_path) and pd.read_csv(csv_path).shape[0] > 0:
     st.write("### Registered Users")
-    st.dataframe(df)
-except Exception as e:
-    st.error(f"Error loading the CSV file: {e}")
+    st.dataframe(pd.read_csv(csv_path))
+else:
+    st.write("No users registered yet.")
+
