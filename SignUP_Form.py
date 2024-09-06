@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # URL of the CSV file in GitHub (replace with your actual URL)
-csv_url = 'https://raw.githubusercontent.com/your-username/repository-name/branch-name/path-to-your-file.csv'
+csv_url = 'https://raw.githubusercontent.com/ManabBehera342/Listing_App/main/User_data.csv'
 
 # Title of the web page
 st.title("Registered Users")
