@@ -1,28 +1,24 @@
 import streamlit as st
-import pandas as pd
+import json
 import os
 
-# File path for the CSV file (local path to where you want to save the file)
-csv_path = 'User_data.csv'
+# File path for the JSON file (same directory as the script)
+json_path = 'users_data.json'
 
-# Function to save data to a CSV file
+# Function to save data to a JSON file
 def save_data(name, email, password):
-    # Check if the file exists
-    if os.path.exists(csv_path):
-        # Load existing data
-        df = pd.read_csv(csv_path)
+    if os.path.exists(json_path):
+        with open(json_path, 'r') as f:
+            users = json.load(f)
     else:
-        # Create a new DataFrame if the file doesn't exist
-        df = pd.DataFrame(columns=['Name', 'Email', 'Password'])
+        users = []
 
-    # Create a DataFrame with the new entry
-    new_entry = pd.DataFrame({'Name': [name], 'Email': [email], 'Password': [password]})
-    
-    # Concatenate the old DataFrame with the new entry
-    df = pd.concat([df, new_entry], ignore_index=True)
+    # Add new user data
+    users.append({'Name': name, 'Email': email, 'Password': password})
 
-    # Save the DataFrame back to the CSV file
-    df.to_csv(csv_path, index=False)
+    # Save updated users list back to the JSON file
+    with open(json_path, 'w') as f:
+        json.dump(users, f, indent=4)
 
 # Streamlit app
 st.title("Sign Up Form")
