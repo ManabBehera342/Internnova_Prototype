@@ -2,16 +2,29 @@ import streamlit as st
 import json
 import os
 
-# File path for the JSON file (same directory as the script)
-json_path = 'users_data.json'
+# Directory where you want to store the JSON file
+directory = 'data_storage'
+os.makedirs(directory, exist_ok=True)  # Ensure the directory exists
+
+# File path for the JSON file
+json_path = os.path.join(directory, 'users_data.json')
 
 # Function to save data to a JSON file
 def save_data(name, email, password):
+    # Initialize users as an empty list
+    users = []
+
+    # Check if the JSON file exists and is not empty
     if os.path.exists(json_path):
-        with open(json_path, 'r') as f:
-            users = json.load(f)
-    else:
-        users = []
+        try:
+            with open(json_path, 'r') as f:
+                users = json.load(f)
+                # If the file is empty or not a list, reinitialize users
+                if not isinstance(users, list):
+                    users = []
+        except json.JSONDecodeError:
+            # Handle case where JSON file is empty or malformed
+            users = []
 
     # Add new user data
     users.append({'Name': name, 'Email': email, 'Password': password})
