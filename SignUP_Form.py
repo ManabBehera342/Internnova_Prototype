@@ -3,7 +3,7 @@ import json
 import os
 
 # Directory where you want to store the JSON file
-directory = 'data_storage'
+directory = 'ManabBehera342/Listing_App'
 os.makedirs(directory, exist_ok=True)  # Ensure the directory exists
 
 # File path for the JSON file
