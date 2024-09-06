@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # File path for the CSV file
-csv_path = 'User_data.csv'
+csv_path = 'users_data.csv'
 
 # Function to save data to a CSV file
 def save_data(name, email, password):
@@ -39,9 +39,19 @@ if st.button("Sign Up"):
         st.error("Please fill out all fields.")
 
 # Display existing users (if the CSV file exists and has data)
-if os.path.exists(csv_path) and pd.read_csv(csv_path).shape[0] > 0:
-    st.write("### Registered Users")
-    st.dataframe(pd.read_csv(csv_path))
-else:
-    st.write("No users registered yet.")
-
+try:
+    if os.path.exists(csv_path):
+        df = pd.read_csv(csv_path)
+        if not df.empty:
+            st.write("### Registered Users")
+            st.dataframe(df)
+        else:
+            st.write("No users registered yet.")
+    else:
+        st.write("No users registered yet.")
+except pd.errors.EmptyDataError:
+    st.error("The CSV file is empty or cannot be read.")
+except pd.errors.ParserError:
+    st.error("Error parsing the CSV file. Check the file format.")
+except Exception as e:
+    st.error(f"Error loading the CSV file: {e}")
