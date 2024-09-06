@@ -15,9 +15,11 @@ def save_data(name, email, password):
         # Create a new DataFrame if the file doesn't exist
         df = pd.DataFrame(columns=['Name', 'Email', 'Password'])
 
-    # Add the new entry
+    # Create a DataFrame with the new entry
     new_entry = pd.DataFrame({'Name': [name], 'Email': [email], 'Password': [password]})
-    df = df.append(new_entry, ignore_index=True)
+    
+    # Concatenate the old DataFrame with the new entry
+    df = pd.concat([df, new_entry], ignore_index=True)
 
     # Save the DataFrame back to the CSV file
     df.to_csv(csv_path, index=False)
