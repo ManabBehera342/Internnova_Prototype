@@ -9,6 +9,34 @@ import numpy as np
 import os
 from sklearn.metrics.pairwise import cosine_similarity
 
+# Custom theme settings
+st.set_page_config(
+    page_title="INTERNOVA",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.example.com/help',
+        'Report a bug': "https://www.example.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    },
+)
+
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #169a69;
+        color: #000000;
+        font-family: monospace;
+    }
+    .stButton>button {
+        background-color: #0030e4;
+        color: #FFFFFF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 if 'initialized' not in st.session_state:
     
