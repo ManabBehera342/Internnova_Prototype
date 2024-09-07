@@ -24,9 +24,23 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Gradient background */
+    @keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Apply animated gradient to the body and stApp */
     body, .stApp {
-        background: linear-gradient(to right, #0030e4, #169a69);
+        background: linear-gradient(270deg, #0030e4, #169a69, #ffdd00, #ff5733);
+        background-size: 600% 600%;
+        animation: gradientShift 10s ease infinite;
         font-family: "monospace", sans-serif;
         color: #ffffff; /* Default text color */
     }
