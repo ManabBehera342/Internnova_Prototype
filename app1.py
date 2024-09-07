@@ -24,22 +24,35 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Apply gradient to the entire body */
-    body {
+    /* Gradient background */
+    body, .stApp {
         background: linear-gradient(to right, #0030e4, #169a69);
         font-family: "monospace", sans-serif;
+        color: #ffffff; /* Default text color */
     }
 
-    /* Apply gradient to the Streamlit app container */
-    .stApp {
-        background: linear-gradient(to right, #0030e4, #169a69);
-        color: #000000;
-        font-family: "monospace", sans-serif;
+    /* Customize specific text elements */
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffdd00; /* Header colors */
+    }
+
+    p, div, span, label {
+        color: #ffffff; /* Paragraph and label colors */
+    }
+
+    a {
+        color: #ff5733; /* Link colors */
+    }
+
+    /* Customize text color inside text areas or inputs */
+    .stTextInput, .stTextArea, .stSelectbox, .stCheckbox {
+        color: #000000; /* Input text color */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 if 'initialized' not in st.session_state:
     
