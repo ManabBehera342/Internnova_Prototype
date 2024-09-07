@@ -47,7 +47,7 @@ st.markdown(
 
     /* Customize specific text elements */
     h1, h2, h3, h4, h5, h6 {
-        color: #ffdd00; /* Header colors */
+        color: #000000; /* Header colors */
     }
 
     p {
