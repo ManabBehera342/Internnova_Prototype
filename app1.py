@@ -24,7 +24,14 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    /* Apply gradient to the entire body */
     body {
+        background: linear-gradient(to right, #0030e4, #169a69);
+        font-family: "monospace", sans-serif;
+    }
+
+    /* Apply gradient to the Streamlit app container */
+    .stApp {
         background: linear-gradient(to right, #0030e4, #169a69);
         color: #000000;
         font-family: "monospace", sans-serif;
