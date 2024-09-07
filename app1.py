@@ -37,7 +37,7 @@ st.markdown(
     }
 
     p, div, span, label {
-        color: #ffffff; /* Paragraph and label colors */
+        color: #ff0000; /* Paragraph and label colors */
     }
 
     a {
