@@ -24,14 +24,10 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .stApp {
-        background-color: #169a69;
+    body {
+        background: linear-gradient(to right, #0030e4, #169a69);
         color: #000000;
-        font-family: monospace;
-    }
-    .stButton>button {
-        background-color: #0030e4;
-        color: #FFFFFF;
+        font-family: "monospace", sans-serif;
     }
     </style>
     """,
