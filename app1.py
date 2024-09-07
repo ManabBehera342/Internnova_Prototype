@@ -43,6 +43,7 @@ st.markdown(
         animation: gradientShift 10s ease infinite;
         font-family: "monospace", sans-serif;
         color: #ffffff; /* Default text color */
+        font-style: italic;
     }
 
     /* Customize specific text elements */
