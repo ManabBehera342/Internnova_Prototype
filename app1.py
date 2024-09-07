@@ -36,7 +36,10 @@ st.markdown(
         color: #ffdd00; /* Header colors */
     }
 
-    p, div, span, label {
+    p {
+        color: #000000 ; /* Paragraph and label colors */
+    }
+    div, span, label {
         color: #ff0000; /* Paragraph and label colors */
     }
 
