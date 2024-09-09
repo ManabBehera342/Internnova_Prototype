@@ -21,42 +21,7 @@ st.set_page_config(
     },
 )
 
-st.markdown(
-    """
-    <style>
-    /* Apply a static gradient to the body and stApp */
-    body, .stApp {
-        background: linear-gradient(270deg, #0030e4);
-        font-family: "monospace", sans-serif;
-        color: #ffffff; /* Default text color */
-        font-style: italic;
-        background-attachment: fixed; /* Ensure background is fixed */
-    }
 
-    /* Customize specific text elements */
-    h1, h2, h3, h4, h5, h6 {
-        color: #000000; /* Header colors */
-    }
-
-    p {
-        color: #000000; /* Paragraph and label colors */
-    }
-    div, span, label {
-        color: #ff0000; /* Paragraph and label colors */
-    }
-
-    a {
-        color: #ff5733; /* Link colors */
-    }
-
-    /* Customize text color inside text areas or inputs */
-    .stTextInput, .stTextArea, .stSelectbox, .stCheckbox {
-        color: #000000; /* Input text color */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 if 'initialized' not in st.session_state:
     
     model_path = os.path.join(os.path.dirname(__file__), 'models/en_core_web_sm-3.7.1')
