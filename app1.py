@@ -26,7 +26,7 @@ st.markdown(
     <style>
     /* Apply a static gradient to the body and stApp */
     body, .stApp {
-        background: linear-gradient(270deg, #0030e4, #169a69, #ffdd00, #ff5733);
+        background: linear-gradient(270deg, #0030e4);
         font-family: "monospace", sans-serif;
         color: #ffffff; /* Default text color */
         font-style: italic;
