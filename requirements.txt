@@ -1,7 +1,0 @@
-PyPDF2
-gensim==4.3.3
-numpy
-pandas==2.2.2
-scikit_learn==1.5.1
-spacy==3.7.6
-streamlit==1.37.1
