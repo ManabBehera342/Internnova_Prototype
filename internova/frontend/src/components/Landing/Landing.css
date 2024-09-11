@@ -60,7 +60,6 @@
   .low{
     margin-top:28px;
     font-size: 35px;
-    /* font-family: 'Inter'; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 font-style: normal;
 font-weight: 600;
@@ -72,12 +71,10 @@ background: linear-gradient(180.36deg, #1E1E1E 0.31%, #543E6C 140.95%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
-/* text-fill-color: transparent; */
-
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   .span{
-    background-color: #FFD700;  /* Custom gradient */
+    background-color: #FFD700;  
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
