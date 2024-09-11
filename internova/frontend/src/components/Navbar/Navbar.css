@@ -1,0 +1,57 @@
+
+nav {
+    width: 100%;
+    /* background-color: transparent; */
+    color: black;
+    padding: 4px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+  }
+  
+  .logo {
+    margin-top: 0;
+    width: 150px;
+  }
+  
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu li {
+    list-style:none;
+    margin: 8px;
+    /* justify-content: center;
+    text-align: center; */
+    /* margin:5px 20px; */
+    font-size:20px ;
+    align-items: center;
+  }
+  
+  .menu .login,
+  .menu .signup {
+    margin-left: 0; /* Remove margin between buttons */
+    margin-top: 0;
+  }
+  
+  .menu .auth-buttons {
+    display: flex;
+    gap: 10px; /* Set the desired gap between buttons */
+  }
+  
+  .login, .signup {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .login:hover, .signup:hover {
+    transform: scale(1.05);
+  }
+  
