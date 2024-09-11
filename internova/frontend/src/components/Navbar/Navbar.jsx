@@ -30,11 +30,12 @@ const Navbar = () => {
         <li><Link to="landing" smooth={true} offset={0} duration={500}>HOME</Link></li>
         <li><Link to="about" smooth={true} offset={-60} duration={500}>ABOUT</Link></li>
         <li><Link to="faq" smooth={true} offset={500} duration={500}>FAQ</Link></li>
-        <li className="auth-buttons">
+        </ul>
+        <div className="auth-buttons">
           <button className="login">LOGIN</button>
           <button className="signup">SIGNUP</button>
-        </li>
-      </ul>
+        </div>
+      
 
     </nav>
   );
