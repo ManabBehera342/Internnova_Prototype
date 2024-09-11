@@ -7,8 +7,9 @@ const Landing = () => {
     <div className="landing">
       <div className="yellow-gradient" />
       <div className="content">
-        <h1>Where Skills Meet Opportunity</h1>
-        <p>Unlock Your Potential—Find Your Dream Internship Today!</p>
+        {/* <h1>Where Skills Meet Opportunity</h1> */}
+        <img src="./images/Group 18.png" alt='mid' width={1100} className='mid'/>
+        <p className='low'>Unlock Your Potential—Find Your <span className='span' style={{color:"yellow"}}>Dream</span> Internship Today!</p>
         
       </div>
       <div className="violet-gradient" />
