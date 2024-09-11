@@ -1,138 +1,3 @@
-/* .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar.active {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .nav-links {
-    display: flex;
-    list-style: none;
-  }
-  
-  .nav-links li {
-    margin-left: 30px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-  }
-  
-  .login-btn, .signup-btn {
-    background-color: #6f42c1;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    cursor: pointer;
-    border-radius: 20px;
-  }
-  
-  .signup-btn {
-    background-color: #ff9f43;
-  }
-   */
-
-/* 
-   .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar.active {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .nav-links {
-    display: flex;
-    list-style: none;
-  }
-  
-  .nav-links li {
-    margin-left: 30px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-  }
-  
-  .login-btn, .signup-btn {
-    background-color: #6f42c1;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    cursor: pointer;
-    border-radius: 20px;
-  }
-  
-  .signup-btn {
-    background-color: #ff9f43;
-  }
-   */
-/* 
-   nav{
-    width:100%;
-    background-color: transparent;
-    color: black;
-    padding: 4px 0;
-    
-    
-     position: fixed;
-    top: 0;
-    left:0;
-    display: flex;
-    align-items:center;
-    justify-content:space-between;
-    z-index:10;
-}
-
-
-.logo{
-    margin-top:2%;
-    width:150px;
-}
-nav ul li{
-    display: inline-block;
-    list-style: none;
-    margin:5px 20px;
-    font-size:16px ;
-    
-}
-.dark-nav{
-    background: rgb(183, 0, 255);
-} */
-
 
 nav {
     width: 100%;
@@ -149,7 +14,7 @@ nav {
   }
   
   .logo {
-    margin-top: 2%;
+    margin-top: 0;
     width: 150px;
   }
   
@@ -159,13 +24,19 @@ nav {
   }
   
   .menu li {
-    list-style: none;
-    margin: 0 15px;
+    list-style:none;
+    margin: 8px;
+    /* justify-content: center;
+    text-align: center; */
+    /* margin:5px 20px; */
+    font-size:20px ;
+    align-items: center;
   }
   
   .menu .login,
   .menu .signup {
     margin-left: 0; /* Remove margin between buttons */
+    margin-top: 0;
   }
   
   .menu .auth-buttons {

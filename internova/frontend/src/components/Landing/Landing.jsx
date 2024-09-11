@@ -1,27 +1,10 @@
-/* import React from 'react'
-import "./Landing.css"
-
-const Landing = () => {
-  return (
-    <div className='landing container'>
-    <div className='hero'>
-      <div className="centeritem">
-
-      </div>
-      <h1>Unlock Your Potential—Find Your <span style={{ color:"rgba(255, 215, 0, 1)" }}> Dream </span> Internship Today!</h1>
-    </div>
-    </div>
-  )
-}
-
-export default Landing */
 
 import React from 'react';
-import './Landing.css'; // Importing the CSS file for styling
+import './Landing.css'; 
 
 const Landing = () => {
   return (
-    <div className="landing-container">
+    <div className="landing">
       <div className="yellow-gradient" />
       <div className="content">
         <h1>Where Skills Meet Opportunity</h1>
