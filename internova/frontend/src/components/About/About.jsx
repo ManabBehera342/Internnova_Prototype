@@ -1,9 +1,10 @@
 import React from 'react'
-
+import './About.css'
 const About = () => {
   return (
     <>
     <div className='about container'>
+    <div className='about'>
       <h1>ABOUT</h1>
      Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio doloremque distinctio veritatis error laborum placeat corporis reiciendis ratione pariatur est minima, debitis illum laudantium sint accusantium soluta quaerat officia eos!
      Quaerat eligendi quam ratione exercitationem suscipit officia nihil consequuntur esse veritatis in, porro reiciendis cupiditate nostrum adipisci, explicabo ea ab aliquam. Dolore possimus minima beatae doloremque pariatur. Dolorum, adipisci sint.
@@ -22,15 +23,16 @@ const About = () => {
      Eaque architecto voluptatum accusantium! Harum maiores beatae, blanditiis et, odio similique animi at, perspiciatis soluta tenetur expedita nam veniam temporibus facere nesciunt. Et enim nobis ratione omnis distinctio dolores hic.
      Sunt similique veritatis dolores deleniti odio optio possimus hic nobis, nesciunt ab necessitatibus delectus rem in quia dignissimos fuga? Quod nemo laboriosam et magnam laudantium vel odio quidem doloremque reiciendis.
      Accusantium mollitia molestias a. Possimus excepturi cumque architecto nostrum molestiae numquam nam minima ad facilis dolore necessitatibus accusantium laudantium, enim quasi ex ipsa odit nihil voluptatum quidem incidunt id. Exercitationem.
-     Est culpa illum ratione, doloremque tempore dignissimos. Voluptatum nam facere laudantium quos consequatur quasi, debitis minus fugiat, cumque quo a ipsam adipisci quidem iure ratione voluptas. Quidem dolor asperiores ratione?
-     Suscipit enim inventore doloremque, repellat, quod officia corrupti fugiat voluptatibus unde quibusdam tenetur mollitia ea perferendis quidem voluptatum et. Officia fugit eaque nobis esse id autem magnam nemo nulla officiis.
-     Consequatur maxime doloribus suscipit molestias eaque facere! autem ab unde voluptate delectus mollitia. Qui aliquid neque delectus exercitationem nostrum debitis praesentium necessitatibus, optio laboriosam saepe, natus a accusamus! Excepturi placeat fugit culpa quis similique.
-     Sint sapiente ipsum reiciendis illo ipsa illum amet aperiam iste maxime perspiciatis earum quaerat, odio omnis ipsam doloribus, sequi veniam obcaecati corporis provident est vel explicabo. Aut eius sed neque.
-     Earum eaque delectus enim possimus quidem vero cupiditate numquam est placeat blanditiis, nihil hic temporibus? Eaque fugit ipsum consequatur? Mollitia recusandae molestiae, omnis perferendis ducimus assumenda sed repellendus culpa ea!, sit voluptatum totam excepturi eligendi consequatur aut perspiciatis? Aliquam ratione autem est numquam, laudantium, atque quae voluptatibus nam quam non quia. Eligendi!
-     reprehenderit consequatur sit alias architecto porro pariatur quo inventore placeat exercitationem maiores odit tempore asperiores, ut explicabo recusandae aut soluta itaque tempora aliquid? Facilis?
+     rat, odio omnis ipsam doloribus, sequi veniam obcaecati corporis provident est vel explicabo. Aut Eaque fugit ipsum consequatur? Mollitia recusandae molestiae, omnis perferendis ducimus assumenda sed repellendus culpa ea!, sit voluptatum totam excepturi eligendi consequatur aut perspiciatis? Aliquam ratione autem est numquam, laudantium, atque quae voluptatibus nam quam non quia. Eligendi!
+     tecto porro pariatur quo inventore placeat exercitationem maiores odit tempore asperiores, ut explicabo recusandae aut soluta itaque tempora aliquid? Facilis
+     Ipsa dolorum rerum aliquam! Ut maiores nemo ad vitae ea dolor mollitia laudantium voluptate sed incidunt. Officia nostrum ad nobis, libero accusamus, aperiam minima delectus consequatur, fuga iusto culpa. Dicta!
+     Ex odit itaque, nobis quibusdam libero nihil eveniet magni voluptate assumenda ullam nam architecto quo quas beatae a repellat est ea esse reprehenderit unde corrupti qui laboriosam amet adipisci! Doloremque!
+     Quo consectetur, libero a assumenda architecto eveniet eaque consequuntur consequatur ducimus iusto esse hic expedita quos mollitia reiciendis nostrum. Ullam nobis quod eius error expedita temporibus laborum? Vel, autem illo?
+     Quas id hic, libero itaque magni iste, iusto accusantium, deserunt saepe illum error odit soluta? Nostrum deserunt dolores illum tenetur eos enim, libero tempore quibusdam id ex consequuntur! Provident, reiciendis?
      </div>
      <div><br/></div><br/><br/>
      <br/>
+     </div>
      </>
   )
 }

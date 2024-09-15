@@ -1,54 +1,174 @@
+.nav {
+  width: 100%;
+  color: black;
+  padding: 4px 0;
+  position: fixed;
+  top: 0;
+  left:0 ;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
 
-   nav {
-    width: 100%;
-    color: black;
-    padding: 4px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-  }
-  
-  .logo {
-    margin-top: 0;
-    width: 150px;
-  }
-  
-  .menu {
-    display: flex;
-    align-items: center;
-   margin-left: 35%;
-    flex-grow: 1; 
-  }
-  
-  .menu li {
-    list-style: none;
-    margin: 20px;
-    font-size: 18px;
-    font-weight: 400;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  .auth-buttons {
-    display: flex;
-    gap: 10px;
-    position: relative; 
+
+.navbar {
+  width: 100%;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  transition: background-color 0.3s ease;
+
+  align-items: center;
+  justify-content: space-between;
+}
  
+
+.navs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.logo {
+  flex: 1;
+}
+
+.logo-img {
+
+  width: 150px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: 60%;
+}
+
+.menu li {
+  list-style: none;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Lucida Sans', sans-serif;
+}
+
+.menu li a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #1f3e72;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 25px;
+  margin-top:-2% ;
+  margin-left: 20%;
+}
+
+.login, .signup {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login:hover, .signup:hover {
+  transform: scale(1.05);
+}
+
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  position: fixed;
+  top: 60px; 
+  right: 10px; 
+  width: 150px; 
+  height: auto;
+  max-height: 300px; 
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
+  z-index: 99;
+}
+
+.mobile-menu.active {
+  display: flex;
+  transform: translateX(0);
+}
+
+.mobile-menu a {
+  margin: 10px 0;
+  font-size: 18px;
+  text-align: center;
+  color: black;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+}
+
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
     right: 20px; 
+    top: 20px; 
   }
-  
-  .login, .signup {
-    border: none;
-    background-color: transparent;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top:-2px
+
+
+
+  .auth-buttons {
+    display: none;
   }
-  
-  .login:hover, .signup:hover {
-    transform: scale(1.05);
+
+  .mobile-menu a {
+    font-size: 18px;
   }
+}
+
+
+.dark-nav {
+  background-color: #333;
+  color: white;
+}
+
+.dark-nav .menu li a {
+  color: white;
+}
+
+.dark-nav .menu li a:hover {
+  color: #ddd;
+}
+
+.dark-nav .login, .dark-nav .signup {
+  color: white;
+}
   
