@@ -1,5 +1,5 @@
 
-  .landing{
+  .landing {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -48,34 +48,107 @@
     margin-bottom: 20px;
   }
   
-  /* .content p {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    font-weight: 500;
-  } */
-  
-  .mid{
-    margin-left:7%
+  .mid {
+    margin-left: 7%;
+    max-width: 100%;
+    height: auto;
   }
-  .low{
-    margin-top:28px;
+  
+  .low {
+    margin-top: 28px;
     font-size: 35px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-font-style: normal;
-font-weight: 600;
-line-height: 58px;
-text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 58px;
+    text-align: center;
+    background: linear-gradient(180.36deg, #1E1E1E 0.31%, #543E6C 140.95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
   
-
-background: linear-gradient(180.36deg, #1E1E1E 0.31%, #543E6C 140.95%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  .span{
+  .span {
     background-color: #FFD700;  
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 1200px) {
+    .yellow-gradient {
+      width: 500px;
+      height: 500px;
+    }
+  
+    .violet-gradient {
+      width: 500px;
+      height: 500px;
+      top: 25%;
+      left: 50%;
+    }
+  
+    .mid {
+      margin-left: 5%;
+    }
+  
+    .low {
+      font-size: 30px;
+      line-height: 50px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .yellow-gradient {
+      width: 400px;
+      height: 400px;
+      top: -10%;
+      left: -10%;
+    }
+  
+    .violet-gradient {
+      width: 400px;
+      height: 400px;
+      top: 15%;
+      left: 45%;
+    }
+  
+    .mid {
+      margin-left: 0;
+      width: 90%;
+    }
+  
+    .low {
+      font-size: 24px;
+      line-height: 40px;
+      padding: 0 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .yellow-gradient {
+      width: 300px;
+      height: 300px;
+      top: -15%;
+      left: -5%;
+    }
+  
+    .violet-gradient {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: 35%;
+    }
+  
+    .mid {
+      width: 100%;
+    }
+  
+    .low {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+  
