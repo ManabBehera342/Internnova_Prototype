@@ -78,16 +78,30 @@ Once the app is running, you can explore the following features:
 
 ---
 
-## Dataset 
+## Dataset
 
-#### The datasets used to train our prototype, along with those under consideration for future development of our model, are listed below
+#### The datasets used to train our prototype, as well as those under consideration for further development of our model, are listed below. 
 
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+| Dataset Name | Source |
+|--------------|--------|
+| Final 2nd Dataset | [final_2nd.csv](https://github.com/ManabBehera342/Listing_App/blob/main/datasets/final_2nd.csv) |
+| Preprocessed Jobs Dataset | [preprocessed_jobs.csv](https://github.com/ManabBehera342/Listing_App/blob/main/datasets/preprocessed_jobs.csv) |
+| Job Description Dataset | [Kaggle](https://www.kaggle.com/datasets/ravindrasinghrana/job-description-dataset) |
+| Job Recommendation Dataset | [Kaggle](https://www.kaggle.com/datasets/lastman0800/job-recomendation-dataset) |
+| Indeed Software Engineer Job Dataset | [Kaggle](https://www.kaggle.com/datasets/samrat77/indeed-software-engineer-job-dataset) |
+
+---
+
+## Research Papers
+
+#### The following research papers and datasets have been referred to during the development of our model. These papers have helped guide the selection of algorithms and methodologies used in our Model's development.
+
+| Research Paper Title | Author(s) | Published In | Link |
+|----------------------|-----------|--------------|------|
+| A systematic review and research perspective on recommender systems | Deepjyoti Roy & Mala Dutta | SpringerOpen | [Link](https://journalofbigdata.springeropen.com/articles/10.1186/s40537-022-00592-5) |
+| Career Recommendation Systems using Content based Filtering | Tanya V. Yadalam, Vaishnavi M. Gowda & Vanditha Shiva Kumar | IEEE | [Link](https://ieeexplore.ieee.org/document/9137992) |
+| A Research of Job Recommendation System Based on Collaborative Filtering | Yingya Zhang, Cheng Yang & Zhixiang Niu | Researchgat | [Link](https://www.researchgate.net/publication/281653213_A_Research_of_Job_Recommendation_System_Based_on_Collaborative_Filtering) |
+| Building a Job Recommender via NLP and Machine Learning | Preston Lam | Towards Data Science | [Link](https://towardsdatascience.com/building-a-job-recommender-for-non-technical-business-roles-via-nlp-and-machine-learning-626c4039931e) |
+| A Deep Learning Approach to Job Recommendation Analysis with NLP | Uday Jain1, Daksh Jain2 & Aditya Raj Varshney | IJISRT | [Link](https://ijisrt.com/assets/upload/files/IJISRT23NOV818.pdf) |
+
 
