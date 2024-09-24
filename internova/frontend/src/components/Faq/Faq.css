@@ -1,24 +1,34 @@
+#faq {
+    position: relative;
+    z-index: 1;
+/*     background: linear-gradient(145deg, #fdfdfd 0%, #e6e6e6 100%);  *//* Light gradient for background */
+    padding: 60px 0px;
+    border: none; /* Removes any unwanted borders */
+    background: linear-gradient(145deg, #fdfdfd 0%, #e6e6e6 100%);
+}
 
 .faq-heading {
     color: black;
     font-style: normal;
     text-transform: uppercase;
     text-align: center;
-    margin-top: 7%;
+    margin-top: 1%;
     font-size: 2rem;
+    z-index: 2;
 }
 
 .faq-wrap {
+    margin-top: 1%;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: auto;
+    z-index: 2;
 }
 
 .accordion {
     width: 85%; 
 }
-
 
 .accordion .item {
     background-color: #1a171c;
@@ -49,6 +59,7 @@
     transition: max-height 0.3s ease-in;
 }
 
+/* Responsive design for different screen sizes */
 @media (max-width: 1024px) {
     .accordion {
         width: 75%; 
@@ -85,4 +96,35 @@
     .answer {
         margin-top: 4px;
     }
+}
+
+/* Gradients for visual effect */
+#faq .yellow-gradient {
+    position: absolute;
+    top: 0%;
+    left: -15%;
+    filter: blur(90px); /* Blurred for soft visual */
+    border-radius: 100px;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0) 5.56%, #FFEB3B 83.33%);
+    width: 500px;
+    height: 400px;
+    opacity: 0.6;
+   
+}
+
+#faq .violet-gradient {
+    position: absolute;
+    top: 40%;
+    left: 65%;
+    filter: blur(90px); /* Blurred for soft visual */
+    border-radius: 100px;
+    background: linear-gradient(180deg, rgba(106, 90, 205, 0.42) 0%, #29153D 77.78%);
+    width: 500px;
+    height: 400px;
+    opacity: 0.6;
+ /*    z-index: 0; */
+}
+
+.faq-content {
+    z-index: 2;
 }
