@@ -5,6 +5,7 @@ import Layout from './Layout';
 import Website from './pages/Website';
 import About from './components/About/About';
 import Faq from './components/Faq/Faq';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Website />} />
           <Route path="/about" element={<About/>}/>
           <Route path="/faq" element={<Faq/>}/>
+          <Route path="/login" element={<Login/>}/>
           </Route>
     </Routes>
     </BrowserRouter>

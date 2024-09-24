@@ -1,26 +1,25 @@
 export const questions =[
     {
       id:1,
-      question:'What is Pricepeek?',
-      answer:'Pricepeek is a platform that allows you to compare prices and features of various products across multiple online retailers to help you make informed purchasing decisions.'
+      question:'What is Internova?',
+      answer:'Internova is a comprehensive job platform designed to bridge the gap between job seekers and employers.'
     },
 
     {
         id:2,
-        question:'How does Pricepeek work ?',
-        answer:'We aggregate data from different online stores and present it in an easy-to-compare format. You can see product prices, features, reviews, and other relevant information side by side.'
-
+        question:'How does the matchmaking process work?',
+        answer:' Based on the analysis, the platform provides personalized job recommendations to each user, highlighting positions that closely match their profiles.'
     },
     {
         id:3,
-        question:'Is there a cost to use Pricepeek?',
-        answer:'No, our service is completely free for users. '
+        question:'What types of job opportunities are available?',
+        answer:'We offer job listings across various sectors, including private, government, and overseas employment.'
     },
     {
         id:4,
-        question:'How do I compare products on Pricepeek?',
-        answer:'Simply search for the product you’re interested in using the search bar, and you’ll see a list of results from various ecommerce websites and on reaching to the specific product u can see the compared prices. '
-    },
+        question:'How can I access mentorship programs?',
+        answer:'Users can apply for mentorship programs through their dashboard, where they’ll be paired with industry professionals.'   
+     },
     {
         id:5,
         question:'What should I do if I encounter a technical issue on the website?',
@@ -28,27 +27,27 @@ export const questions =[
     },
     {
         id:6,
-        question:'Why am I seeing different prices than what is shown on Pricepeek?',
-        answer:'Prices can fluctuate frequently, and there might be a slight delay in updating our data. We recommend double-checking the price on the retailer’s website before making a purchase.'
+        question:'Will there be updates or new features added to the platform?',
+        answer:'Yes, we continuously strive to improve the platform based on user feedback and industry trends.'
     },
     {
         id:7,
-        question:'What if I have an issue with a product I purchased through a link on Pricepeek?',
-        answer:'Any issues related to your purchase, such as returns or exchanges, should be addressed directly with the retailer where you made the purchase. We recommend reviewing the retailer’s return and exchange policies before buying.'
+        question:'What kind of counseling services do you offer?',
+        answer:'We provide career counseling, resume building assistance, and interview preparation resources.'
     },
     {
         id:8,
-        question:'Can I purchase products directly from Pricepeek?',
-        answer:'No, we do not sell products directly. Our service directs you to the retailer’s website where you can complete your purchase.'
+        question:'How i can interact with the mentor during my mentorship program ?', 
+        answer:'Our platform provides a direct one-to-one chat session for seekers and mentors. '
     },
     {
         id:9,
-        question:'How do you handle my personal information?',
-        answer:'We take your privacy seriously. Please refer to our Privacy Policy for detailed information on how we collect, use, and protect your personal data.'
+        question:'How it is beneficial for Companies oe Employers ? ',
+        answer:'Companies can showcase their culture and job offerings to attract potential candidates.'
     },
     {
         id:10,
-        question:'Do I need to create an account to use Pricepeek?',
-        answer:'No, you do not need to create an account to use our comparison service. However, creating an account allows you to save your favorite products and access them later.'
+        question:'Do I need to create an account to use Internova?',
+        answer:'Yes, you need to create an account to use our service which will allows us to save your information and access them later to give you better recommendations.'
     }
 ]

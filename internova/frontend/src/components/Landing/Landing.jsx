@@ -1,13 +1,14 @@
-
 import React from 'react';
 import './Landing.css'; 
+ import Navbar from '../Navbar/Navbar'; 
 
 const Landing = () => {
   return (
+    <>
+     <Navbar/> 
     <div className="landing">
       <div className="yellow-gradient" />
       <div className="content">
-       
         <img src="./images/Group 18.png" alt='mid' width={1100} className='mid'/>
         <p className='low'>Unlock Your Potential—Find Your <span className='span' style={{color:"yellow"}}>Dream</span> Internship Today!</p>
         
@@ -15,7 +16,9 @@ const Landing = () => {
       <div className="violet-gradient" />
       
     </div>
+    </>
   );
 };
 
 export default Landing;
+
