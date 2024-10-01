@@ -6,6 +6,8 @@ import Website from './pages/Website';
 import About from './components/About/About';
 import Faq from './components/Faq/Faq';
 import Login from './components/Login/Login';
+import EmpLog from './components/Login/Emp-login/EmpLog';
+import StdLog from './components/Login/Std-Login/StdLog';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/about" element={<About/>}/>
           <Route path="/faq" element={<Faq/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/emplogin" element={<EmpLog/>}/>
+          <Route path="/stdlogin" element={<StdLog/>}/>
           </Route>
     </Routes>
     </BrowserRouter>

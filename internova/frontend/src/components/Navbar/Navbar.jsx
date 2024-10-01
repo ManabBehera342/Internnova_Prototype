@@ -49,7 +49,6 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/faq">Faq</NavLink>
-            
             </div>
           <div className="auth-buttons">
             <button className="login" onClick={handleLoginClick}>LOGIN</button>
