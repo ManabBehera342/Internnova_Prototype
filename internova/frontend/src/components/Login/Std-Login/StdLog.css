@@ -1,0 +1,31 @@
+#stdlog .yellow-gradient{
+    opacity: 0.5;
+}
+
+
+
+.stdlog-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+ 
+    position: relative;
+    overflow: hidden;
+  }
+
+  
+.stdlog-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom:28px ;
+    z-index: 2;
+  }
+  .stdlog-page .form{
+    border: 1.5px solid silver ;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+ 

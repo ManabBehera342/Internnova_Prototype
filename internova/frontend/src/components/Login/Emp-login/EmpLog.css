@@ -1,0 +1,25 @@
+#emplog .yellow-gradient{
+    opacity: 0.5;
+}
+
+
+
+.emplog-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+ 
+    position: relative;
+    overflow: hidden;
+  }
+
+  
+.emplog-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom:28px ;
+    z-index: 2;
+  }

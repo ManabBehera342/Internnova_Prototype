@@ -19,7 +19,7 @@
       align-items: center;
       gap: 30px;
       font-size: 18px;
-      font-weight: 400;
+      font-weight: 500;
       margin-left: 60%;
       font-family: 'Lucida Sans', sans-serif;
 
@@ -31,7 +31,7 @@
 .log-nav .out-landing{
   margin-left: 95%;
   :hover{
-    color: #1f3e72;
+    color:#543E6C 
   }
 }
 
@@ -84,10 +84,11 @@ h5 {
   
 
 }
-
+/* 
 .highlight {
-  color: #f0b763;
-}
+ /*  color: #f0b763; 
+ color:yellow
+} */
 
 p {
   font-size: 1rem;
@@ -112,7 +113,7 @@ p {
 }
 
 .divide{
-  border:1px solid seashell;
+  border:1px solid silver;
   height:100vh
 }
 .footer {
