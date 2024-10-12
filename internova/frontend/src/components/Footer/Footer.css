@@ -1,0 +1,22 @@
+#footer{
+    background-color: #6e6d68;
+    width: 100%;
+    height: 150px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+}
+
+.portion{
+    justify-content: space-around;
+    font-size: 20px;
+    text-transform: capitalize;
+    padding-left: 40px;
+
+}
+
+.portion li{
+    font-size: 15px;
+    margin-top: 12px;
+}
