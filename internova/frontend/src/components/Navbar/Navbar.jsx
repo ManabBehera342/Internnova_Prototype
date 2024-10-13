@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import { NavLink, useNavigate } from 'react-router-dom'; // Updated import
 import './Navbar.css';
 
+
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,12 +42,13 @@ const Navbar = () => {
           </div>
 
           <ul className="menu">
-            <li><Link to="landing" smooth={true} offset={0} duration={500}>HOME</Link></li>
+            <li><NavLink to="/home">Home</NavLink></li>
+            {/* <li><Link to="landing" smooth={true} offset={0} duration={500}>HOME</Link></li> */}
             <li><Link to="about" smooth={true} offset={-70} duration={500}>ABOUT</Link></li>
             <li><Link to="faq" smooth={true} offset={-10} duration={500}>FAQ</Link></li>
           </ul>
             <div className="out-landing">
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/home">Home</NavLink>
               <NavLink to="/about">About</NavLink>
               <NavLink to="/faq">Faq</NavLink>
             </div>
@@ -63,7 +65,7 @@ const Navbar = () => {
       </nav>
 
       <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-        <NavLink to="/" onClick={closeMobileMenu}>Home</NavLink>
+        <NavLink to="/home" onClick={closeMobileMenu}>Home</NavLink>
         <NavLink to="/about" onClick={closeMobileMenu}>About</NavLink>
         <NavLink to="/faq" onClick={closeMobileMenu}>Faq</NavLink>
         <button className="login" onClick={handleLoginClick}>LOGIN</button>

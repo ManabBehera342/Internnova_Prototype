@@ -1,0 +1,15 @@
+#home {
+    z-index: 1;
+    /* background: linear-gradient(145deg, #f3f3f3 0%, #e0e0e0 100%); */
+    background: linear-gradient(145deg, #fdfdfd 0%, #e6e6e6 100%);
+   /*  margin-top: 100px; */ /* Adjust the margin to space it from the Landing section */
+    padding: 60px 0px; 
+    position: relative; 
+}
+
+.home-head {
+    color: #333; 
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+}

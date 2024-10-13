@@ -1,31 +1,42 @@
-#stdlog .yellow-gradient{
-    opacity: 0.5;
+
+#stdlog .yellow-gradient {
+  opacity: 0.5;
 }
 
-
-
 .stdlog-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: white;
- 
-    position: relative;
-    overflow: hidden;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
 
-  
 .stdlog-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom:28px ;
-    z-index: 2;
-  }
-  .stdlog-page .form{
-    border: 1.5px solid silver ;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 28px;
+  z-index: 2;
+  padding: 20px; 
+}
+
+@media (max-width: 768px) {
+  .stdlog-container {
+      flex-direction: column; 
+      margin-bottom: 20px;
   }
 
- 
+  .stdlog-page {
+      justify-content: flex-start; 
+      height: auto; 
+  }
+}
+
+@media (max-width: 480px) {
+  .stdlog-container {
+      justify-content: center; 
+      padding: 10px; 
+  }
+}
