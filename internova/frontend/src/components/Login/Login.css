@@ -1,13 +1,14 @@
 .log-nav .navbar {
   height:8%;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  width:98% ;
-  left:1%;
-  top:1.5%;
+  width:88% ;
+  left:6%;
+  top:3%;
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid rgba(255, 255, 255, 0.41);
   backdrop-filter: blur(30px);
   border-radius: 50px;
+  justify-content: space-between;
 }
 
 .log-nav .menu{
@@ -20,7 +21,7 @@
       gap: 30px;
       font-size: 18px;
       font-weight: 500;
-      margin-left: 60%;
+     /*  margin-left: 30%; */
       font-family: 'Lucida Sans', sans-serif;
 
 }
@@ -29,7 +30,7 @@
 }
 
 .log-nav .out-landing{
-  margin-left: 95%;
+  margin-left: 75%;
   :hover{
     color:#543E6C 
   }
@@ -57,7 +58,7 @@
 .sec {
   width: 48%;
   text-align: center;
-  margin-top: -12%;
+  margin-top: -5%;
   padding: 30px 20px;
   border-radius: 15px;
  
