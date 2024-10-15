@@ -16,8 +16,9 @@
 .emplog-container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  margin-bottom: 28px;
+align-items: center;
+ /*  margin-bottom: 28px; */
+ margin-top: 5%;
   z-index: 2;
   padding: 20px;
 }
@@ -25,7 +26,7 @@
 .head-sec{
   font-size: 35px;
   text-align: start;
-  
+  margin-top: 0%;
 }
 @media (max-width: 768px) {
   .emplog-container {
