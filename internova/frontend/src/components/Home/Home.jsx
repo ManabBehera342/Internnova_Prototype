@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './../Navbar/Navbar';
 import "./Home.css"
+import { FaSearch } from 'react-icons/fa';
+
 
 const Home = () => {
   return (
@@ -19,6 +21,7 @@ const Home = () => {
               value={""}
               onChange={""}
               />
+              <FaSearch/>
             </div>
     
      {/*  <HiLocationMarker color="var(--blue)" size={25} /> */}

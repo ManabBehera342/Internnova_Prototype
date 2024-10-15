@@ -1,5 +1,5 @@
-.home-nav{
-
+.home-nav .dark-nav{
+  background:#ffffff
 }
 
 #home {
@@ -43,6 +43,7 @@
 /* .search{
   border-radius: 50%; */
   .search-bar {
+    display: flex;
     margin-top:5%;
     background-color: white;
     border-radius: 50px;
