@@ -2,6 +2,7 @@ import React from 'react'
 import Form from '../Form/Form';
 import Navbar from '../../Navbar/Navbar';
 import './StdLog.css'
+import Globe from '../Globe/Globe';
 
 const EmpLog = () => {
   return (
@@ -16,7 +17,9 @@ const EmpLog = () => {
             <div className='para-sec' style={{fontSize:'26px'}}>Join us to <span style={{color:"#e4c61b"}}>Unlock </span>your Potential !</div>
           </div>
           {/* globe */}
-          <div></div>
+          <div className='globe-container'>
+            <Globe className="globe-wrapper" />
+          </div>
         </div>
         <div className="sec">
         <Form/>
