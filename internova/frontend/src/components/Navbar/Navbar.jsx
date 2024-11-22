@@ -83,13 +83,13 @@ const Navbar = () => {
 
       <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
         <NavLink to="/home" onClick={closeMobileMenu}>
-          Home
+          HOME
         </NavLink>
         <NavLink to="/about" onClick={closeMobileMenu}>
-          About
+          ABOUT
         </NavLink>
         <NavLink to="/faq" onClick={closeMobileMenu}>
-          Faq
+          FAQ
         </NavLink>
         <button className="login" onClick={handleLoginClick}>
           LOGIN
