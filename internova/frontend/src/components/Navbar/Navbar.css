@@ -44,7 +44,7 @@
   font-family: 'Lucida Sans', sans-serif;
 }
 
-.menu li a {
+.menu li  {
   color: black;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -122,7 +122,7 @@
 
 @media (max-width: 768px) {
   .logoimg {
-   /* width:75% */
+   width:75%
   }
   .menu {
     display: none;
@@ -150,7 +150,7 @@
 
 .dark-nav {
   background: linear-gradient(to right, #fff6b3, #ffffff 50%,#f4f1f7);
-  color: white;
+ /*  color: white; */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 border: 1px solid rgba(255, 255, 255, 0.41);
 backdrop-filter: blur(30px);
@@ -171,7 +171,7 @@ justify-content: space-between;
 .dark-nav .menu{
   margin-left: 40%;
 }
-.dark-nav .menu li a:hover {
+.dark-nav .menu li:hover {
   color: #ddd;
 }
 

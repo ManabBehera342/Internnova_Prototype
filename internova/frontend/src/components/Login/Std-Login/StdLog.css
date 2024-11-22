@@ -44,6 +44,14 @@
 .stdlog-page >.stdlog-container >.sec {
   margin-left:5%
 }
+
+.stdlog-page >.stdlog-container >.sec >.head-sec{
+  font-size: 35px;
+  text-align: start;
+  margin-top: -30%;
+  margin-left: 5%;
+}
+
 .stdlog-page >.stdlog-container >.sec >.globe-container{
   left:3%
 }

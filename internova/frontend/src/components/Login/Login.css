@@ -1,4 +1,4 @@
-.log-nav .navbar {
+.land-nav .navbar {
   height:8%;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   width:88% ;
@@ -11,26 +11,26 @@
   justify-content: space-between;
 }
 
-.log-nav .menu{
+.land-nav .menu{
   display: none;
 }
 
-.log-nav .out-landing{
+.land-nav .out-landing{
       display: flex;
       align-items: center;
       gap: 30px;
       font-size: 18px;
       font-weight: 500;
-     /*  margin-left: 30%; */
+      color: #333;
       font-family: 'Lucida Sans', sans-serif;
 
 }
-.log-nav .login{
+/* .land-nav .login{
   display: none;
-}
+} */
 
-.log-nav .out-landing{
-  margin-left: 75%;
+.land-nav .out-landing{
+  margin-left: 45%;
   :hover{
     color:#543E6C 
   }
