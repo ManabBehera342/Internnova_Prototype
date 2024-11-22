@@ -30,6 +30,10 @@ const Navbar = () => {
     navigate("/login"); // Use navigate to redirect to login page
   };
 
+  const handleRegisterClick = () => {
+    navigate("/register");
+  };
+
   return (
     <>
       <nav className={`navbar ${sticky ? "dark-nav" : ""}`}>
@@ -66,7 +70,9 @@ const Navbar = () => {
             <button className="login" onClick={handleLoginClick}>
               LOGIN
             </button>
-            <button className="signup">SIGNUP</button>
+            <button className="signup" onClick={handleRegisterClick}>
+              SIGNUP
+            </button>
           </div>
           <div
             className="hamburger"
@@ -94,7 +100,7 @@ const Navbar = () => {
         <button className="login" onClick={handleLoginClick}>
           LOGIN
         </button>
-        <button className="signup" onClick={closeMobileMenu}>
+        <button className="signup" onClick={handleRegisterClick}>
           SIGNUP
         </button>
       </div>
