@@ -24,7 +24,7 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/emplogin" element={<EmpLog />} />
           <Route path="/stdlogin" element={<StdLog />} />
-          <Route path="/jobseeker" element={<SeekHm />} />
+          <Route path="/stdlogin/jobseeker" element={<SeekHm />} />
         </Route>
       </Routes>
     </BrowserRouter>
