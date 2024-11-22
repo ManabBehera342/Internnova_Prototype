@@ -1,7 +1,5 @@
 import React from "react";
 import Landing from "../components/Landing/Landing";
-/*import About from "../components/About/About";
-import Faq from "../components/Faq/Faq"; */
 
 const Website = () => {
   return (
