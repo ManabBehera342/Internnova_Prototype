@@ -1,6 +1,8 @@
 node_modules/
 *.pack
 .eslintcache
+*.cache
+
 *.pack.old
 
 # Logs
