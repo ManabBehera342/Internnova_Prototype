@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`navbar ${sticky ? "dark-nav" : "dark-nav"}`}>
+      <nav className={`navbar ${sticky ? "dark-nav" : ""}`}>
         <div className="navs container">
           <div className="logo">
             <NavLink to="/">
@@ -58,9 +58,9 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="out-landing">
-            <NavLink to="/home">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/faq">Faq</NavLink>
+            <NavLink to="/home">HOME</NavLink>
+            <NavLink to="/about">ABOUT</NavLink>
+            <NavLink to="/faq">FAQ</NavLink>
           </div>
           <div className="auth-buttons">
             <button className="login" onClick={handleLoginClick}>

@@ -1,4 +1,5 @@
-.land-nav .navbar {
+
+.log-nav .navbar {
   height:8%;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   width:88% ;
@@ -11,32 +12,30 @@
   justify-content: space-between;
 }
 
-.land-nav .menu{
+.log-nav .menu{
   display: none;
 }
 
-.land-nav .out-landing{
+.log-nav .out-landing{
       display: flex;
       align-items: center;
       gap: 30px;
       font-size: 18px;
       font-weight: 500;
-      color: #333;
+     /*  margin-left: 30%; */
       font-family: 'Lucida Sans', sans-serif;
 
 }
-/* .land-nav .login{
+.log-nav .login{
   display: none;
-} */
+}
 
-.land-nav .out-landing{
-  margin-left: 45%;
+.log-nav .out-landing{
+  margin-left: 75%;
   :hover{
     color:#543E6C 
   }
 }
-
-
 .login-page {
   height: 100vh;
   display: flex;

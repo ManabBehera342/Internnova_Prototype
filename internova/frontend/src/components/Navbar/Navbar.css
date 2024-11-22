@@ -122,7 +122,7 @@
 
 @media (max-width: 768px) {
   .logoimg {
-   width:75%
+  /*  width:75% */
   }
   .menu {
     display: none;
