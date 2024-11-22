@@ -1,5 +1,28 @@
 
-.landing {
+.land-nav .menu{
+  display: none;
+}
+
+.land-nav .out-landing{
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      color:black;
+      font-family: 'Lucida Sans', sans-serif;
+
+}
+
+.land-nav .out-landing{
+  margin-left: 60%;
+  :hover{
+    color:#543E6C 
+  }
+}
+
+
+.landing-container {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -79,6 +102,12 @@
   line-height: 58px;
   font-size: 35px;
 }
+
+/* .landing >.navbar >.menu{
+  display: none;
+}
+ */
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {

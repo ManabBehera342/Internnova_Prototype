@@ -1,49 +1,52 @@
-import React, { useEffect, useState } from 'react';
-import './Faq.css';
-import { questions } from '../faqQuestion';
+import React, { useEffect, useState } from "react";
+import "./Faq.css";
+import { questions } from "../faqQuestion";
+import Navbar from "../Navbar/Navbar";
 
 function Faq() {
   const [selected, setSelected] = useState(null);
 
   const toggle = (i) => {
-      if (selected === i) {
-          setSelected(null);
-      } else {
-          setSelected(i);
-      }
+    if (selected === i) {
+      setSelected(null);
+    } else {
+      setSelected(i);
+    }
   };
 
   useEffect(() => {
-      window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, []);
 
   return (
-      <>
-          <div className='container' id='faq'>
-            {/* Gradient Background Elements */}
-            <div className="yellow-gradient" />
-            
-
-            {/* FAQ Section */}
-            <div className="faq-content">
-              <h2 className='faq-heading'>f<span>a</span>q</h2>
-              <div className='faq-wrap'>
-                  <div className='accordion'>
-                      {questions.map((item, i) => (
-                          <div className='item' key={i}>
-                              <div className='title' onClick={() => toggle(i)}>
-                                  <h3>{item.question}</h3>
-                                  <span>{selected === i ? ' - ' : ' + '}</span>
-                              </div>
-                              <div className={selected === i ? 'answer show' : 'answer'}>{item.answer}</div>
-                          </div>
-                      ))}
-                  </div>
+    <>
+      <div className="container" id="faq">
+        {/* FAQ Section */}
+        {/*  <div className="faq-content"> */}
+        <Navbar />
+        <div className="faq-heading">
+          <img src="./images/Group 24 (1).png" alt="faq" />
+        </div>
+        <div className="faq-wrap">
+          <div className="accordion">
+            {questions.map((item, i) => (
+              <div className="item" key={i}>
+                <div className="title" onClick={() => toggle(i)}>
+                  <h3>{item.question}</h3>
+                  <span>{selected === i ? " - " : " + "}</span>
+                </div>
+                <div className={selected === i ? "answer show" : "answer"}>
+                  {item.answer}
+                </div>
               </div>
-            </div>
-            <div className="violet-gradient" />
+            ))}
           </div>
-      </>
+          <div className="faq-img">
+            <img src="./images/Zenbook Duo 14 (3).png" alt="faq-img" />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

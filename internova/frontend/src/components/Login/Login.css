@@ -1,3 +1,4 @@
+
 .log-nav .navbar {
   height:8%;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -35,8 +36,6 @@
     color:#543E6C 
   }
 }
-
-
 .login-page {
   height: 100vh;
   display: flex;
