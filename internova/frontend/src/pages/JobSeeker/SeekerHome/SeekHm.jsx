@@ -1,6 +1,7 @@
 import React from "react";
 import "./SeekHm.css";
 import Footer from "../../../components/Footer/Footer";
+import Home from "../../../components/Home/Home";
 const SeekHm = () => {
   return (
     <div>
@@ -8,7 +9,7 @@ const SeekHm = () => {
         <div className="inner-conatiner">
           <div className="card card01">
             <img
-              src="./images/internship image.png"
+              src="../images/internship image.png"
               alt="Card Image"
               className="card-image"
               style={{ height: "280px" }}
@@ -17,7 +18,7 @@ const SeekHm = () => {
           </div>
           <div className="card card02">
             <img
-              src="./images/jobs image.png"
+              src="../images/jobs image.png"
               alt="Card Image"
               className="card-image"
               style={{ height: "284px" }}
@@ -31,7 +32,7 @@ const SeekHm = () => {
           </div>
           <div className="card card03">
             <img
-              src="./images/mentorship image.png"
+              src="../images/mentorship image.png"
               alt="Card Image"
               className="card-image"
               style={{ height: "280px" }}
@@ -45,7 +46,7 @@ const SeekHm = () => {
           </div>
           <div className="card card04">
             <img
-              src="./images/resources 1image.png"
+              src="../images/resources 1image.png"
               alt="Card Image"
               className="card-image"
               style={{ height: "280px" }}
@@ -60,7 +61,7 @@ const SeekHm = () => {
         </div>
         <div className="image-potential">
           <img
-            src="./images/Group 45.png"
+            src="../images/Group 45.png"
             alt="Card Image"
             className="potentia-picture"
           />
