@@ -1,7 +1,7 @@
 import React from "react";
 import "./SeekHm.css";
 import Footer from "../../../components/Footer/Footer";
-import Home from "../../../components/Home/Home";
+
 const SeekHm = () => {
   return (
     <div>
