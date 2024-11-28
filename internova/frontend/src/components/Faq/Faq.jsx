@@ -32,7 +32,7 @@ function Faq() {
             {questions.map((item, i) => (
               <div className="item" key={i}>
                 <div className="title" onClick={() => toggle(i)}>
-                  <h3>{item.question}</h3>
+                  <h3 className="question">{item.question}</h3>
                   <span>{selected === i ? " - " : " + "}</span>
                 </div>
                 <div className={selected === i ? "answer show" : "answer"}>
