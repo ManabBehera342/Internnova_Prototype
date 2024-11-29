@@ -5,11 +5,14 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Faq from "./components/Faq/Faq";
 import Login from "./components/Login/Login";
-import EmpLog from "./components/Login/Emp-login/EmpLog";
-import StdLog from "./components/Login/Std-Login/StdLog";
+import EmpLog from "./pages/Emp-login/EmpLog";
+import StdLog from "./pages/Std-Login/StdLog";
 import Landing from "./components/Landing/Landing";
 import SignUp from "./components/SignUp/SignUp";
 import SeekHm from "./pages/JobSeeker/SeekerHome/SeekHm";
+import ProviderHm from "./pages/JobProvider/ProviderHome/ProviderHm";
+import Mentorship from "./pages/Mentorship/Mentorship";
+import MentorLogin from "./pages/Mentorship/MentorLogin";
 
 function App() {
   return (
@@ -24,7 +27,10 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/emplogin" element={<EmpLog />} />
           <Route path="/stdlogin" element={<StdLog />} />
-          <Route path="/stdlogin/jobseeker" element={<SeekHm />} />
+          <Route path="/mentorlogin" element={<MentorLogin />} />
+          <Route path="/jobseeker" element={<SeekHm />} />
+          <Route path="/jobprovider" element={<ProviderHm />} />
+          <Route path="/mentor" element={<Mentorship />} />
         </Route>
       </Routes>
     </BrowserRouter>
