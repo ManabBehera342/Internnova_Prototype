@@ -1,10 +1,12 @@
 import React from "react";
 import "./SeekHm.css";
 import Footer from "../../../components/Footer/Footer";
+import JobHeader from "../../../components/JobHeader/JobHeader";
 
 const SeekHm = () => {
   return (
     <div>
+      <JobHeader />
       <div className="outer-container">
         <div className="inner-conatiner">
           <div className="card card01">

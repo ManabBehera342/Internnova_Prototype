@@ -53,6 +53,7 @@
   
   .s-form button {
     align-self: center;
+    background-color: #29153D;
   }
   
   .s-input,
@@ -80,7 +81,8 @@
    cursor: pointer;
   }
   .s-register:hover{
-    background-color: #252727;
+    background: #252525;;
+    color: white;
     transform: scale(1.01);
   }
   .s-input:focus {

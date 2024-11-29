@@ -1,12 +1,14 @@
 
 .jobs-container-jobs {
     width: 100%;
+   
   }
   
   /* Full Width Image */
   .full-width-image-jobs .full-image-jobs {
     width: 100%;
     height: auto;
+    margin-top:2%;
     object-fit: cover;
   }
   

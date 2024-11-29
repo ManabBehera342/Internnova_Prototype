@@ -6,22 +6,24 @@ import { MdDraw } from "react-icons/md";
 import { VscGraphLine } from "react-icons/vsc";
 import { MdVideoLibrary } from "react-icons/md";
 import "./Job.css";
+import JobHeader from "../../../components/JobHeader/JobHeader";
 
 const Job = () => {
   return (
     <>
       <div className="jobs-container-jobs">
+        <JobHeader />
         <div className="full-width-image-jobs">
           <img
             src=".\images\jobpage.png"
-            alt="Full Width Image"
+            alt="FullWidthImage"
             className="full-image-jobs"
           />
         </div>
         <div className="centered-image-jobs">
           <img
             src="./images/jobExplore.png"
-            alt="Centered Image"
+            alt="CenteredImage"
             className="explore-image-jobs"
           />
         </div>

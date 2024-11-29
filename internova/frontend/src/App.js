@@ -31,8 +31,8 @@ function App() {
           <Route path="/mentorlogin" element={<MentorLogin />} />
           <Route path="/jobseeker" element={<SeekHm />} />
           <Route path="/jobprovider" element={<ProviderHm />} />
-          <Route path="/mentor" element={<Mentorship />} />
-          <Route path="/job" element={<Job />} />
+          <Route path="/mentorship" element={<Mentorship />} />
+          <Route path="/jobs" element={<Job />} />
         </Route>
       </Routes>
     </BrowserRouter>
