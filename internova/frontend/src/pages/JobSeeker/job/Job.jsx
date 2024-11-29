@@ -25,35 +25,35 @@ const Job = () => {
             className="explore-image-jobs"
           />
         </div>
-        <div className="button-grid-container-jobs">
+        <div className="button-grid-contain-jobs">
           <div className="button-grid-jobs">
-            <button className="job-button-jobs">
+            <div className="job-button-jobs">
               <MdDraw className="icon-jobs" />
               <span>Graphic Designer</span>
-            </button>
-            <button className="job-button-jobs">
+            </div>
+            <div className="job-button-jobs">
               <VscGraphLine className="icon-jobs" />
               <span>Data Analyst</span>
-            </button>
-            <button className="job-button-jobs">
+            </div>
+            <div className="job-button-jobs">
               <MdVideoLibrary className="icon-jobs" />
               <span>Video Editor</span>
-            </button>
-            <button className="job-button col-span-2">
+            </div>
+            <div className="job-button-jobs col-span-2-jobs">
               <FaLaptopCode className="icon-jobs" />
               <span>Software Developer</span>
-            </button>
-            <button className="job-button-jobs">
+            </div>
+            <div className="job-button-jobs">
               <FaArrowAltCircleRight className="icon-jobs" />
               <span>Explore</span>
-            </button>
+            </div>
           </div>
         </div>
         <div className="featured-jobs-jobs">
           <h2 className="featured-title-jobs">Best Featured Jobs</h2>
-          <button className="explore-featured-button-jobs">
+          <div className="explore-featured-button-jobs">
             <FaArrowAltCircleRight className="Explore-icon-jobs" />
-          </button>
+          </div>
         </div>
         <div className="jobcards-container-jobs">
           <div className="jobcard">
