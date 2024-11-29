@@ -52,7 +52,8 @@
 
 .menu li a:hover {
   /* color: #1f3e72; */
-  color:#543E6C 
+  color:#543E6C; 
+  transition:color 0.3s ease
 }
 
 .auth-buttons {

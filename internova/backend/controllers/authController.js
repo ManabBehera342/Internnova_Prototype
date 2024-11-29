@@ -1,3 +1,4 @@
+import userModel from "../models/userModel.js";
 import userSchema from "../models/userModel.js";
 
 export const registerController = async (req, res, next) => {
@@ -38,10 +39,20 @@ export const registerController = async (req, res, next) => {
     email,
     password,
   });
+
+  //token
+  const token = user.createJWT();
   res.status(201).send({
     success: true,
     message: "User created Succesfully",
-    user,
+    user: {
+      //to get these details of user
+      name: user.name,
+      lastName: user.lastname,
+      email: user.email,
+      location: user.location,
+    },
+    token,
   });
   /*  } catch (error) {
     next(error); */
@@ -51,4 +62,32 @@ export const registerController = async (req, res, next) => {
       success: false,
       error,  
       }); */
+};
+
+export const loginController = async (req, res) => {
+  const { email, password } = req.body;
+
+  //validation
+  if (!email || !password) {
+    next("Please Provide All Fields");
+  }
+  //find user by email
+  const user = await userModel.findOne({ email }).select("+password");
+  if (!user) {
+    next("Invalid Username or password ");
+  }
+
+  //compare password
+  const isMatch = await user.comparePassword(password);
+  if (!isMatch) {
+    next("Invalid userName or password");
+  }
+  user.password = undefined; //to hide password in user details display
+  const token = user.createJWT();
+  res.status(200).json({
+    success: true,
+    message: "Login Successfully",
+    user,
+    token,
+  });
 };
