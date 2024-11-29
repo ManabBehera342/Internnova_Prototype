@@ -10,6 +10,9 @@ import StdLog from "./pages/Std-Login/StdLog";
 import Landing from "./components/Landing/Landing";
 import SignUp from "./components/SignUp/SignUp";
 import SeekHm from "./pages/JobSeeker/SeekerHome/SeekHm";
+import ProviderHm from "./pages/JobProvider/ProviderHome/ProviderHm";
+import Mentorship from "./pages/Mentorship/Mentorship";
+import MentorLogin from "./pages/Mentorship/MentorLogin";
 
 function App() {
   return (
@@ -24,7 +27,10 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/emplogin" element={<EmpLog />} />
           <Route path="/stdlogin" element={<StdLog />} />
+          <Route path="/mentorlogin" element={<MentorLogin />} />
           <Route path="/jobseeker" element={<SeekHm />} />
+          <Route path="/jobprovider" element={<ProviderHm />} />
+          <Route path="/mentor" element={<Mentorship />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "./SignUp.css";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
-
-  const handleSignup = async () => {
+  const navigate = useNavigate();
+  //
+  const handleSignup = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         "http://localhost:4000/api/v1/user/register",
@@ -19,12 +22,22 @@ const SignUp = () => {
         }
       );
 
-      if (!response.ok) {
+      /* if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Something went wrong!");
-      }
+      } */
       const result = await response.json();
       alert(result.message);
+      //
+      if (response.ok) {
+        if (userType === "student") {
+          navigate("/stdlogin");
+        } else if (userType === "recruiter") {
+          navigate("/emplogin");
+        } else {
+          navigate("/mentorlogin");
+        }
+      }
     } catch (error) {
       alert(error.message);
     }
@@ -32,12 +45,7 @@ const SignUp = () => {
   return (
     <>
       <div className="s-form-wrapper">
-        <form
-          className="s-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
+        <form className="s-form" onSubmit={handleSignup}>
           <span className="title">You really like the project</span>
           <span className="sub mb">Register to get full access now :)</span>
           <input id="file" type="file" />
@@ -131,7 +139,7 @@ const SignUp = () => {
           <span className="sub">
             Already have an account? <NavLink to="/login">Sign in</NavLink>
           </span>
-          <button className="s-register" onClick={handleSignup}>
+          <button className="s-register" type="submit">
             Register
           </button>
         </form>

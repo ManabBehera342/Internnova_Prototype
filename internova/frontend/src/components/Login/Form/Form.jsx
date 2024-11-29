@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Form = ({ role }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  /*   const navigate = useNavigate(); */
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -19,10 +19,18 @@ const Form = ({ role }) => {
       });
       const data = await response.json();
       alert(data.message);
-      /*  if (data) {
-        navigate("/jobseeker");
-        toast.success(response.data.message);
-      } */
+
+      if (response.ok) {
+        if (role === "student") {
+          navigate("/jobseeker");
+        }
+        if (role === "recruiter") {
+          navigate("/jobprovider");
+        } else {
+          navigate("/mentor");
+        }
+        /* toast.success(response.data.message); */
+      }
     } catch (error) {
       console.log(error);
     }
