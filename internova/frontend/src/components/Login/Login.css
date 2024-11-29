@@ -97,19 +97,24 @@ p {
 }
 
 
-.login-btn {
+.login-page .login-btn {
   padding: 10px 30px;
   border: none;
   border-radius: 25px;
-  background-color: #4a3f2b;
-  color: white;
+  /* background: linear-gradient(0deg, #543E6C 0%, #29153D 100%); */
+  background-color: #29153D;
+  color: whitesmoke;
   font-size: 1rem;
   cursor: pointer;
+  font-weight: bold;
   transition: transform 0.3s ease;
+  margin-top: 5%;
 }
 
-.login-btn:hover {
+.login-page .login-btn:hover {
   transform: scale(1.05);
+  background-color:#4a3f2b;
+  color:white;
 }
 
 .divide{
