@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 /* import EmpLog from './Emp-login/EmpLog'; */
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,13 @@ const Login = () => {
             </button>
             <br />
             <br />
-            <Link>New to Internova? Register </Link>
+            New to Internova?{" "}
+            <NavLink
+              to="/register"
+              style={{ textDecoration: "underline", color: "blue" }}
+            >
+              Register
+            </NavLink>
           </div>
           <div className="divide" />
           <div className="sec">
@@ -53,7 +59,13 @@ const Login = () => {
             </button>
             <br />
             <br />
-            <Link>New to Internova? Register </Link>
+            New to Internova?{" "}
+            <NavLink
+              to="/register"
+              style={{ textDecoration: "underline", color: "blue" }}
+            >
+              Register
+            </NavLink>
           </div>
         </div>
 
