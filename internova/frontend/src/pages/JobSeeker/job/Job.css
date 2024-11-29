@@ -1,4 +1,4 @@
-/* General Styles */
+
 .jobs-container-jobs {
     width: 100%;
   }
@@ -10,15 +10,19 @@
     object-fit: cover;
   }
   
+  .centered-image-jobs{
+        display: flex;
+        justify-content: center;
+  }
   /* Centered Image */
   .centered-image-jobs .explore-image-jobs {
-    width: 70%;
-    height: auto;
-    margin: 0 auto;
+    width: 70% ;
+    height: auto ;
+    margin: 0 auto ;
   }
   
   /* Button Grid */
-  .button-grid-container-jobs {
+  .button-grid-contain-jobs{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -59,7 +63,7 @@
     font-size: 1.5rem;
   }
   
-  .col-span-2 {
+  .col-span-2-jobs {
     grid-column: span 2;
   }
   

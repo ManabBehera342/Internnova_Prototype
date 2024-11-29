@@ -41,7 +41,7 @@ const Jobcard = () => {
         </div>
 
         {/* Apply Button */}
-        <button className="apply-button">Apply</button>
+        <div className="apply-button">Apply</div>
       </div>
     </div>
   );
