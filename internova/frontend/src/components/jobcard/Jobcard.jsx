@@ -1,18 +1,20 @@
 import React from "react";
-import './Jobcard.css';
+import "./Jobcard.css";
 
-const Jobcard = () => {
+const Jobcard = ({ job }) => {
   return (
     <div className="jobcard-container">
       <div className="jobcard">
         {/* Logo Section */}
         <div className="jobcard-logo">
-          <div className="logo-initial">M</div>
-          <div className="company-name">mcdonalds</div>
+          <div className="logo-initial">
+            <img src={job?.company?.logo} />
+          </div>
+          <div className="company-name">{job?.company?.name}</div>
         </div>
 
         {/* Job Title */}
-        <div className="jobcard-title">QA Analyst</div>
+        <div className="jobcard-title">{job?.company?.title}</div>
 
         {/* Stats Section */}
         <div className="jobcard-stats">
