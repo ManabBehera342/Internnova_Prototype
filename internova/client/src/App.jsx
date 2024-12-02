@@ -13,7 +13,10 @@ import SeekHm from "./pages/JobSeeker/SeekerHome/SeekHm";
 import ProviderHm from "./pages/JobProvider/ProviderHome/ProviderHm";
 import Mentorship from "./pages/Mentorship/Mentorship";
 import MentorLogin from "./pages/Mentorship/MentorLogin";
-import Job from "./pages/JobSeeker/job/Job";
+import JobPg from "./pages/JobSeeker/JobPg/JobPg";
+import Jobs from "./components/Jobs/Jobs";
+import Profile from "./components/Profile";
+import JobDescription from "./components/JobDescription";
 
 function App() {
   return (
@@ -32,7 +35,10 @@ function App() {
           <Route path="/jobseeker" element={<SeekHm />} />
           <Route path="/jobprovider" element={<ProviderHm />} />
           <Route path="/mentorship" element={<Mentorship />} />
-          <Route path="/jobs" element={<Job />} />
+          <Route path="/jobpg" element={<JobPg />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:id" element={<JobDescription />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

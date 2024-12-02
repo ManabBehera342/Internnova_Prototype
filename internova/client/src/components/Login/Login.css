@@ -31,7 +31,7 @@
 }
 
 .log-nav .out-landing{
-  margin-left: 75%;
+  margin-left: 25%;
   :hover{
     color:#543E6C 
   }
@@ -166,6 +166,9 @@ h5 {
 
 /* Tablet adjustments */
 @media (max-width: 768px) {
+  .log-nav .navbar .out-landing{
+display: none;
+  }
   .login-page{
     height: auto;
   }

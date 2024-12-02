@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../../redux/authSlice";
 
 const SignUp = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
+  const [file, setFile] = useState("");
+  const { loading } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   //
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
+      dispatch(setLoading(true));
       const response = await fetch(
         "http://localhost:4000/api/v1/user/register",
         {
@@ -27,9 +34,10 @@ const SignUp = () => {
         throw new Error(errorData.message || "Something went wrong!");
       } */
       const result = await response.json();
-      alert(result.message);
+
       //
       if (response.ok) {
+        toast.success(result.message);
         if (userType === "student") {
           navigate("/stdlogin");
         } else if (userType === "recruiter") {
@@ -37,18 +45,26 @@ const SignUp = () => {
         } else {
           navigate("/mentorlogin");
         }
+      } else {
+        toast.error(result.message);
       }
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
   return (
     <>
       <div className="s-form-wrapper">
         <form className="s-form" onSubmit={handleSignup}>
-          <span className="title">You really like the project</span>
+          <span className="title">Welcome</span>
           <span className="sub mb">Register to get full access now :)</span>
-          <input id="file" type="file" />
+          <input
+            id="file"
+            type="file"
+            onChange={() => setFile(e.target.file)}
+          />
           <label className="avatar" htmlFor="file">
             <span>
               <svg
@@ -140,7 +156,7 @@ const SignUp = () => {
             Already have an account? <NavLink to="/login">Sign in</NavLink>
           </span>
           <button className="s-register" type="submit">
-            Register
+            {loading ? "Sign up" : "Register"}
           </button>
         </form>
       </div>
