@@ -24,19 +24,18 @@ export const questions = [
     answer:
       "Users can apply for mentorship programs through their dashboard, where they’ll be paired with industry professionals.",
   },
-  /*  {
+  {
     id: 5,
-    question:
-      "What should I do if I encounter a technical issue on the website?",
+    question: "What should I do if I encounter a technical issue ?",
     answer:
       "If you experience any technical issues, please contact our support team or use the contact form on our website. We’ll assist you as soon as possible.",
-  }, */
-  {
+  },
+  /*   {
     id: 6,
     question: "Will there be updates or new features added to the platform?",
     answer:
       "Yes, we continuously strive to improve the platform based on user feedback and industry trends.",
-  },
+  }, */
   {
     id: 7,
     question: "What kind of counseling services do you offer?",
@@ -45,8 +44,7 @@ export const questions = [
   },
   {
     id: 8,
-    question:
-      "How i can interact with the mentor during my mentorship program ?",
+    question: "How to interact with the mentor during the mentorship?",
     answer:
       "Our platform provides a direct one-to-one chat session for seekers and mentors. ",
   },

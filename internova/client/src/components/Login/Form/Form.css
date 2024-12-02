@@ -1,5 +1,5 @@
 
-.form {
+.l-form {
   display: flex;
   flex-direction: column;
   margin: 10% auto; /* Centers the form on the page */
@@ -15,6 +15,7 @@
 
 ::placeholder {
   font-family: inherit;
+  background-color: transparent;
 }
 
 .form button {
@@ -37,7 +38,7 @@
   background-color: white;
 }
 
-.input {
+.l-input {
   margin-left: 10px;
   border-radius: 10px;
   border: none;
@@ -46,7 +47,7 @@
   background-color: none;
 }
 
-.input:focus {
+.l-input:focus {
   outline: none;
 }
 

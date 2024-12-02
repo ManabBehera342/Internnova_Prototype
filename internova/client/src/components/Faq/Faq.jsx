@@ -31,7 +31,7 @@ function Faq() {
           <div className="accordion">
             {questions.map((item, i) => (
               <div className="item" key={i}>
-                <div className="title" onClick={() => toggle(i)}>
+                <div className="faq-title" onClick={() => toggle(i)}>
                   <h3 className="question">{item.question}</h3>
                   <span>{selected === i ? " - " : " + "}</span>
                 </div>
@@ -42,7 +42,7 @@ function Faq() {
             ))}
           </div>
           <div className="faq-img">
-            <img src="./images/ZenBook Duo 14 (3).png" alt="faq-img" />
+            <img src="./images/ZenBook Duo 14 (3).png" alt="faqimg" />
           </div>
         </div>
       </div>
