@@ -8,8 +8,10 @@ import CategoryCarousel from "../../../components/CategoryCarousel/CategoryCarou
 import LatestJobs from "@/components/LatestJobs/LatestJobs";
 import { useSelector } from "react-redux";
 import LatestJobCards from "@/components/LatestJobsCards/LatestJobCards";
+import { useNavigate } from "react-router-dom";
 
 const JobPg = () => {
+  const navigate = useNavigate();
   /*  const { allJobs } = useSelector((store) => store.job); */
   return (
     <>
@@ -32,9 +34,12 @@ const JobPg = () => {
         <CategoryCarousel />
         <div className="featured-jobs-jobs">
           <h2 className="featured-title-jobs">Best Featured Jobs</h2>
-          <div className="explore-featured-button-jobs">
+          <button
+            className="explore-featured-button-jobs"
+            onClick={() => navigate("/jobs")}
+          >
             <FaArrowAltCircleRight className="Explore-icon-jobs" />
-          </div>
+          </button>
         </div>
         <div className="jobcards-container-jobs">
           <div className="jobcard">
@@ -49,7 +54,8 @@ const JobPg = () => {
           <div className="jobcard">
             <Job />
           </div>
-          {/* <LatestJobs /> */}
+          <LatestJobs />
+          {/*  <LatestJobCards /> */}
         </div>
       </div>
     </>

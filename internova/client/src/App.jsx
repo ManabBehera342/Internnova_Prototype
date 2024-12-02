@@ -17,6 +17,7 @@ import JobPg from "./pages/JobSeeker/JobPg/JobPg";
 import Jobs from "./components/Jobs/Jobs";
 import Profile from "./components/Profile";
 import JobDescription from "./components/JobDescription";
+import Job from "./components/job/Job";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:id" element={<JobDescription />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/job" element={<Job />} />
         </Route>
       </Routes>
     </BrowserRouter>

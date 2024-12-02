@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
- 
 }
 
 .s-form {
@@ -11,7 +10,7 @@
   flex-direction: column;
   gap: 10px;
   width: 400px;
-  background-color:gray;
+  background-color: gray;
   border-radius: 20px;
   padding: 30px 20px;
   box-shadow: 100px 100px 80px rgba(0, 0, 0, 0.03);
@@ -39,7 +38,7 @@
 }
 
 .sub a {
-  color: rgb(23, 111, 211);
+  color: rgb(5, 66, 136);
 }
 
 .avatar {
@@ -76,7 +75,7 @@
   color: #fff;
   text-transform: uppercase;
   font-weight: bold;
-  /*    width:50%; */
+
   display: flex;
   justify-content: center;
   align-items: center;
