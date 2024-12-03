@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const LatestJobs = () => {
-  const { allJobs } = useSelector((store) => store.job);
+  const { allJobs = [] } = useSelector((store) => store.job); // Ensure `allJobs` has a fallback value of an empty array.
 
   return (
     <div>
