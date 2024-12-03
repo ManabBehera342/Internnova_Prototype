@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import "./Form.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -10,7 +10,7 @@ import { setLoading, setUser } from "../../../redux/authSlice";
 const Form = ({ role }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  /*   const [loading, setLoading] = useState(false); */
+  // const [loading, setLoading] = useState(false);
   const { loading } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Form = ({ role }) => {
       });
       const data = await response.json();
       if (response.ok) {
-        dispatch(setUser(response.data.user));
+        //dispatch(setUser(response.data.user));
         toast.success(data.message); // Show success toast
         if (role === "student") {
           navigate("/jobseeker");
@@ -110,7 +110,7 @@ const Form = ({ role }) => {
             disabled={loading}
             onClick={handleLogin}
           >
-            {loading ? "Signing In..." : "Log In"}
+            {loading ? "Signing in..." : "Log In"}
           </button>
           <p className="p">
             Don&apos;t have an account?{" "}
@@ -124,103 +124,280 @@ const Form = ({ role }) => {
   );
 };
 
-export default Form;
+export default Form; */
 
-/* import React from "react";
+///////
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "sonner";
+import { setLoading, setUser } from "../../../redux/authSlice";
 import "./Form.css";
-import { react } from '@vitejs/plugin-react';
 
-const Form = () => {
+const Form = ({ role = "student" }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { loading, user } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    try {
+      dispatch(setLoading(true));
+
+      const response = await fetch("http://localhost:4000/api/v1/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, role }),
+        credentials: "include",
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        if (data && data.user) {
+          dispatch(setUser(data.user));
+          toast.success(data.message); // Show success toast
+
+          // Navigate based on role
+          if (data.user.role === "student") {
+            navigate("/jobseeker");
+          } else if (data.user.role === "recruiter") {
+            navigate("/admin/companies");
+          } else {
+            navigate("/mentor");
+          }
+        } else {
+          throw new Error("User data missing in response");
+        }
+      } else {
+        toast.error(data.message || "Login failed!"); // Show error toast
+      }
+    } catch (error) {
+      console.error("Login error:", error.message);
+      toast.error(error.message || "An unexpected error occurred.");
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
   return (
-    <form className="form">
-      <div className="flex-column">
-        <label>Email</label>
-      </div>
-      <div className="inputForm">
-        <svg
-          height="20"
-          viewBox="0 0 32 32"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="Layer_3" data-name="Layer 3">
-            <path d="m30.853 13.87a15 15 0 0 0 -29.729 4.082 15.1 15.1 0 0 0 12.876 12.918 15.6 15.6 0 0 0 2.016.13 14.85 14.85 0 0 0 7.715-2.145 1 1 0 1 0 -1.031-1.711 13.007 13.007 0 1 1 5.458-6.529 2.149 2.149 0 0 1 -4.158-.759v-10.856a1 1 0 0 0 -2 0v1.726a8 8 0 1 0 .2 10.325 4.135 4.135 0 0 0 7.83.274 15.2 15.2 0 0 0 .823-7.455zm-14.853 8.13a6 6 0 1 1 6-6 6.006 6.006 0 0 1 -6 6z" />
-          </g>
-        </svg>
-        <input type="text" className="input" placeholder="Enter your Email" />
-      </div>
-
-      <div className="flex-column">
-        <label>Password </label>
-      </div>
-      <div className="inputForm">
-        <svg
-          height="20"
-          viewBox="-64 0 512 512"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0" />
-          <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0" />
-        </svg>
-        <input
-          type="password"
-          className="input"
-          placeholder="Enter your Password"
-        />
-     
-      </div>
-
-      <div className="flex-row">
-        <div>
-          <input type="checkbox" />
-          <label>Remember me </label>
+    <div className="l-form-wrapper">
+      <form
+        className="l-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleLogin();
+        }}
+      >
+        <div className="flex-column">
+          <label>Email</label>
         </div>
-        <span className="span">Forgot password?</span>
-      </div>
-      <button className="button-submit">Sign In</button>
-      <p className="p">
-        Don&apos;t have an account? <span className="span">Sign Up</span>
-      </p>
-      {/* <p className="p line">Or With</p>
-
-      <div className="flex-row">
-        <button className="btn google">
+        <div className="inputForm">
           <svg
-            version="1.1"
+            height="20"
+            viewBox="0 0 32 32"
             width="20"
-            id="Layer_1"
             xmlns="http://www.w3.org/2000/svg"
-            xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 512 512"
-            style={{ enableBackground: "new 0 0 512 512" }}
-            space="preserve"
           >
-            <path
-              style={{ fill: "#FBBB00" }}
-              d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256\n\tc0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456\n\tC103.821,274.792,107.225,292.797,113.47,309.408z"
-            />
-            <path
-              style={{ fill: "#518EF8" }}
-              d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451\n\tc-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535\n\tc29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"
-            />
-            <path
-              style={{ fill: "#28B446" }}
-              d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512\n\tc-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771\n\tc28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"
-            />
-            <path
-              style={{ fill: "#F14336" }}
-              d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012\n\tc-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0\n\tC318.115,0,375.068,22.126,419.404,58.936z"
-            />
+            <g id="Layer_3" data-name="Layer 3">
+              <path d="m30.853 13.87a15 15 0 0 0 -29.729 4.082 15.1 15.1 0 0 0 12.876 12.918 15.6 15.6 0 0 0 2.016.13 14.85 14.85 0 0 0 7.715-2.145 1 1 0 1 0 -1.031-1.711 13.007 13.007 0 1 1 5.458-6.529 2.149 2.149 0 0 1 -4.158-.759v-10.856a1 1 0 0 0 -2 0v1.726a8 8 0 1 0 .2 10.325 4.135 4.135 0 0 0 7.83.274 15.2 15.2 0 0 0 .823-7.455zm-14.853 8.13a6 6 0 1 1 6-6 6.006 6.006 0 0 1 -6 6z" />
+            </g>
           </svg>
-          Google
+          <input
+            type="email"
+            className="l-input"
+            placeholder="Enter your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div className="flex-column">
+          <label>Password</label>
+        </div>
+        <div className="inputForm">
+          <svg
+            height="20"
+            viewBox="-64 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0" />
+            <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0" />
+          </svg>
+          <input
+            type="password"
+            className="l-input"
+            placeholder="Enter your Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div className="flex-row">
+          <div>
+            <input type="checkbox" />
+            <label>Remember me</label>
+          </div>
+          <span className="span">Forgot password?</span>
+        </div>
+        <button
+          className="button-submit"
+          disabled={loading}
+          onClick={handleLogin}
+        >
+          {loading ? "Signing in..." : "Log In"}
         </button>
-      </div> //
-    </form>
+        <p className="p">
+          Don&apos;t have an account?{" "}
+          <NavLink to="/register">
+            <span className="span">Sign Up</span>
+          </NavLink>
+        </p>
+      </form>
+    </div>
   );
 };
 
 export default Form;
- */
+
+/////
+
+////
+
+////////////
+
+/////
+
+/* import React, { useEffect, useState } from "react";
+import { Label } from "../../ui/label";
+import { Input } from "../../ui/input";
+import { RadioGroup } from "../../ui/radio-group";
+import { Button } from "../../ui/button";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { USER_API_END_POINT } from "@/utils/constant";
+import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading, setUser } from "@/redux/authSlice";
+import { Loader2 } from "lucide-react";
+
+const Login = () => {
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+    role: "",
+  });
+  const { loading, user } = useSelector((store) => store.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const changeEventHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(setLoading(true));
+      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      if (res.data.success) {
+        dispatch(setUser(res.data.user));
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
+  return (
+    <div>
+      <div className="flex items-center justify-center max-w-7xl mx-auto">
+        <form
+          onSubmit={submitHandler}
+          className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
+        >
+          <h1 className="font-bold text-xl mb-5">Login</h1>
+          <div className="my-2">
+            <Label>Email</Label>
+            <Input
+              type="email"
+              value={input.email}
+              name="email"
+              onChange={changeEventHandler}
+              placeholder="patel@gmail.com"
+            />
+          </div>
+
+          <div className="my-2">
+            <Label>Password</Label>
+            <Input
+              type="password"
+              value={input.password}
+              name="password"
+              onChange={changeEventHandler}
+              placeholder="patel@gmail.com"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <RadioGroup className="flex items-center gap-4 my-5">
+              <div className="flex items-center space-x-2">
+                <Input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  checked={input.role === "student"}
+                  onChange={changeEventHandler}
+                  className="cursor-pointer"
+                />
+                <Label htmlFor="r1">Student</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Input
+                  type="radio"
+                  name="role"
+                  value="recruiter"
+                  checked={input.role === "recruiter"}
+                  onChange={changeEventHandler}
+                  className="cursor-pointer"
+                />
+                <Label htmlFor="r2">Recruiter</Label>
+              </div>
+            </RadioGroup>
+          </div>
+          {loading ? (
+            <Button className="w-full my-4">
+              {" "}
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
+            </Button>
+          ) : (
+            <Button type="submit" className="w-full my-4">
+              Login
+            </Button>
+          )}
+          <span className="text-sm">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-600">
+              Signup
+            </Link>
+          </span>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Login; */

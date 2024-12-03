@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Job from "../../../components/job/Job";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import "./JobPg.css";
@@ -8,9 +8,22 @@ import CategoryCarousel from "../../../components/CategoryCarousel/CategoryCarou
 import LatestJobs from "@/components/LatestJobs/LatestJobs";
 import { useSelector } from "react-redux";
 import LatestJobCards from "@/components/LatestJobsCards/LatestJobCards";
+import { useNavigate } from "react-router-dom";
+import useGetAllJobs from "@/hooks/useGetAllJobs";
+import Browse from "@/components/Browse";
+import SearchBar from "@/components/SearchBar";
 
 const JobPg = () => {
+  const navigate = useNavigate();
   /*  const { allJobs } = useSelector((store) => store.job); */
+  useGetAllJobs();
+  const { user } = useSelector((store) => store.auth);
+
+  useEffect(() => {
+    if (user?.role === "recruiter") {
+      navigate("/admin/companies");
+    }
+  }, []);
   return (
     <>
       <div className="jobs-container-jobs">
@@ -29,15 +42,20 @@ const JobPg = () => {
             className="explore-image-jobs"
           />
         </div>
+        <SearchBar />
         <CategoryCarousel />
         <div className="featured-jobs-jobs">
           <h2 className="featured-title-jobs">Best Featured Jobs</h2>
-          <div className="explore-featured-button-jobs">
+          <button
+            className="explore-featured-button-jobs"
+            onClick={() => navigate("/jobs")}
+          >
             <FaArrowAltCircleRight className="Explore-icon-jobs" />
-          </div>
+          </button>
         </div>
+
         <div className="jobcards-container-jobs">
-          <div className="jobcard">
+          {/*  <div className="jobcard">
             <Job />
           </div>
           <div className="jobcard">
@@ -48,8 +66,10 @@ const JobPg = () => {
           </div>
           <div className="jobcard">
             <Job />
-          </div>
-          {/* <LatestJobs /> */}
+          </div> */}
+          {/* <Jobs /> */}
+          <LatestJobs />
+          {/*  <LatestJobCards /> */}
         </div>
       </div>
     </>

@@ -1,8 +1,8 @@
-import axios from "axios";
 import { React, useEffect } from "react";
 import axios from "axios";
 import { setAllJobs } from "@/redux/jobSlice";
 import { useDispatch } from "react-redux";
+import { JOB_API_END_POINT } from "@/utils/constant";
 
 const useGetAllJobs = () => {
   const dispatch = useDispatch();
@@ -14,13 +14,14 @@ const useGetAllJobs = () => {
         });
         if (res.data.success) {
           dispatch(setAllJobs(res.data.json));
+          console.log(res.data);
         }
       } catch (error) {
         console.log(error);
       }
     };
     fetchAllJobs();
-  }, []);
+  }, [dispatch]);
 };
 
 export default useGetAllJobs;
