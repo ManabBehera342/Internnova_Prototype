@@ -15,7 +15,12 @@ const getDataUri = (file) => {
 
   const parser = new DataUriParser();
   const extName = path.extname(file.originalname).toString();
-  return parser.format(extName, file.buffer);
+  try {
+    return parser.format(extName, file.buffer);
+  } catch (error) {
+    console.error("DataUri Error:", error);
+    throw new Error("Failed to process file");
+  }
 };
 
 export default getDataUri; //to be searched

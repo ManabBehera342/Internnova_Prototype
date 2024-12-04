@@ -13,7 +13,7 @@ const useGetAllJobs = () => {
           withCredentials: true,
         });
         if (res.data.success) {
-          dispatch(setAllJobs(res.data.json));
+          dispatch(setAllJobs(res.data.jobs));
           console.log(res.data);
         }
       } catch (error) {
@@ -22,7 +22,7 @@ const useGetAllJobs = () => {
     };
     fetchAllJobs();
   }, [dispatch]);
-  return { loading: false };
+  /*  return { loading: false }; */
 };
 
 export default useGetAllJobs;

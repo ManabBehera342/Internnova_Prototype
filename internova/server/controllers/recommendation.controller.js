@@ -69,16 +69,16 @@ export const getJobRecommendations = async (req, res) => {
 };
 export const getCandidateRecommendations = async (req, res) => {
   try {
-    const { jobId, Country, Education, Gender, age } = req.body;
+    const { jobId, country, education, gender, age } = req.body;
 
     // Call the ML API
     const response = await axios.post(
       "https://internova-api.onrender.com/match_candidates",
       {
         jobId,
-        Country,
-        Education,
-        Gender,
+        country,
+        education,
+        gender,
         age,
       }
     );

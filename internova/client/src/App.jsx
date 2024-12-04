@@ -31,75 +31,75 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/emplogin" element={<EmpLog />} />
-          <Route path="/stdlogin" element={<StdLog />} />
-          <Route path="/mentorlogin" element={<MentorLogin />} />
-          <Route path="/jobseeker" element={<SeekHm />} />
-          <Route path="/mentorship" element={<Mentorship />} />
-          <Route path="/jobpg" element={<JobPg />} />
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/jobs/:id" element={<JobDescription />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/job" element={<Job />} />
-          <Route path="/browse" element={<Browse />} />
+        {/* <Route element={<Layout />}> */}
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/emplogin" element={<EmpLog />} />
+        <Route path="/stdlogin" element={<StdLog />} />
+        <Route path="/mentorlogin" element={<MentorLogin />} />
+        <Route path="/jobseeker" element={<SeekHm />} />
+        <Route path="/mentorship" element={<Mentorship />} />
+        <Route path="/jobpg" element={<JobPg />} />
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/jobs/:id" element={<JobDescription />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/job" element={<Job />} />
+        <Route path="/browse" element={<Browse />} />
 
-          {/* provider */}
-          <Route
-            path="/admin/companies"
-            element={
-              <ProtectedRoute>
-                <Companies />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/companies/create"
-            element={
-              <ProtectedRoute>
-                <CompanyCreate />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/companies/:id"
-            element={
-              <ProtectedRoute>
-                <CompanySetup />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/jobs"
-            element={
-              <ProtectedRoute>
-                <AdminJobs />{" "}
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/jobs/create"
-            element={
-              <ProtectedRoute>
-                <PostJob />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/jobs/:id/applicants"
-            element={
-              <ProtectedRoute>
-                <Applicants />
-              </ProtectedRoute>
-            }
-          />
-        </Route>
+        {/* provider */}
+        <Route
+          path="/admin/companies"
+          element={
+            <ProtectedRoute>
+              <Companies />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/companies/create"
+          element={
+            <ProtectedRoute>
+              <CompanyCreate />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/companies/:id"
+          element={
+            <ProtectedRoute>
+              <CompanySetup />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/jobs"
+          element={
+            <ProtectedRoute>
+              <AdminJobs />{" "}
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/jobs/create"
+          element={
+            <ProtectedRoute>
+              <PostJob />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/jobs/:id/applicants"
+          element={
+            <ProtectedRoute>
+              <Applicants />
+            </ProtectedRoute>
+          }
+        />
+        {/* </Route> */}
       </Routes>
     </BrowserRouter>
   );

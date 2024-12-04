@@ -9,14 +9,15 @@ import { setSearchJobByText } from "@/redux/jobSlice";
 import JobHeader from "../JobHeader/JobHeader";
 
 const AdminJobs = () => {
-  useGetAllAdminJobs();
+  /*  useGetAllAdminJobs(); */
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const { loading, error } = useGetAllAdminJobs();
   useEffect(() => {
     dispatch(setSearchJobByText(input));
-  }, [input]);
+  }, [input, dispatch]);
+
   return (
     <div>
       <JobHeader />
@@ -31,7 +32,23 @@ const AdminJobs = () => {
             New Jobs
           </Button>
         </div>
-        <AdminJobsTable />
+        {/* <AdminJobsTable jobs={data} />
+      </div>
+    </div> */}
+        {loading && (
+          <div className="flex items-center justify-center h-[400px]">
+            Loading...
+          </div>
+        )}
+
+        {error && (
+          <div className="flex items-center justify-center h-[400px] text-red-500">
+            Error: {error.message}
+          </div>
+        )}
+
+        {/* Only render table when not loading and no error */}
+        {!loading && !error && <AdminJobsTable />}
       </div>
     </div>
   );

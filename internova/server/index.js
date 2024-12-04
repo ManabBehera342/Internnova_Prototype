@@ -32,7 +32,7 @@ app.use("/api/v1/user", userRoute); //"http://localhost:4000/api/v1/user/registe
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
-app.use("/api/recommendations", recommendationRoute);
+app.use("/api/v1/recommendations", recommendationRoute);
 app.listen(process.env.PORT, () => {
   connectDB(); //database
   console.log(`Server running at port ${PORT}`);
