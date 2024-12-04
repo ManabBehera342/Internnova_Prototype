@@ -3,11 +3,17 @@ import LatestJobCards from "../LatestJobsCards/LatestJobCards";
 import { useSelector } from "react-redux";
 
 const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8];
+import { createSelector } from "@reduxjs/toolkit";
+
+const selectJobs = createSelector(
+  (state) => state.job?.allJobs,
+  (allJobs) => allJobs || []
+);
 
 const LatestJobs = () => {
   /*  const { allJobs = [] } = useSelector((store) => store.job); // Ensure `allJobs` has a fallback value of an empty array.
   console.log("allJobs type:", typeof allJobs, "value:", allJobs); */
-  const { allJobs } = useSelector((store) => ({
+  /*  const { allJobs } = useSelector((store) => ({
     allJobs: store.job?.allJobs || [],
   }));
 
@@ -19,7 +25,10 @@ const LatestJobs = () => {
   });
 
   // Ensure we have an array to work with
-  const jobsToDisplay = Array.isArray(allJobs) ? allJobs.slice(0, 6) : [];
+  const jobsToDisplay = Array.isArray(allJobs) ? allJobs.slice(0, 6) : []; */
+
+  const allJobs = useSelector(selectJobs);
+  const jobsToDisplay = allJobs.slice(0, 6);
   return (
     /*  <div>
       <h1>Latest Job Openings</h1>{" "}
