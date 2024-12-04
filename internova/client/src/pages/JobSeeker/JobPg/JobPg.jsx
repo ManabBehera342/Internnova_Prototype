@@ -55,9 +55,6 @@ const JobPg = () => {
         </div>
 
         <div className="jobcards-container-jobs">
-          {/*  <div className="jobcard">
-            <Job />
-          </div>
           <div className="jobcard">
             <Job />
           </div>
@@ -66,7 +63,10 @@ const JobPg = () => {
           </div>
           <div className="jobcard">
             <Job />
-          </div> */}
+          </div>
+          <div className="jobcard">
+            <Job />
+          </div>
           {/* <Jobs /> */}
           <LatestJobs />
           {/*  <LatestJobCards /> */}
