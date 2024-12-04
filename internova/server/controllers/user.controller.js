@@ -14,9 +14,9 @@ export const register = async (req, res) => {
       });
     }
     //file uploading
-    const file = req.file;
+    /* const file = req.file;
     const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.upload(fileUri.content);
+    const cloudResponse = await cloudinary.uploader.upload(fileUri.content); */
     const user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
@@ -31,9 +31,9 @@ export const register = async (req, res) => {
       /* phoneNumber, */
       password: hashedPassword,
       role,
-      profile: {
+      /* profile: {
         profilePhoto: cloudResponse.secure_url,
-      },
+      }, */
     });
 
     return res
@@ -160,7 +160,7 @@ export const updateProfile = async (req, res) => {
     //resume
     if (cloudResponse) {
       user.profile.resume = cloudResponse.secure_url; ///save the cloudinary url
-      user.profile.resumeOriginalName = file.originalName; //save the original file name
+      user.profile.resumeOriginalName = file.originalname; //save the original file name
     }
 
     await user.save();
