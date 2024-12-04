@@ -161,18 +161,19 @@ import { motion } from "framer-motion";
 import JobHeader from "./../JobHeader/JobHeader";
 
 // const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8];
-
 const Jobs = () => {
-  const { allJobs, searchedQuery } = useSelector((store) => store.job);
-  const [filterJobs, setFilterJobs] = useState(allJobs);
+  const { allJobs = [], searchedQuery } = useSelector((store) => store.job); // Add default empty array
+  const [filterJobs, setFilterJobs] = useState([]); // Initialize with empty array
 
   useEffect(() => {
     if (searchedQuery) {
       const filteredJobs = allJobs.filter((job) => {
         return (
-          job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-          job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-          job.location.toLowerCase().includes(searchedQuery.toLowerCase())
+          job?.title?.toLowerCase().includes(searchedQuery.toLowerCase()) ||
+          job?.description
+            ?.toLowerCase()
+            .includes(searchedQuery.toLowerCase()) ||
+          job?.location?.toLowerCase().includes(searchedQuery.toLowerCase())
         );
       });
       setFilterJobs(filteredJobs);
