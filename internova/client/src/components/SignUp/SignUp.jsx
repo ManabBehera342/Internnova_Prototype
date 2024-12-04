@@ -195,6 +195,11 @@ const SignUp = () => {
 
       const result = await response.json();
 
+      //clear the value
+      setFullName("");
+      setEmail("");
+      setPassword("");
+      setRole("");
       //
       if (response.ok) {
         toast.success(result.message);

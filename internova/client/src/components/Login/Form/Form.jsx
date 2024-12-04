@@ -134,7 +134,7 @@ import { toast } from "sonner";
 import { setLoading, setUser } from "../../../redux/authSlice";
 import "./Form.css";
 
-const Form = ({ role = "student" }) => {
+const Form = ({ role }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loading, user } = useSelector((store) => store.auth);
@@ -158,6 +158,9 @@ const Form = ({ role = "student" }) => {
         if (data && data.user) {
           dispatch(setUser(data.user));
           toast.success(data.message); // Show success toast
+
+          setEmail("");
+          setPassword("");
 
           // Navigate based on role
           if (data.user.role === "student") {
