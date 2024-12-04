@@ -40,7 +40,7 @@ const Form = ({ role }) => {
           } else if (data.user.role === "recruiter") {
             navigate("/admin/companies");
           } else {
-            navigate("/mentor");
+            navigate("/mentorship");
           }
         } else {
           throw new Error("User data missing in response");
