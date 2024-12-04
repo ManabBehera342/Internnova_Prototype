@@ -22,7 +22,6 @@ function Faq() {
     <>
       <div className="container" id="faq">
         {/* FAQ Section */}
-        {/*  <div className="faq-content"> */}
         <Navbar />
         <div className="faq-heading">
           <img src="./images/Group 24 (1).png" alt="faq" />

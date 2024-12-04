@@ -68,7 +68,14 @@ const JobHeader = () => {
       {/* Navbar Links */}
       <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
         {user && user.role === "recruiter" ? (
-          <></>
+          <>
+            <li>
+              <NavLink to="/admin/companies">Companies</NavLink>
+            </li>
+            <li>
+              <NavLink to="/admin/jobs">Jobs</NavLink>
+            </li>
+          </>
         ) : (
           <>
             <li>
@@ -107,39 +114,47 @@ const JobHeader = () => {
             </Link>
           </div>
         ) : ( */}
-
-        <Popover>
-          <PopoverTrigger asChild>
-            {/* <Avatar className="cursor-pointer">
+        {/*   </ul> */}
+        {!user ? (
+          ""
+        ) : (
+          <Popover>
+            <PopoverTrigger asChild>
+              {/* <Avatar className="cursor-pointer">
               <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
             </Avatar> */}
-            <User2 />
-          </PopoverTrigger>
-          <PopoverContent className="w-50 h-30 my-2">
-            <div className="flex">
-              <Avatar className="cursor-pointer">
-                <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
-              </Avatar>
+              <User2 />
+            </PopoverTrigger>
+            <PopoverContent className="w-50 h-30 my-2">
+              <div className="flex">
+                <Avatar className="cursor-pointer">
+                  <AvatarImage
+                    src={user?.profile?.profilePhoto}
+                    alt="@shadcn"
+                  />
+                </Avatar>
 
-              <div className="flex flex-col my-0 text-gray-600">
-                {/* {user && user.role === "student" && ( */}
-                <div className="flex w-fit items-center gap-2 cursor-pointer">
-                  <User2 />
-                  <Button variant="link">
-                    {" "}
-                    <Link to="/profile">View Profile</Link>
-                  </Button>
-                </div>
-                <div className="flex w-fit items-center gap-2 cursor-pointer">
-                  <LogOut />
-                  <Button onClick={logoutHandler} variant="link">
-                    Logout
-                  </Button>
+                <div className="flex flex-col my-0 text-gray-600">
+                  {user && user.role === "student" && (
+                    <div className="flex w-fit items-center gap-2 cursor-pointer">
+                      <User2 />
+                      <Button variant="link">
+                        {" "}
+                        <Link to="/profile">View Profile</Link>
+                      </Button>
+                    </div>
+                  )}
+                  <div className="flex w-fit items-center gap-2 cursor-pointer">
+                    <LogOut />
+                    <Button onClick={logoutHandler} variant="link">
+                      Logout
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </PopoverContent>
-        </Popover>
+            </PopoverContent>
+          </Popover>
+        )}
       </ul>
     </nav>
   );

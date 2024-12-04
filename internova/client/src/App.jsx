@@ -24,6 +24,7 @@ import PostJob from "./components/Provider/PostJob";
 import Applicants from "./components/Provider/Applicants";
 import AdminJobs from "./components/Provider/AdminJobs";
 import Browse from "./components/Browse";
+import ProtectedRoute from "./components/Provider/ProtectedRoute";
 /* import ProtectedRoute from "./components/Provider/ProtectedRoute"; */
 
 function App() {
@@ -50,12 +51,54 @@ function App() {
           <Route path="/browse" element={<Browse />} />
 
           {/* provider */}
-          <Route path="/admin/companies" element={<Companies />} />
-          <Route path="/admin/companies/create" element={<CompanyCreate />} />
-          <Route path="/admin/companies/:id" element={<CompanySetup />} />
-          <Route path="/admin/jobs" element={<AdminJobs />} />
-          <Route path="/admin/jobs/create" element={<PostJob />} />
-          <Route path="/admin/jobs/:id/applicants" element={<Applicants />} />
+          <Route
+            path="/admin/companies"
+            element={
+              <ProtectedRoute>
+                <Companies />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/companies/create"
+            element={
+              <ProtectedRoute>
+                <CompanyCreate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/companies/:id"
+            element={
+              <ProtectedRoute>
+                <CompanySetup />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/jobs"
+            element={
+              <ProtectedRoute>
+                <AdminJobs />{" "}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/jobs/create"
+            element={
+              <ProtectedRoute>
+                <PostJob />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/jobs/:id/applicants"
+            element={
+              <ProtectedRoute>
+                <Applicants />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

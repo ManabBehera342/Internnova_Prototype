@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllApplicants } from "@/redux/applicationSlice";
 import JobHeader from "../JobHeader/JobHeader";
-
+import CandidateRecommend from "../Recommendations/CandidateRecommend";
 const Applicants = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -34,6 +34,8 @@ const Applicants = () => {
           Applicants {applicants?.applications?.length}
         </h1>
         <ApplicantsTable />
+        <h2>Recommendations</h2>
+        <CandidateRecommend jobId="your-job-id" />
       </div>
     </div>
   );
