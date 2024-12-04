@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+/* import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Job from "../job/Job";
-/* import api from "@/utils/api"; */
+// import api from "@/utils/api"; 
 
 const JobRecommend = ({ userId }) => {
   const [recommendations, setRecommendations] = useState([]);
@@ -35,7 +35,7 @@ const JobRecommend = ({ userId }) => {
         console.error("Error fetching job recommendations:", err);
       } finally {
         setLoading(false);
-      }*/
+      }
   const getRecommendations = async () => {
     try {
       const response = await axios.post(
@@ -46,7 +46,7 @@ const JobRecommend = ({ userId }) => {
       );
       setRecommendations(response.data.recommendations);
       console.log("Job Recommendations:", response.data.recommendations);
-      /* return response.data.recommendations; */
+      /* return response.data.recommendations; 
     } catch (error) {
       console.error("Error fetching job recommendations:", error);
     }
@@ -55,20 +55,20 @@ const JobRecommend = ({ userId }) => {
     if (user) {
       fetchRecommendations();
     }
-  }, [user]); */
+  }, [user]); 
 
   if (loading) return <div>Loading recommendations...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
-    /*  <div className="recommendations-container">
-      <h2>Recommended Jobs for You</h2>
-      <div className="recommendations-grid">
-        {recommendations.map((job) => (
-          <Job key={job._id} job={job} />
-        ))}
-      </div>
-    </div> */
+    // <div className="recommendations-container">
+    //  <h2>Recommended Jobs for You</h2>
+    //  <div className="recommendations-grid">
+    //    {recommendations.map((job) => (
+    //      <Job key={job._id} job={job} />
+     //   ))}
+     // </div>
+  //  </div> 
     <div>
       <button onClick={getRecommendations}>Get Job Recommendations</button>
       <ul>
@@ -80,4 +80,33 @@ const JobRecommend = ({ userId }) => {
   );
 };
 
+export default JobRecommend;
+ */
+import { useJobRecommendations } from "../../hooks/useJobRecommendations.js";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
+const JobRecommend = () => {
+  const { loading, error, recommendations, getRecommendations } =
+    useJobRecommendations();
+  const user = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    if (user?._id) {
+      getRecommendations(user._id);
+    }
+  }, [user]);
+
+  if (loading) return <div>Loading recommendations...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <div>
+      <h2>Recommended Jobs</h2>
+      {recommendations.map((job) => (
+        <div key={job._id}>{/* Display job recommendation details */}</div>
+      ))}
+    </div>
+  );
+};
 export default JobRecommend;

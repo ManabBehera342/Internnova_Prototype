@@ -35,7 +35,7 @@ const Applicants = () => {
         </h1>
         <ApplicantsTable />
         <h2>Recommendations</h2>
-        <CandidateRecommend jobId="your-job-id" />
+        <CandidateRecommend jobId={params.id} />
       </div>
     </div>
   );

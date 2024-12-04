@@ -7,11 +7,7 @@ import isAuthenticated from "../middlewares/isAuthenticated.js";
 
 const router = express.Router();
 
-router.post("/job-recommendations", isAuthenticated, getJobRecommendations);
-router.post(
-  "/candidate-recommendations",
-  isAuthenticated,
-  getCandidateRecommendations
-);
+router.post("/job-recommendations/:userId", getJobRecommendations);
+router.post("/candidate-recommendations", getCandidateRecommendations);
 
 export default router;
