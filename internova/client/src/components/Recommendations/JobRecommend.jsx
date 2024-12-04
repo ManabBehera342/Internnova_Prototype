@@ -19,9 +19,6 @@ const JobRecommend = () => {
           "https://internova-api.onrender.com/job-recommendations",
           {
             userId: user._id,
-            skills: user.skills, // Assuming user has skills array
-            experience: user.experience,
-            // Add other relevant user data needed by the model
           },
           {
             headers: {

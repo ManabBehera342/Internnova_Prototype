@@ -9,7 +9,6 @@ const CandidateRecommend = ({ jobId }) => {
 
   const [filters, setFilters] = useState({
     country: "Sweden",
-    location: "Stockholm",
     education: "Master",
     gender: "Male",
     age: 35,
@@ -31,7 +30,6 @@ const CandidateRecommend = ({ jobId }) => {
         const requestData = {
           job_id: jobId,
           Country: filters.country,
-          location: filters.location,
           Education: filters.education,
           Gender: filters.gender,
           age: parseInt(filters.age),

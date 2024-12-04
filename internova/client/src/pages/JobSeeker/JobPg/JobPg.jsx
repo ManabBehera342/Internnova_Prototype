@@ -70,9 +70,9 @@ const JobPg = () => {
           {/* <Jobs /> */}
           <LatestJobs />
           {/*  <LatestJobCards /> */}
-          <h3>Recommendations</h3>
-          <JobRecommend />
         </div>
+        <h3>Recommendations</h3>
+        <JobRecommend />
       </div>
     </>
   );
