@@ -26,6 +26,11 @@ import AdminJobs from "./components/Provider/AdminJobs";
 import Browse from "./components/Browse";
 import ProtectedRoute from "./components/Provider/ProtectedRoute";
 /* import ProtectedRoute from "./components/Provider/ProtectedRoute"; */
+import ResourcesHm from "./pages/JobSeeker/resources/ResourcesHm";
+import Resume from "./pages/JobSeeker/resources/Resume/Resume";
+import Roadmap from "./pages/JobSeeker/resources/Roadmap";
+import FrontedRoadmap from "./pages/JobSeeker/resources/FrontendRoadmap";
+import ExamSection from "./pages/JobSeeker/resources/ExamSection";
 
 function App() {
   return (
@@ -49,6 +54,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/job" element={<Job />} />
         <Route path="/browse" element={<Browse />} />
+        <Route path="/resources" element={<ResourcesHm />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/test-series" element={<ExamSection />} />
+        <Route path="/roadmaps" element={<Roadmap />} />
+        <Route path="/frontend" element={<FrontedRoadmap />} />
 
         {/* provider */}
         <Route

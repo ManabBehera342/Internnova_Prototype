@@ -1,7 +1,125 @@
+import JobHeader from "@/components/JobHeader/JobHeader";
 import React from "react";
+/* import Footer from "./footer"; */
+
+const SeekHm = () => {
+  return (
+    <>
+      <JobHeader />
+      <div className="flex flex-wrap lg:flex-nowrap min-h-screen lg:ml-56">
+        {/* Left Section */}
+        <div className="w-full lg:w-[60%] p-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Card 1 */}
+          <div className="relative bg-gray-300 w-full h-[250px] sm:h-[270px] rounded-3xl">
+            <img
+              src="./images/internship image.png"
+              alt="Image 1"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+            <div className="absolute bottom-0 left-0 w-full bg-blue-500 text-white text-center py-2 rounded-b-3xl text-lg sm:text-2xl font-bold">
+              INTERNSHIP
+            </div>
+          </div>
+          {/* Card 2 */}
+          <div className="relative bg-gray-300 w-full h-[250px] sm:h-[270px] rounded-3xl mt-8">
+            <img
+              src="./images/jobs image.png"
+              alt="Image 2"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+            <div className="absolute bottom-0 left-0 w-full bg-green-500 text-white text-center py-2 rounded-b-3xl text-lg sm:text-2xl font-bold">
+              JOBS
+            </div>
+          </div>
+          {/* Card 3 */}
+          <div className="relative bg-gray-300 w-full h-[250px] sm:h-[270px] rounded-3xl">
+            <img
+              src="./images/mentorship image.png"
+              alt="Image 3"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+            <div className="absolute bottom-0 left-0 w-full bg-red-500 text-white text-center py-2 rounded-b-3xl text-lg sm:text-2xl font-bold">
+              MENTORSHIP
+            </div>
+          </div>
+          {/* Card 4 */}
+          <div className="relative bg-gray-300 w-full h-[250px] sm:h-[270px] rounded-3xl mt-8">
+            <img
+              src="./images/resources 1image.png"
+              alt="Image 4"
+              className="w-full h-full rounded-3xl object-cover"
+            />
+            <div className="absolute bottom-0 left-0 w-full bg-yellow-500 text-white text-center py-2 rounded-b-3xl text-lg sm:text-2xl font-bold">
+              RESOURCES
+            </div>
+          </div>
+        </div>
+
+        {/* Right Section */}
+        <div className="w-full lg:w-[33%] p-2 flex justify-center">
+          <img
+            src="./images/Group 45.png"
+            alt="Tall Image"
+            className="w-[75%] sm:w-[50%] h-auto"
+          />
+        </div>
+      </div>
+
+      {/* Full-width container */}
+      <div className="w-full flex justify-center">
+        <div className="relative w-full max-w-[1728px] h-[739px] sm:h-[500px] md:h-[600px] lg:h-[650px]">
+          <img
+            src="./images/homeM[1].png"
+            alt="Sample Image"
+            className="w-[100%] h-[90] object-cover p-4 sm:p-6 lg:p-8"
+          />
+          <button className="absolute top-16 right-20 bg-blue-500 text-white px-12 py-4 rounded-3xl shadow-2xl border-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold hover:bg-gray-400">
+            FIND MENTOR
+          </button>
+        </div>
+      </div>
+
+      {/* Parent Container */}
+      <div className="relative px-4 md:px-8">
+        {/* Background Image */}
+        <img
+          src="./images/homeResources.png"
+          alt="Background"
+          className="w-full h-auto object-cover"
+        />
+        <div
+          className="bg-white p-4 sm:p-5 md:p-6 rounded shadow-lg border max-w-[90%] md:max-w-sm lg:max-w-md 
+                      text-center mt-4 md:mt-0 md:absolute md:bottom-16 md:right-12 lg:bottom-24 lg:right-32"
+        >
+          <p className="text-gray-800 mb-4 font-sans font-bold text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+            Includes resources for resume building and interview preparation to
+            enhance job applications.
+          </p>
+          <button className="w-full px-4 py-2 bg-blue-500 text-white rounded-full shadow-md border-2 text-sm sm:text-base md:text-lg lg:text-xl font-bold hover:bg-yellow-500 transition-all">
+            FIND RESOURCES
+          </button>
+        </div>
+      </div>
+      {/* Full-width Image Section */}
+      <div className="w-full">
+        <img
+          src="./images/Untitled design 2.png" // Add your full-width image here
+          alt="Full Width Image"
+          className="w-full h-auto object-cover"
+        />
+      </div>
+      {/*  <Footer /> */}
+    </>
+  );
+};
+
+export default SeekHm;
+
+/* import React from "react";
 import "./SeekHm.css";
 import Footer from "../../../components/Footer/Footer";
 import JobHeader from "../../../components/JobHeader/JobHeader";
+import SeekHm from './../../../../../../x-backup/frontend/src/pages/JobSeeker/SeekerHome/SeekHm';
 
 const SeekHm = () => {
   return (
@@ -96,3 +214,4 @@ const SeekHm = () => {
 };
 
 export default SeekHm;
+ */
