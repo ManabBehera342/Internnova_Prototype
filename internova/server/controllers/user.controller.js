@@ -24,6 +24,10 @@ export const register = async (req, res) => {
         success: false,
       });
     }
+    const verificationToken = jwt.sign({ email }, process.env.SECRET_KEY, {
+      expiresIn: "1d",
+    });
+
     const hashedPassword = await bcrypt.hash(password, 10);
     await User.create({
       fullName,
@@ -34,13 +38,74 @@ export const register = async (req, res) => {
       /* profile: {
         profilePhoto: cloudResponse.secure_url,
       }, */
+      verified: false,
+      verificationToken,
     });
 
-    return res
+    /* return res
       .status(201)
       .json({ message: "Account is created", success: true });
   } catch (error) {
     console.log(error);
+  }
+};
+ */
+    // Send verification email
+    const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Email Verification",
+      html: `
+     <h1>Verify Your Email</h1>
+     <p>Please click the link below to verify your email address:</p>
+     <a href="${verificationUrl}">Verify Email</a>
+   `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    return res.status(201).json({
+      message: "Account created. Please verify your email",
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "Error creating account",
+      success: false,
+    });
+  }
+};
+
+// Add new verification endpoint
+export const verifyEmail = async (req, res) => {
+  try {
+    const { token } = req.params;
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+    const user = await User.findOne({ email: decoded.email });
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+        success: false,
+      });
+    }
+
+    user.verified = true;
+    user.verificationToken = undefined;
+    await user.save();
+
+    return res.status(200).json({
+      message: "Email verified successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      message: "Invalid or expired verification token",
+      success: false,
+    });
   }
 };
 
@@ -64,6 +129,12 @@ export const login = async (req, res) => {
     if (!isPasswordMatch) {
       return res.status(400).json({
         message: "Incorrect email or password",
+        success: false,
+      });
+    }
+    if (!user.verified) {
+      return res.status(400).json({
+        message: "Please verify your email first",
         success: false,
       });
     }
