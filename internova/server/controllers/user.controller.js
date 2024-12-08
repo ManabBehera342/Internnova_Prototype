@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
+import { sendEmail } from "../utils/sendEmail.js";
 
 export const register = async (req, res) => {
   try {
@@ -25,7 +26,11 @@ export const register = async (req, res) => {
       });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    await User.create({
+    const verificationToken = jwt.sign({ email }, process.env.SECRET_KEY, {
+      expiresIn: "1d",
+    });
+
+    const newUser = await User.create({
       fullName,
       email,
       /* phoneNumber, */
@@ -34,13 +39,125 @@ export const register = async (req, res) => {
       /* profile: {
         profilePhoto: cloudResponse.secure_url,
       }, */
+      verified: false,
+      verificationToken,
     });
 
-    return res
+    /* return res
       .status(201)
       .json({ message: "Account is created", success: true });
   } catch (error) {
     console.log(error);
+  }
+};
+ */
+    // Send verification email
+    /*  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
+    const mailOptions = {
+      from: process.env.USER,
+      to: email,
+      subject: "Email Verification",
+      html: `
+     <h1>Verify Your Email</h1>
+     <p>Please click the link below to verify your email address:</p>
+     <a href="${verificationUrl}">Verify Email</a>
+   `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    return res.status(201).json({
+      message: "Account created. Please verify your email",
+      success: true,
+    }); */
+    // Create verification URL and email content
+
+    const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
+    const emailHtml = `
+      <h1>Verify Your Email</h1>
+     <p>Hi ${fullName},</p>
+      <p>Please click the link below to verify your email address
+      :</p>
+      <a href="${verificationUrl}" style="padding: 10px
+20px; background-color: #4CAF50; color: white; text-decoration
+: none; border-radius: 5px;">Verify Email</a>
+<p>This link will expire in 24 hours.</p>
+    `;
+    // Send verification email
+
+    await sendEmail(email, "Email Verification", emailHtml);
+
+    return res.status(201).json({
+      message: "Account created. Please verify your email",
+      success: true,
+    });
+    /*  } catch (emailError) {
+      await User.findByIdAndDelete(newUser._id);
+      console.error("Email sending error:", emailError);
+      return res.status(500).json({
+        message: "Account creation failed due to email sending error",
+        success: false,
+      });
+    } */
+  } catch (error) {
+    console.error("Registration error:", error);
+    return res.status(500).json({
+      message: "Error creating account",
+      success: false,
+    });
+  }
+};
+
+// Add new verification endpoint
+export const verifyEmail = async (req, res) => {
+  try {
+    const { token } = req.params;
+    console.log("Received verification token:", token); // Debug log
+
+    if (!token) {
+      return res.status(400).json({
+        message: "Verification token is missing",
+        success: false,
+      });
+    }
+    console.log("Token received:", token);
+    // Verify the token
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    console.log("Decoded token:", decoded); // Debug log
+
+    const user = await User.findOne({
+      email: decoded.email,
+      verificationToken: token,
+    });
+    console.log("User found:", user);
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+        success: false,
+      });
+    }
+    // Check if already verified
+    if (user.verified) {
+      return res.status(400).json({
+        message: "Email already verified.Please Login",
+        success: false,
+      });
+    }
+    user.verified = true;
+    user.verificationToken = undefined;
+    await user.save();
+    console.log("User verified successfully"); //
+
+    return res.status(200).json({
+      message: "Email verified successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.log("Verification error: ", error);
+    return res.status(400).json({
+      message: error.message || "Invalid or expired verification token",
+      success: false,
+    });
   }
 };
 
@@ -67,6 +184,13 @@ export const login = async (req, res) => {
         success: false,
       });
     }
+    if (!user.verified) {
+      return res.status(400).json({
+        message: "Please verify your email first",
+        success: false,
+        isVerificationError: true,
+      });
+    }
     //check whether employee or recruiter
     if (role !== user.role) {
       return res.status(400).json({
@@ -79,7 +203,7 @@ export const login = async (req, res) => {
       userId: user._id,
     };
 
-    const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {
+    const token = jwt.sign(tokenData, process.env.SECRET_KEY, {
       expiresIn: "15d",
     });
 
