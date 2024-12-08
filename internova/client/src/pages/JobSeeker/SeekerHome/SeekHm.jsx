@@ -57,13 +57,16 @@ const SeekHm = () => {
 
         {/* Right Section */}
         <div className="w-full lg:w-[33%] p-2 flex justify-center">
-          <img
-            src="./images/Group 45.png"
-            alt="Tall Image"
-            className="w-[75%] sm:w-[50%] h-auto"
-          />
-        </div>
+  <img
+    src="./images/Group 45.png"
+    alt="Tall Image"
+    className="w-[75%] sm:w-[50%] max-w-[300px] h-auto object-contain"
+  />
+</div>
+
       </div>
+
+      
 
       {/* Full-width container */}
       <div className="w-full flex justify-center">
@@ -103,7 +106,7 @@ const SeekHm = () => {
       {/* Full-width Image Section */}
       <div className="w-full">
         <img
-          src="./images/Untitled design 2.png" // Add your full-width image here
+          src="./images/Untitled design 3.png" // Add your full-width image here
           alt="Full Width Image"
           className="w-full h-auto object-cover"
         />

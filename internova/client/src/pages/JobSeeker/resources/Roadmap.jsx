@@ -1,6 +1,14 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import {useNavigate} from "react-router-dom";
+
+
 const Roadmap = () => {
+  
+const navigate=useNavigate()
+const handleFrontendRoadmap = () =>{
+  navigate("/frontend");
+}
   return (
     <>
       <>
@@ -26,7 +34,9 @@ const Roadmap = () => {
                 CSS, JS, React, etc.
               </p>
               <div className="text-center mt-4">
-                <button className="bg-violet-700 text-white py-2 px-6 rounded-full hover:bg-violet-600 transition duration-300 flex items-center justify-center">
+                <button
+                  onClick={handleFrontendRoadmap}
+                 className="bg-violet-700 text-white py-2 px-6 rounded-full hover:bg-violet-600 transition duration-300 flex items-center justify-center">
                   Open <FaArrowRight className="ml-2" />
                 </button>
               </div>
