@@ -20,6 +20,8 @@ const corsOptions = {
   // a browser will block requests made from a different origin (e.g., a React front-end at http://localhost:3000) to your Express back-end (e.g., http://localhost:5000) unless the server explicitly allows it.
   origin: "http://localhost:5173",
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));

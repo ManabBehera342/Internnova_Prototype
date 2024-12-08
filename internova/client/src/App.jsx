@@ -31,7 +31,7 @@ import Resume from "./pages/JobSeeker/resources/Resume/Resume";
 import Roadmap from "./pages/JobSeeker/resources/Roadmap";
 import FrontedRoadmap from "./pages/JobSeeker/resources/FrontendRoadmap";
 import ExamSection from "./pages/JobSeeker/resources/ExamSection";
-
+import EmailVerification from "./components/SignUp/EmailVerification";
 function App() {
   return (
     <BrowserRouter>
@@ -59,7 +59,7 @@ function App() {
         <Route path="/test-series" element={<ExamSection />} />
         <Route path="/roadmaps" element={<Roadmap />} />
         <Route path="/frontend" element={<FrontedRoadmap />} />
-
+        <Route path="/verify/:token" element={<EmailVerification />} />
         {/* provider */}
         <Route
           path="/admin/companies"
