@@ -12,6 +12,15 @@ const navigate=useNavigate()
     navigate("/resume"); // Use navigate to redirect to login page
   };
 
+  const handleroadmapsClick = () => {
+    navigate("/roadmaps"); // Use navigate to redirect to login page
+  };
+
+  const handletestseriesClick = () => {
+    navigate("/test-series"); // Use navigate to redirect to login page
+  };
+
+  handletestseriesClick
 
   return (
     <>
@@ -76,13 +85,16 @@ const navigate=useNavigate()
             alt="Card 1"
             className="w-full h-full object-cover"
           />
-          <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-violet-700 text-white px-4 py-2 hover:bg-violet-600 transition duration-300 text-sm sm:text-base md:text-lg" onclick={handleResumeClick}>
+          <button 
+          onClick={handleResumeClick}
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-violet-700 text-white px-4 py-2 hover:bg-violet-600 transition duration-300 text-sm sm:text-base md:text-lg" >
             CREATE RESUME
           </button>
         </div>
 
         {/* Card 2 */}
-        <div className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden">
+        <div onClick={handleroadmapsClick}
+        className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden">
           <img
             src="../images/ResourceRoadmap.png"
             alt="Card 2"
@@ -94,7 +106,9 @@ const navigate=useNavigate()
         </div>
 
         {/* Card 3 */}
-        <div className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden">
+        <div 
+        onClick={handletestseriesClick}
+        className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden">
           <img
             src="../images/ResourceExam.png"
             alt="Card 3"

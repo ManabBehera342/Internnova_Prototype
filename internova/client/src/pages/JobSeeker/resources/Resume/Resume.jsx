@@ -130,10 +130,10 @@ function Resume() {
   };
 
   return (
-    <div className="container">
-      <div className="input-section">
+    <div className="res-container">
+      <div className="res-input-section">
         <h2>Resume Input</h2>
-        <form>
+        <form className="res-form">
           <label>Name:</label>
           <input
             type="text"
@@ -230,10 +230,10 @@ function Resume() {
           />
 
           {/* Education */}
-          <div className="section">
+          <div className="res-section">
             <h3>Education</h3>
             {resumeData.education.map((edu, index) => (
-              <div key={index} className="education-input">
+              <div key={index} className="res-education-input">
                 <input
                   type="text"
                   placeholder="School"
@@ -275,7 +275,7 @@ function Resume() {
                 />
                 <button
                   type="button"
-                  className="remove-btn"
+                  className="res-remove-btn"
                   onClick={() => handleRemoveItem("education", index)}
                 >
                   Remove
@@ -284,7 +284,7 @@ function Resume() {
             ))}
             <button
               type="button"
-              className="add-btn"
+              className="res-add-btn"
               onClick={() =>
                 handleAddItem("education", { school: "", degree: "", year: "" })
               }
@@ -294,7 +294,7 @@ function Resume() {
           </div>
 
           {/* Experience */}
-          <div className="section">
+          <div className="res-section">
             <h3>Experience</h3>
             {resumeData.experience.map((exp, index) => (
               <div key={index} className="experience-input">
@@ -351,7 +351,7 @@ function Resume() {
                 />
                 <button
                   type="button"
-                  className="remove-btn"
+                  className="res-remove-btn"
                   onClick={() => handleRemoveItem("experience", index)}
                 >
                   Remove Experience
@@ -360,7 +360,7 @@ function Resume() {
             ))}
             <button
               type="button"
-              className="add-btn"
+              className="res-add-btn"
               onClick={() =>
                 handleAddItem("experience", {
                   company: "",
@@ -409,7 +409,7 @@ function Resume() {
           {/* Add Project button outside the map */}
           <button
             type="button"
-            className="add-project-button"
+            className="res-add-project-button"
             onClick={handleAddProject}
           >
             Add Project
@@ -459,14 +459,14 @@ function Resume() {
         <button onClick={handleDownload}>Download Resume</button>
       </div>
       {/* preview section */}
-      <div className="preview-section">
+      <div className="res-preview-section">
         <h2>Resume Preview</h2>
-        <div className="resume-top-section">
-          <div className="header">
-            <div className="header-name">
+        <div className="res-resume-top-section">
+          <div className="res-header">
+            <div className="res-header-name">
               <h1>{resumeData.name}</h1>
-              <p className="objective">{resumeData.objective}</p>
-              <div className="contact-info">
+              <p className="res-objective">{resumeData.objective}</p>
+              <div className="res-contact-info">
                 <p>
                   <FaPhone /> {resumeData.phone}
                 </p>
@@ -491,31 +491,31 @@ function Resume() {
               </div>
             </div>
             {profilePhoto && (
-              <div className="header-right">
+              <div className="res-header-right">
                 <img
                   src={profilePhoto}
                   alt="Profile"
-                  className="profile-photo"
+                  className="res-profile-photo"
                 />
               </div>
             )}
           </div>
         </div>
 
-        <div className="additional-info">
-          <div className="summary section">
-            <h3 className="heading-resume">SUMMARY</h3>
-            <hr className="section-divider" />
+        <div className="res-additional-info">
+          <div className="res-summary section">
+            <h3 className="res-heading-resume">SUMMARY</h3>
+            <hr className="res-section-divider" />
             <p>{resumeData.summary}</p>
           </div>
-          <div className="skills section">
-            <div className="section-header">
+          <div className="res-skills section">
+            <div className="res-section-header">
               <h3>SKILLS</h3>
             </div>
-            <hr className="section-divider" />{" "}
+            <hr className="res-section-divider" />{" "}
             {/* The bar now directly under the heading */}
-            <div className="skills-columns">
-              <div className="skills-column">
+            <div className="res-skills-columns">
+              <div className="res-skills-column">
                 {resumeData.programmingLanguages && (
                   <p>
                     <b>Languages:</b> {resumeData.programmingLanguages}
@@ -532,7 +532,7 @@ function Resume() {
                   </p>
                 )}
               </div>
-              <div className="skills-column">
+              <div className="res-skills-column">
                 {resumeData.technologies && (
                   <p>
                     <b>Technologies:</b> {resumeData.technologies}
@@ -547,11 +547,11 @@ function Resume() {
             </div>
           </div>
 
-          <div className="section">
-            <h3 className="heading-resume">EDUCATION</h3>
-            <hr className="section-divider" />
+          <div className="res-section">
+            <h3 className="res-heading-resume">EDUCATION</h3>
+            <hr className="res-section-divider" />
             {resumeData.education.map((edu, index) => (
-              <div key={index} className="education-preview">
+              <div key={index} className="res-education-preview">
                 <p className="left">
                   <strong>{edu.degree}</strong> at {edu.school}
                 </p>
@@ -560,10 +560,10 @@ function Resume() {
             ))}
           </div>
 
-          <h3 className="heading-resume">EXPERIENCE</h3>
-          <hr className="section-divider" />
+          <h3 className="res-heading-resume">EXPERIENCE</h3>
+          <hr className="res-section-divider" />
           {resumeData.experience.map((exp, index) => (
-            <div key={index} className="experience-preview">
+            <div key={index} className="res-experience-preview">
               <p>
                 <strong>{exp.company}</strong> - {exp.role} ({exp.duration})
               </p>
@@ -572,9 +572,9 @@ function Resume() {
           ))}
 
           {resumeData.projects.length > 0 && (
-            <div className="projects">
-              <h3 className="heading-resume">PROJECTS</h3>
-              <hr className="section-divider" />
+            <div className="res-projects">
+              <h3 className="res-heading-resume">PROJECTS</h3>
+              <hr className="res-section-divider" />
               {resumeData.projects.map((project, index) => (
                 <p key={index}>
                   <a
@@ -590,9 +590,9 @@ function Resume() {
             </div>
           )}
           {resumeData.certifications.length > 0 && (
-            <div className="certifications">
-              <h3 className="heading-resume">CERTIFICATIONS</h3>
-              <hr className="section-divider" />
+            <div className="res-certifications">
+              <h3 className="res-heading-resume">CERTIFICATIONS</h3>
+              <hr className="res-section-divider" />
               {resumeData.certifications.map((certification, index) => (
                 <p key={index}>
                   <a
@@ -606,9 +606,9 @@ function Resume() {
               ))}
             </div>
           )}
-          <div className="hobbies">
-            <h3 className="heading-resume">ACHIEVEMENTS</h3>
-            <hr className="section-divider" />
+          <div className="res-hobbies">
+            <h3 className="res-heading-resume">ACHIEVEMENTS</h3>
+            <hr className="res-section-divider" />
             <p>{resumeData.hobbies}</p>
           </div>
         </div>
