@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { NavLink ,useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
 import { IoMdRefreshCircle } from "react-icons/io";
+import JobHeader from "@/components/JobHeader/JobHeader";
 const ResourcesHm = () => {
   const [refreshKey, setRefreshKey] = useState(0); // Key for refreshing the Spline component
-const navigate=useNavigate()
+  const navigate = useNavigate();
   const refreshModel = () => {
     setRefreshKey((prevKey) => prevKey + 1); // Increment the key to force re-render
   };
@@ -20,11 +21,13 @@ const navigate=useNavigate()
     navigate("/test-series"); // Use navigate to redirect to login page
   };
 
-  handletestseriesClick
+  handletestseriesClick;
 
   return (
     <>
+      <JobHeader />
       {/* Main Container */}
+
       <div className="flex flex-col md:flex-row items-center justify-between bg-gray-100 p-6 rounded-lg shadow-lg">
         {/* Left Section: Tagline */}
         <div className="flex-1 text-center md:text-left text-black font-bold text-2xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-0">
@@ -85,16 +88,19 @@ const navigate=useNavigate()
             alt="Card 1"
             className="w-full h-full object-cover"
           />
-          <button 
-          onClick={handleResumeClick}
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-violet-700 text-white px-4 py-2 hover:bg-violet-600 transition duration-300 text-sm sm:text-base md:text-lg" >
+          <button
+            onClick={handleResumeClick}
+            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-violet-700 text-white px-4 py-2 hover:bg-violet-600 transition duration-300 text-sm sm:text-base md:text-lg"
+          >
             CREATE RESUME
           </button>
         </div>
 
         {/* Card 2 */}
-        <div onClick={handleroadmapsClick}
-        className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden">
+        <div
+          onClick={handleroadmapsClick}
+          className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden"
+        >
           <img
             src="../images/ResourceRoadmap.png"
             alt="Card 2"
@@ -106,9 +112,10 @@ const navigate=useNavigate()
         </div>
 
         {/* Card 3 */}
-        <div 
-        onClick={handletestseriesClick}
-        className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden">
+        <div
+          onClick={handletestseriesClick}
+          className="bg-white rounded-lg shadow-xl w-full h-[200px] sm:h-[250px] md:h-[300px] relative overflow-hidden"
+        >
           <img
             src="../images/ResourceExam.png"
             alt="Card 3"
