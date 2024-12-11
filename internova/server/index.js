@@ -36,8 +36,8 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 /* app.use("/api/v1/recommendations", recommendationRoute); */
-app.use("/api/v1/candidates", candidateRoutes);
-
+/* app.use("/api/v1/candidates", candidateRoutes);
+ */
 app.post("/api/v1/recommendations", async (req, res) => {
   // New route
   try {

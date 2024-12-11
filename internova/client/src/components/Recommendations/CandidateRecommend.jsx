@@ -397,7 +397,10 @@ const CandidateRecommend = () => {
     setError(null); // Clear any previous errors
 
     try {
-      const response = await axios.post("/api/v1/recommendations", jobDetails);
+      const response = await axios.post(
+        "http://localhost:4000/api/v1/recommendations",
+        jobDetails
+      );
       setRecommendations(response.data);
     } catch (err) {
       console.error("Error fetching recommendations:", err);
