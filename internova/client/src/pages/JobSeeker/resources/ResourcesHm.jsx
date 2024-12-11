@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState,useEffect } from "react";
+import { NavLink ,useNavigate} from "react-router-dom";
 import Spline from "@splinetool/react-spline";
 import { IoMdRefreshCircle } from "react-icons/io";
 import JobHeader from "@/components/JobHeader/JobHeader";
 const ResourcesHm = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on page load
+  }, []);
   const [refreshKey, setRefreshKey] = useState(0); // Key for refreshing the Spline component
   const navigate = useNavigate();
   const refreshModel = () => {
