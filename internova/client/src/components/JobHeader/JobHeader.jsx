@@ -54,7 +54,7 @@ const JobHeader = () => {
     <nav className="jobnavbar">
       <div className="logo">
         <NavLink to="/">
-          <img src="./images/logo.png" alt="logo" className="logoimg" />
+          <img src="../images/logo.png" alt="alu" className="logoimg" />
         </NavLink>
       </div>
 
