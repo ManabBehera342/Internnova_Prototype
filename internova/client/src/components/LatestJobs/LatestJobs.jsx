@@ -45,7 +45,7 @@ const LatestJobs = () => {
   );
 }; */
 <div className='max-w-7xl mx-auto my-20'>
-      <h1 className="text-3xl font-bold mb-6">Latest Job Openings</h1>
+      {/* <h1 className="text-3xl font-bold mb-6">Latest Job Openings</h1> */}
       <div className='grid grid-cols-3 gap-4 my-5'>
         {/*} {allJobs.length === 0 ? (
           <div className="col-span-full text-center text-gray-500 py-10">
