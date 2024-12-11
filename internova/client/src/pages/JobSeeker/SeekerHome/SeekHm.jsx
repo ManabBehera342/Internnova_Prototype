@@ -1,8 +1,16 @@
 import JobHeader from "@/components/JobHeader/JobHeader";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 /* import Footer from "./footer"; */
 
 const SeekHm = () => {
+  const navigate = useNavigate()
+  const handleMentor = () =>{
+    navigate("/mentorship");
+  }
+  const handleResources =() =>{
+    navigate("/resources")
+  }
   return (
     <>
       <JobHeader />
@@ -70,20 +78,20 @@ const SeekHm = () => {
 
       {/* Full-width container */}
       <div className="w-full flex justify-center">
-        <div className="relative w-full max-w-[1728px] h-[739px] sm:h-[500px] md:h-[600px] lg:h-[650px]">
+        <div className="relative w-full max-w-[1400px] h-[739px] sm:h-[500px] md:h-[600px] lg:h-[650px]">
           <img
             src="./images/homeM[1].png"
             alt="Sample Image"
             className="w-[100%] h-[90] object-cover p-4 sm:p-6 lg:p-8"
           />
-          <button className="absolute top-16 right-20 bg-blue-500 text-white px-12 py-4 rounded-3xl shadow-2xl border-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold hover:bg-gray-400">
+          <button onClick={handleMentor} className="absolute top-16 right-20 bg-blue-500 text-white px-12 py-4 rounded-3xl shadow-2xl border-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold hover:bg-gray-400">
             FIND MENTOR
           </button>
         </div>
       </div>
 
       {/* Parent Container */}
-      <div className="relative px-4 md:px-8">
+      <div className="relative px-6 md:px-8  max-w-[1460px]">
         {/* Background Image */}
         <img
           src="./images/homeResources.png"
@@ -91,14 +99,14 @@ const SeekHm = () => {
           className="w-full h-auto object-cover"
         />
         <div
-          className="bg-white p-4 sm:p-5 md:p-6 rounded shadow-lg border max-w-[90%] md:max-w-sm lg:max-w-md 
+          className="bg-white p-4 sm:p-5 md:p-6 rounded shadow-lg border max-w-[1400px] md:max-w-sm lg:max-w-md 
                       text-center mt-4 md:mt-0 md:absolute md:bottom-16 md:right-12 lg:bottom-24 lg:right-32"
         >
           <p className="text-gray-800 mb-4 font-sans font-bold text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
             Includes resources for resume building and interview preparation to
             enhance job applications.
           </p>
-          <button className="w-full px-4 py-2 bg-blue-500 text-white rounded-full shadow-md border-2 text-sm sm:text-base md:text-lg lg:text-xl font-bold hover:bg-yellow-500 transition-all">
+          <button onClick={handleResources} className="w-full px-4 py-2 bg-blue-500 text-white rounded-full shadow-md border-2 text-sm sm:text-base md:text-lg lg:text-xl font-bold hover:bg-yellow-500 transition-all">
             FIND RESOURCES
           </button>
         </div>
