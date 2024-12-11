@@ -1,8 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import MentorsCard from "./MentorsCard";
 import JobHeader from "@/components/JobHeader/JobHeader";
 const Mentorship = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on page load
+  }, []);
   return (
     <>
       <JobHeader />

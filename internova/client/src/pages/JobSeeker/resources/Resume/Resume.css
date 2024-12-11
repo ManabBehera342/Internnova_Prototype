@@ -178,18 +178,50 @@
 }
 
 /* Button Styles */
-/* button {
+.res-remove-btn {
   display: inline-block;
   padding: 10px 20px;
   font-size: 14px;
   color: #ffffff;
-  background-color: #2980b9;
+  background-color: #db1e1e;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
-} */
-
+}
+.res-add-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #00b3ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.res-add-project-button{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #00b3ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.resume-downdload{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #30903d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
 /* .add-project-button {
   margin-top: 15px;
   display: block;

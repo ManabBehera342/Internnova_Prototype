@@ -50,8 +50,9 @@ function Resume() {
   const handleRemoveItem = (type, index) => {
     const updatedArray = [...resumeData[type]];
     updatedArray.splice(index, 1);
-    setResumeData({ ...formData, [type]: updatedArray });
+    setResumeData({ ...resumeData, [type]: updatedArray });
   };
+  
 
   const handleEducationChange = (level, field, value) => {
     setResumeData((prevData) => ({
@@ -114,20 +115,25 @@ function Resume() {
     );
     setResumeData({ ...resumeData, certifications: updatedCertifications });
   };
-
   const handleDownload = () => {
     const doc = new jsPDF("p", "pt", "a4");
-
-    const content = document.querySelector(".preview-section");
-
-    doc.html(content, {
-      callback: function (doc) {
-        doc.save("Resume.pdf");
-      },
-      x: 20,
-      y: 20,
-    });
+  
+    const content = document.querySelector(".res-preview-section");
+  
+    if (content) {
+      doc.html(content, {
+        callback: function (doc) {
+          doc.save("Resume.pdf");
+        },
+        x: 20,
+        y: 20,
+        margin: [10, 10], // Add margin for better layout
+      });
+    } else {
+      console.error("No content found for the preview section.");
+    }
   };
+  
 
   return (
     <div className="res-container">
@@ -400,7 +406,7 @@ function Resume() {
                   handleProjectsChange(index, "link", e.target.value)
                 }
               />
-              <button type="button" onClick={() => handleRemoveProject(index)}>
+              <button className="res-remove-btn" type="button" onClick={() => handleRemoveProject(index)}>
                 Remove Project
               </button>
             </div>
@@ -456,7 +462,7 @@ function Resume() {
           <label>Upload Profile Photo:</label>
           <input type="file" onChange={handlePhotoUpload} />
         </form>
-        <button onClick={handleDownload}>Download Resume</button>
+        <button className="resume-downdload" onClick={handleDownload}>Download Resume</button>
       </div>
       {/* preview section */}
       <div className="res-preview-section">

@@ -53,7 +53,6 @@ const JobPg = () => {
             <FaArrowAltCircleRight className="Explore-icon-jobs" />
           </button>
         </div>
-
         <div className="jobcards-container-jobs">
           <div className="jobcard">
             <Job />
@@ -68,9 +67,11 @@ const JobPg = () => {
             <Job />
           </div>
           {/* <Jobs /> */}
-          <LatestJobs />
+
+          
           {/*  <LatestJobCards /> */}
         </div>
+        <LatestJobs />
         <h3>Recommendations</h3>
         <JobRecommend />
       </div>
