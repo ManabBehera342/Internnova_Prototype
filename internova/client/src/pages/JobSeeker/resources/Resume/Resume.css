@@ -29,9 +29,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  padding: 0;
+  background: none;
 }
 
 .res-header-left {
@@ -39,48 +38,70 @@
 }
 
  .res-header-name h1 {
-  font-size: 32px; 
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 32px;
   color: #2c3e50;
+  margin: 0 0 10px 0;
+  text-align: left;
+  font-weight: normal;
 } 
 
  .res-header-name .res-objective {
-  font-size: 14px;
-  font-weight: 500;
   color: #e67e22;
-  margin-bottom: 15px;
+  font-size: 15px;
+  margin: 0 0 15px 0;
 } 
 
 /* Contact Information Grid */
 .res-contact-info {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 10px; 
-} 
-
-.res-contact-info p {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-} 
-
- .res-contact-info svg {
-  margin-right: 8px; 
-  color: #34495e;
-} 
-
-.res-header-right {
-  flex-shrink: 0; 
+  grid-template-columns: 25px 1fr 25px 1fr;
+  gap: 12px 60px;
+  margin-top: 15px;
 }
 
-.res-profile-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ddd;
-} 
+.contact-item {
+  display: contents;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #34495e;
+  width: 25px;
+  height: 20px;
+  vertical-align: top;
+}
+
+.icon-wrapper svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.contact-text {
+  display: inline-block;
+  color: #333;
+  font-size: 14px;
+  line-height: 20px;
+  margin-left: 35px;
+  vertical-align: top;
+}
+
+/* Specific positioning for each item */
+.contact-item:nth-child(1) .icon-wrapper { grid-column: 1; grid-row: 1; }
+.contact-item:nth-child(1) .contact-text { grid-column: 2; grid-row: 1; }
+.contact-item:nth-child(2) .icon-wrapper { grid-column: 3; grid-row: 1; }
+.contact-item:nth-child(2) .contact-text { grid-column: 4; grid-row: 1; }
+.contact-item:nth-child(3) .icon-wrapper { grid-column: 1; grid-row: 2; }
+.contact-item:nth-child(3) .contact-text { grid-column: 2; grid-row: 2; }
+.contact-item:nth-child(4) .icon-wrapper { grid-column: 3; grid-row: 2; }
+.contact-item:nth-child(4) .contact-text { grid-column: 4; grid-row: 2; }
+
+/* Address specific styling */
+.contact-text.multiline {
+  line-height: 1.6;
+}
 
 /* Section Styles */
 .res-section-divider {
@@ -222,6 +243,40 @@
   cursor: pointer;
   margin-top: 20px;
 }
+.res-contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-icon {
+  width: 16px;
+  height: 16px;
+  color: #34495e;
+}
+
+.contact-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
 /* .add-project-button {
   margin-top: 15px;
   display: block;
@@ -288,3 +343,107 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.download-resume-Section {
+  padding: 25px;
+  max-width: 210mm;
+  margin: 0 auto;
+  background: white;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.res-contact-info p {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.icon-wrapper {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #34495e;
+  margin-top: 2px;
+}
+
+.contact-text {
+  color: #333;
+  word-break: break-word;
+  padding-top: 2px;
+}
+
+/* Address specific styling */
+.res-contact-info p:nth-child(3) .contact-text {
+  line-height: 1.6;
+}
+
+/* Section Headers */
+.res-heading-resume {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  color: #2c3e50;
+}
+
+/* Remove header padding */
+.res-header {
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+.res-header-name {
+  width: 100%;
+}
+
+/* Remove any background colors */
+.res-resume-top-section {
+  background: none;
+}
+
+/* Ensure proper spacing for address lines */
+.res-contact-info p .contact-text {
+  white-space: pre-line;
+}
+
+/* Adjust section spacing */
+.res-additional-info > div {
+  margin-bottom: 15px;
+}
+/* Print-specific styles for PDF download */
+@media print {
+  .icon-wrapper {
+    position: relative;
+    top: 2px;
+  }
+
+  .contact-text {
+    position: relative;
+    top: 2px;
+  }
+  
+  /* Address specific alignment */
+  .contact-item:nth-child(3) .icon-wrapper,
+  .contact-item:nth-child(3) .contact-text {
+    top: 0;
+  }
+}
+
+.section-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  margin-top: 25px;
+  text-transform: capitalize;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
