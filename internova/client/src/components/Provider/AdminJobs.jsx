@@ -32,9 +32,6 @@ const AdminJobs = () => {
             New Jobs
           </Button>
         </div>
-        {/* <AdminJobsTable jobs={data} />
-      </div>
-    </div> */}
         {loading && (
           <div className="flex items-center justify-center h-[400px]">
             Loading...

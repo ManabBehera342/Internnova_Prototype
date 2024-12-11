@@ -43,6 +43,7 @@ export const getJobRecommendations = async (req, res) => {
     );
 
     console.log("ML API Response:", response.data);
+    
 
     const recommendations = response.data;
 

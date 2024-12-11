@@ -1,3 +1,52 @@
+import { useCandidateRecommendations } from "../../hooks/useCandidateRecommendations.js";
+import { useState } from "react";
+
+const CandidateRecommend = ({ jobId }) => {
+  const { loading, error, recommendations, getRecommendations } =
+    useCandidateRecommendations();
+  const [formData, setFormData] = useState({
+    country: "",
+    education: "",
+    gender: "",
+    age: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getRecommendations({
+      jobId,
+      ...formData,
+    });
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Country"
+          value={formData.country}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, country: e.target.value }))
+          }
+        />
+        {/* Add other form fields */}
+        <button type="submit">Get Recommendations</button>
+      </form>
+
+      {loading && <div>Loading recommendations...</div>}
+      {error && <div>Error: {error}</div>}
+
+      {recommendations.map((candidate) => (
+        <div key={candidate._id}>
+          {/* Display candidate recommendation details */}
+        </div>
+      ))}
+    </div>
+  );
+};
+export default CandidateRecommend;
+
 /* import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -217,51 +266,3 @@ const CandidateRecommend = ({ jobId }) => {
 
 export default CandidateRecommend;
  */
-import { useCandidateRecommendations } from "../../hooks/useCandidateRecommendations.js";
-import { useState } from "react";
-
-const CandidateRecommend = ({ jobId }) => {
-  const { loading, error, recommendations, getRecommendations } =
-    useCandidateRecommendations();
-  const [formData, setFormData] = useState({
-    country: "",
-    education: "",
-    gender: "",
-    age: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    getRecommendations({
-      jobId,
-      ...formData,
-    });
-  };
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Country"
-          value={formData.country}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, country: e.target.value }))
-          }
-        />
-        {/* Add other form fields */}
-        <button type="submit">Get Recommendations</button>
-      </form>
-
-      {loading && <div>Loading recommendations...</div>}
-      {error && <div>Error: {error}</div>}
-
-      {recommendations.map((candidate) => (
-        <div key={candidate._id}>
-          {/* Display candidate recommendation details */}
-        </div>
-      ))}
-    </div>
-  );
-};
-export default CandidateRecommend;
