@@ -265,19 +265,26 @@ const CandidateRecommend = ({ jobId }) => {
 };
 
 export default CandidateRecommend;
- */
-import { useState } from "react";
-
-function CandidateRecommend() {
+ */ /* 
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+const CandidateRecommend = ({ jobId = " " }) => {
   const [matchResult, setMatchResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleMatchCandidates = async () => {
+    if (!jobId.trim()) {
+      setError("No job ID provided");
+      return;
+    }
+
     setLoading(true);
+    setError(null);
     try {
       // Get job_id from props or state
       const candidateData = {
-        job_id: jobId,
+        job_id: jobId || null,
         Country: "Sweden",
         Education: "Master",
         Gender: "Male",
@@ -291,7 +298,9 @@ function CandidateRecommend() {
         },
         body: JSON.stringify(candidateData),
       });
-
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
       const data = await response.json();
       setMatchResult(data);
     } catch (error) {
@@ -300,9 +309,14 @@ function CandidateRecommend() {
       setLoading(false);
     }
   };
-
-  return (
-    <div>
+  useEffect(() => {
+    if (jobId) {
+      handleMatchCandidates();
+    }
+  }, [jobId]);
+  return ( */
+/*  */
+/*  <div>
       <button onClick={handleMatchCandidates} disabled={loading}>
         {loading ? "Matching..." : "Match Candidates"}
       </button>
@@ -316,5 +330,159 @@ function CandidateRecommend() {
     </div>
   );
 }
+
+export default CandidateRecommend;
+ */ /* 
+    <div className="p-4">
+      <button
+        onClick={handleMatchCandidates}
+        disabled={loading || !jobId}
+        className={`px-4 py-2 rounded ${
+          loading || !jobId
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-blue-500 hover:bg-blue-700"
+        } text-white font-bold`}
+      >
+        {loading ? "Matching..." : "Match Candidates"}
+      </button>
+
+      {error && (
+        <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+          Error: {error}
+        </div>
+      )}
+
+      {matchResult && (
+        <div className="mt-4">
+          <h3 className="text-lg font-semibold">
+            Match Results for Job ID: {jobId}
+          </h3>
+          <pre className="bg-gray-100 p-4 rounded mt-2 overflow-auto">
+            {JSON.stringify(matchResult, null, 2)}
+          </pre>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Add prop validation if you're using PropTypes
+CandidateRecommend.propTypes = {
+  jobId: PropTypes.string.isRequired,
+};
+
+export default CandidateRecommend;
+ */ import React, { useState } from "react";
+import axios from "axios";
+const CandidateRecommend = () => {
+  const [jobDetails, setJobDetails] = useState({
+    job_id: "",
+    Country: "",
+    location: "",
+    Education: "",
+    Gender: "",
+    age: "",
+  });
+  const [recommendations, setRecommendations] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleChange = (e) => {
+    setJobDetails({ ...jobDetails, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null); // Clear any previous errors
+
+    try {
+      const response = await axios.post("/api/v1/recommendations", jobDetails);
+      setRecommendations(response.data);
+    } catch (err) {
+      console.error("Error fetching recommendations:", err);
+      setError(err.message || "An error occurred."); // Set the error message
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Get Candidate Recommendations</h2>
+      {error && <div style={{ color: "red" }}>{error}</div>}{" "}
+      {/* Display error message */}
+      <form onSubmit={handleSubmit}>
+        {/* Input fields for job details */}
+        <input
+          type="text"
+          name="job_id"
+          placeholder="Job ID"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="Country"
+          placeholder="Country"
+          onChange={handleChange}
+          required
+        />
+        {/*   <input
+          type="text"
+          name="location"
+          placeholder="Location"
+          onChange={handleChange}
+          required
+        /> */}
+        <input
+          type="text"
+          name="Education"
+          placeholder="Education"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="Gender"
+          placeholder="Gender"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="age"
+          placeholder="Age"
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Loading..." : "Get Recommendations"}
+        </button>
+      </form>
+      {loading && <p>Loading recommendations...</p>}
+      {recommendations.length > 0 && (
+        <div>
+          <h3>Recommended Candidates:</h3>
+          <ul>
+            {recommendations.map((candidate) => (
+              <li key={candidate._id || candidate.id}>
+                {" "}
+                {/* Important: Add a unique key */}
+                {candidate.name || candidate.candidateName} -{" "}
+                {candidate.skills?.join(", ") ||
+                  candidate.candidateSkills?.join(", ")}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {recommendations.length === 0 && !loading && (
+        <p>No recommendations yet.</p>
+      )}
+    </div>
+  );
+};
 
 export default CandidateRecommend;
