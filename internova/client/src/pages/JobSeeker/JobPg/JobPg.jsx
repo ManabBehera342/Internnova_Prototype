@@ -45,7 +45,7 @@ const JobPg = () => {
         <SearchBar />
         <CategoryCarousel />
         <div className="featured-jobs-jobs">
-          <h2 className="featured-title-jobs">Best Featured Jobs</h2>
+          <h2 className="featured-title-jobs">Latest Job Openings</h2>
           <button
             className="explore-featured-button-jobs"
             onClick={() => navigate("/jobs")}
@@ -54,18 +54,7 @@ const JobPg = () => {
           </button>
         </div>
         <div className="jobcards-container-jobs">
-          <div className="jobcard">
-            <Job />
-          </div>
-          <div className="jobcard">
-            <Job />
-          </div>
-          <div className="jobcard">
-            <Job />
-          </div>
-          <div className="jobcard">
-            <Job />
-          </div>
+          
           {/* <Jobs /> */}
 
           
