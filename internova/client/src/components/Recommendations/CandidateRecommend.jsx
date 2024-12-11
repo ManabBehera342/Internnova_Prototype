@@ -1,4 +1,4 @@
-import { useCandidateRecommendations } from "../../hooks/useCandidateRecommendations.js";
+/* /* import { useCandidateRecommendations } from "../../hooks/useCandidateRecommendations.js";
 import { useState } from "react";
 
 const CandidateRecommend = ({ jobId }) => {
@@ -30,7 +30,7 @@ const CandidateRecommend = ({ jobId }) => {
             setFormData((prev) => ({ ...prev, country: e.target.value }))
           }
         />
-        {/* Add other form fields */}
+        
         <button type="submit">Get Recommendations</button>
       </form>
 
@@ -39,14 +39,14 @@ const CandidateRecommend = ({ jobId }) => {
 
       {recommendations.map((candidate) => (
         <div key={candidate._id}>
-          {/* Display candidate recommendation details */}
+          
         </div>
       ))}
     </div>
   );
 };
 export default CandidateRecommend;
-
+ */
 /* import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -266,3 +266,55 @@ const CandidateRecommend = ({ jobId }) => {
 
 export default CandidateRecommend;
  */
+import { useState } from "react";
+
+function CandidateRecommend() {
+  const [matchResult, setMatchResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleMatchCandidates = async () => {
+    setLoading(true);
+    try {
+      // Get job_id from props or state
+      const candidateData = {
+        job_id: jobId,
+        Country: "Sweden",
+        Education: "Master",
+        Gender: "Male",
+        age: 35,
+      };
+
+      const response = await fetch("/api/candidates/match", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(candidateData),
+      });
+
+      const data = await response.json();
+      setMatchResult(data);
+    } catch (error) {
+      console.error("Error matching candidates:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={handleMatchCandidates} disabled={loading}>
+        {loading ? "Matching..." : "Match Candidates"}
+      </button>
+
+      {matchResult && (
+        <div>
+          <h3>Match Results:</h3>
+          <pre>{JSON.stringify(matchResult, null, 2)}</pre>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default CandidateRecommend;

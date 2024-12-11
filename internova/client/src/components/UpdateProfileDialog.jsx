@@ -81,7 +81,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     const formData = new FormData();
     formData.append("fullName", input.fullname.trim());
     formData.append("email", input.email.trim());
-    formData.append("phoneNumber", input.phoneNumber.trim());
+    formData.append("phoneNumber", input.phoneNumber);
     formData.append("bio", input.bio.trim());
     formData.append("skills", input.skills.trim());
 
@@ -137,7 +137,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         <form onSubmit={submitHandler}>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="fullname" className="text-right">Name</Label>
+              <Label htmlFor="fullname" className="text-right">
+                Name
+              </Label>
               <Input
                 id="fullname"
                 name="fullname"
@@ -150,7 +152,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="email" className="text-right">Email</Label>
+              <Label htmlFor="email" className="text-right">
+                Email
+              </Label>
               <Input
                 id="email"
                 name="email"
@@ -163,7 +167,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="phoneNumber" className="text-right">Phone Number</Label>
+              <Label htmlFor="phoneNumber" className="text-right">
+                Phone Number
+              </Label>
               <Input
                 id="phoneNumber"
                 name="phoneNumber"
@@ -176,7 +182,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="bio" className="text-right">Bio</Label>
+              <Label htmlFor="bio" className="text-right">
+                Bio
+              </Label>
               <Input
                 id="bio"
                 name="bio"
@@ -188,7 +196,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="skills" className="text-right">Skills</Label>
+              <Label htmlFor="skills" className="text-right">
+                Skills
+              </Label>
               <Input
                 id="skills"
                 name="skills"
@@ -201,7 +211,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
 
             {/* Toggle for Resume Input */}
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="resumeType" className="text-right">Resume</Label>
+              <Label htmlFor="resumeType" className="text-right">
+                Resume
+              </Label>
               <button
                 type="button"
                 onClick={toggleInputType}
@@ -213,7 +225,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
 
             {input.useFile ? (
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="file" className="text-right">Upload File</Label>
+                <Label htmlFor="file" className="text-right">
+                  Upload File
+                </Label>
                 <div className="col-span-3 flex items-center gap-2">
                   <Input
                     id="file"
@@ -228,7 +242,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
               </div>
             ) : (
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="resumeLink" className="text-right">Resume Link</Label>
+                <Label htmlFor="resumeLink" className="text-right">
+                  Resume Link
+                </Label>
                 <Input
                   id="resumeLink"
                   name="resumeLink"

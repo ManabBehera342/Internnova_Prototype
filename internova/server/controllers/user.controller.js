@@ -326,12 +326,16 @@ export const updateProfile = async (req, res) => {
 
     let user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: "User not found", success: false });
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
     }
 
     if (req.file) {
       const fileUri = getDataUri(req.file);
-      const cloudResponse = await cloudinary.v2.uploader.upload(fileUri.content);
+      const cloudResponse = await cloudinary.v2.uploader.upload(
+        fileUri.content
+      );
       user.profile.resume = cloudResponse.secure_url;
       user.profile.resumeOriginalName = req.file.originalname;
     } else if (resume) {
@@ -352,11 +356,8 @@ export const updateProfile = async (req, res) => {
     });
   } catch (error) {
     console.error("Update profile error:", error);
-    return res.status(500).json({ message: "Error updating profile", error: error.message });
+    return res
+      .status(500)
+      .json({ message: "Error updating profile", error: error.message });
   }
 };
-
-
-
-
-

@@ -28,6 +28,7 @@ import axios from "axios";
     });
   }
 }; */
+
 export const getJobRecommendations = async (req, res) => {
   try {
     const { userId } = req.body;
@@ -43,7 +44,6 @@ export const getJobRecommendations = async (req, res) => {
     );
 
     console.log("ML API Response:", response.data);
-    
 
     const recommendations = response.data;
 
