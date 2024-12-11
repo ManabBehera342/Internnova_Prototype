@@ -318,85 +318,45 @@ export const logout = async (req, res) => {
 }; */
 export const updateProfile = async (req, res) => {
   try {
-    // Debug log
     console.log("Received request body:", req.body);
     console.log("Received file:", req.file);
-    console.log("User ID from token:", req.id);
 
-    const { fullName, email, phoneNumber, bio, skills } = req.body;
-
-    // Detailed validation
-    const missingFields = [];
-    if (!fullName) missingFields.push("fullName");
-    if (!email) missingFields.push("email");
-    if (!phoneNumber) missingFields.push("phoneNumber");
-    if (!bio) missingFields.push("bio");
-    if (!skills) missingFields.push("skills");
-
-    if (missingFields.length > 0) {
-      return res.status(400).json({
-        message: `Missing required fields: ${missingFields.join(", ")}`,
-        success: false,
-      });
-    }
-
+    const { fullName, email, phoneNumber, bio, skills, resume } = req.body;
     const userId = req.id;
+
     let user = await User.findById(userId);
-
     if (!user) {
-      return res.status(404).json({
-        message: "User not found",
-        success: false,
-      });
+      return res.status(404).json({ message: "User not found", success: false });
     }
 
-    // Handle file upload if present
     if (req.file) {
-      try {
-        const fileUri = getDataUri(req.file);
-        const cloudResponse = await cloudinary.v2.uploader.upload(
-          fileUri.content
-        );
-        user.profile.resume = cloudResponse.secure_url;
-        user.profile.resumeOriginalName = req.file.originalname;
-      } catch (uploadError) {
-        console.error("File upload error:", uploadError);
-        return res.status(400).json({
-          message: "Error uploading file to cloud storage",
-          error: uploadError.message,
-          success: false,
-        });
-      }
+      const fileUri = getDataUri(req.file);
+      const cloudResponse = await cloudinary.v2.uploader.upload(fileUri.content);
+      user.profile.resume = cloudResponse.secure_url;
+      user.profile.resumeOriginalName = req.file.originalname;
+    } else if (resume) {
+      user.profile.resume = resume;
     }
 
-    // Update user fields
-    user.fullName = fullName;
-    user.email = email;
-    user.phoneNumber = phoneNumber;
-    user.profile = user.profile || {};
-    user.profile.bio = bio;
-    user.profile.skills = skills.split(",").map((skill) => skill.trim());
+    if (fullName) user.fullName = fullName;
+    if (email) user.email = email;
+    if (phoneNumber) user.phoneNumber = phoneNumber;
+    if (bio) user.profile.bio = bio;
+    if (skills) user.profile.skills = skills.split(",").map((s) => s.trim());
 
     await user.save();
-
     return res.status(200).json({
-      message: "Profile Updated successfully",
-      user: {
-        _id: user._id,
-        fullName: user.fullName,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-        role: user.role,
-        profile: user.profile,
-      },
+      message: "Profile updated successfully",
+      user,
       success: true,
     });
   } catch (error) {
     console.error("Update profile error:", error);
-    return res.status(500).json({
-      message: "Error updating profile",
-      error: error.message,
-      success: false,
-    });
+    return res.status(500).json({ message: "Error updating profile", error: error.message });
   }
 };
+
+
+
+
+
