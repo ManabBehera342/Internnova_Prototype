@@ -28,6 +28,7 @@ import axios from "axios";
     });
   }
 }; */
+
 export const getJobRecommendations = async (req, res) => {
   try {
     const { userId } = req.body;

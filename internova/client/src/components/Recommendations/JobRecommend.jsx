@@ -1,3 +1,41 @@
+/* import { useJobRecommendations } from "../../hooks/useJobRecommendations.js";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import Job from "../job/Job";
+const JobRecommend = () => {
+  const { loading, error, recommendations, getRecommendations } =
+    useJobRecommendations();
+  const user = useSelector((state) => state.auth.user);
+  const jobsToDisplay = allJobs.slice(0, 6);
+  useEffect(() => {
+    if (user?._id) {
+      getRecommendations(user._id);
+    }
+  }, [user, getRecommendations]);
+
+  if (loading) return <div>Loading recommendations...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <div className="max-w-7xl mx-auto my-20">
+      <div className="grid grid-cols-3 gap-4 my-5">
+        <h2>Recommended Jobs</h2>
+        {recommendations.map((job) => (
+          <div key={job._id}>
+            {/* Display job recommendation details */
+/* (jobsToDisplay.map((job) => {" "}
+            <jobrecommendations key={job._id} job={job} />) 
+            <Job job={job} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+export default JobRecommend; */
+{
+  /* <Job job={job} />; */
+}
 /* import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -82,31 +120,3 @@ const JobRecommend = ({ userId }) => {
 
 export default JobRecommend;
  */
-import { useJobRecommendations } from "../../hooks/useJobRecommendations.js";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-
-const JobRecommend = () => {
-  const { loading, error, recommendations, getRecommendations } =
-    useJobRecommendations();
-  const user = useSelector((state) => state.auth.user);
-
-  useEffect(() => {
-    if (user?._id) {
-      getRecommendations(user._id);
-    }
-  }, [user]);
-
-  if (loading) return <div>Loading recommendations...</div>;
-  if (error) return <div>Error: {error}</div>;
-
-  return (
-    <div>
-      <h2>Recommended Jobs</h2>
-      {recommendations.map((job) => (
-        <div key={job._id}>{/* Display job recommendation details */}</div>
-      ))}
-    </div>
-  );
-};
-export default JobRecommend;

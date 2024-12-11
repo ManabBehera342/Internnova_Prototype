@@ -245,17 +245,22 @@ export const logout = async (req, res) => {
   }
 };
 
-export const updateProfile = async (req, res) => {
+/* export const updateProfile = async (req, res) => {
   try {
+    // Debug log
+    console.log("Received request body:", req.body);
+    console.log("Received file:", req.file);
+    console.log("User ID from token:", req.id);
+
     const { fullName, email, phoneNumber, bio, skills } = req.body;
 
     const file = req.file; //resume file
-    /*  if (!fullName || !email || !phoneNumber || !bio || !skills) {
+    if (!fullName || !email || !phoneNumber || !bio || !skills) {
       return res.status(400).json({
         message: "Something is missing",
         success: false,
       });
-    } */
+    }
 
     //cloudinary for uploading file
     const fileUri = getDataUri(file);
@@ -285,6 +290,9 @@ export const updateProfile = async (req, res) => {
     if (cloudResponse) {
       user.profile.resume = cloudResponse.secure_url; ///save the cloudinary url
       user.profile.resumeOriginalName = file.originalname; //save the original file name
+    } else if (resume) {
+      user.profile.resume = resume;
+      user.profile.resumeOriginalName = "External Link";
     }
 
     await user.save();
@@ -306,5 +314,50 @@ export const updateProfile = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+  }
+}; */
+export const updateProfile = async (req, res) => {
+  try {
+    console.log("Received request body:", req.body);
+    console.log("Received file:", req.file);
+
+    const { fullName, email, phoneNumber, bio, skills, resume } = req.body;
+    const userId = req.id;
+
+    let user = await User.findById(userId);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "User not found", success: false });
+    }
+
+    if (req.file) {
+      const fileUri = getDataUri(req.file);
+      const cloudResponse = await cloudinary.v2.uploader.upload(
+        fileUri.content
+      );
+      user.profile.resume = cloudResponse.secure_url;
+      user.profile.resumeOriginalName = req.file.originalname;
+    } else if (resume) {
+      user.profile.resume = resume;
+    }
+
+    if (fullName) user.fullName = fullName;
+    if (email) user.email = email;
+    if (phoneNumber) user.phoneNumber = phoneNumber;
+    if (bio) user.profile.bio = bio;
+    if (skills) user.profile.skills = skills.split(",").map((s) => s.trim());
+
+    await user.save();
+    return res.status(200).json({
+      message: "Profile updated successfully",
+      user,
+      success: true,
+    });
+  } catch (error) {
+    console.error("Update profile error:", error);
+    return res
+      .status(500)
+      .json({ message: "Error updating profile", error: error.message });
   }
 };
