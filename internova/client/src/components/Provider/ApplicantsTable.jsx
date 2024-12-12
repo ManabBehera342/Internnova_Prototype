@@ -14,7 +14,9 @@ import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import { APPLICATION_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
-
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { FileText, Mail, Phone, Calendar } from "lucide-react";
 const shortlistingStatus = ["Accepted", "Rejected"];
 
 const ApplicantsTable = () => {
@@ -39,64 +41,113 @@ const ApplicantsTable = () => {
 
   return (
     <div>
-      <Table>
-        <TableCaption>A list of your recent applied user</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead>FullName</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Contact</TableHead>
-            <TableHead>Resume</TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead className="text-right">Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {applicants &&
-            applicants?.applications?.map((item) => (
-              <tr key={item._id}>
-                <TableCell>{item?.applicant?.fullname}</TableCell>
-                <TableCell>{item?.applicant?.email}</TableCell>
-                <TableCell>{item?.applicant?.phoneNumber}</TableCell>
-                <TableCell>
-                  {item.applicant?.profile?.resume ? (
-                    <a
-                      className="text-blue-600 cursor-pointer"
-                      href={item?.applicant?.profile?.resume}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item?.applicant?.profile?.resumeOriginalName}
-                    </a>
-                  ) : (
-                    <span>NA</span>
-                  )}
-                </TableCell>
-                <TableCell>{item?.applicant.createdAt.split("T")[0]}</TableCell>
-                <TableCell className="float-right cursor-pointer">
-                  <Popover>
-                    <PopoverTrigger>
-                      <MoreHorizontal />
-                    </PopoverTrigger>
-                    <PopoverContent className="w-32">
-                      {shortlistingStatus.map((status, index) => {
-                        return (
-                          <div
-                            onClick={() => statusHandler(status, item?._id)}
-                            key={index}
-                            className="flex w-fit items-center my-2 cursor-pointer"
-                          >
-                            <span>{status}</span>
-                          </div>
-                        );
-                      })}
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </tr>
-            ))}
-        </TableBody>
-      </Table>
+      <div className="bg-white rounded-lg shadow-sm p-6">
+        <h2 className="text-2xl font-semibold mb-6">Applicants Overview</h2>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableCaption className="text-gray-500 mt-4">
+              A list of your recent applicants
+            </TableCaption>
+            <TableHeader>
+              <TableRow className="bg-gray-50">
+                <TableHead className="font-semibold">Applicant</TableHead>
+                <TableHead className="font-semibold">Contact Details</TableHead>
+                <TableHead className="font-semibold">Resume</TableHead>
+                <TableHead className="font-semibold">Applied Date</TableHead>
+                <TableHead className="text-right font-semibold">
+                  Status
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {applicants?.applications?.map((item) => (
+                <TableRow
+                  key={item._id}
+                  className="hover:bg-gray-50 transition-colors"
+                >
+                  <TableCell>
+                    <div className="flex items-center space-x-3">
+                      <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
+                        {item?.applicant?.fullname.charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <div className="font-medium">
+                          {item?.applicant?.fullname}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {item?.applicant?.email}
+                        </div>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex flex-col space-y-1">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <Mail className="h-4 w-4 mr-2" />
+                        {item?.applicant?.email}
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <Phone className="h-4 w-4 mr-2" />
+                        {item?.applicant?.phoneNumber}
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {item.applicant?.profile?.resume ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex items-center space-x-2"
+                        asChild
+                      >
+                        <a
+                          href={item?.applicant?.profile?.resume}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FileText className="h-4 w-4" />
+                          <span>View Resume</span>
+                        </a>
+                      </Button>
+                    ) : (
+                      <Badge variant="secondary">Not Available</Badge>
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Calendar className="h-4 w-4 mr-2" />
+                      {new Date(item?.applicant.createdAt).toLocaleDateString()}
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button variant="ghost" size="sm">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-40 p-2">
+                        <div className="space-y-1">
+                          {shortlistingStatus.map(({ label, color }) => (
+                            <Button
+                              key={label}
+                              variant="ghost"
+                              className={`w-full justify-start ${color}`}
+                              onClick={() => statusHandler(label, item?._id)}
+                            >
+                              {label}
+                            </Button>
+                          ))}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 };

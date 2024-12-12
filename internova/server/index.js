@@ -31,13 +31,6 @@ const PORT = process.env.PORT || 4000;
 
 //api's
 
-app.use("/api/v1/user", userRoute); //"http://localhost:4000/api/v1/user/register",
-app.use("/api/v1/company", companyRoute);
-app.use("/api/v1/job", jobRoute);
-app.use("/api/v1/application", applicationRoute);
-/* app.use("/api/v1/recommendations", recommendationRoute); */
-/* app.use("/api/v1/candidates", candidateRoutes);
- */
 app.post("/api/v1/recommendations", async (req, res) => {
   // New route
   try {
@@ -53,9 +46,11 @@ app.post("/api/v1/recommendations", async (req, res) => {
     if (!mlResponse.ok) {
       const errorText = await mlResponse.text();
       console.error("ML Model API Error:", mlResponse.status, errorText);
-      return res.status(mlResponse.status).json({
-        error: `ML Model API Error: ${mlResponse.status} ${errorText}`,
-      });
+      return res
+        .status(mlResponse.status)
+        .json({
+          error: `ML Model API Error: ${mlResponse.status} ${errorText} `,
+        });
     }
 
     const mlData = await mlResponse.json();
@@ -67,6 +62,12 @@ app.post("/api/v1/recommendations", async (req, res) => {
 });
 
 // ... other routes and app.listen
+app.use("/api/v1/user", userRoute); //"http://localhost:4000/api/v1/user/register",
+app.use("/api/v1/company", companyRoute);
+app.use("/api/v1/job", jobRoute);
+app.use("/api/v1/application", applicationRoute);
+/* app.use("/api/v1/recommendations", recommendationRoute); */
+app.use("/api/v1/candidates", candidateRoutes);
 
 app.listen(process.env.PORT, () => {
   connectDB(); //database
