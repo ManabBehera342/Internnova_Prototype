@@ -37,8 +37,6 @@
   max-width: 70%;
 }
 
-
-
 /* Contact Information Grid */
 .res-contact-info {
   display: grid;
@@ -78,47 +76,43 @@
 }
 
 /* Specific positioning for each item */
-.contact-item:nth-child(1) .icon-wrapper { grid-column: 1; grid-row: 1; }
-.contact-item:nth-child(1) .contact-text { grid-column: 2; grid-row: 1; }
-.contact-item:nth-child(2) .icon-wrapper { grid-column: 3; grid-row: 1; }
-.contact-item:nth-child(2) .contact-text { grid-column: 4; grid-row: 1; }
-.contact-item:nth-child(3) .icon-wrapper { grid-column: 1; grid-row: 2; }
-.contact-item:nth-child(3) .contact-text { grid-column: 2; grid-row: 2; }
-.contact-item:nth-child(4) .icon-wrapper { grid-column: 3; grid-row: 2; }
-.contact-item:nth-child(4) .contact-text { grid-column: 4; grid-row: 2; }
+.contact-item:nth-child(1) .icon-wrapper {
+  grid-column: 1;
+  grid-row: 1;
+}
+.contact-item:nth-child(1) .contact-text {
+  grid-column: 2;
+  grid-row: 1;
+}
+.contact-item:nth-child(2) .icon-wrapper {
+  grid-column: 3;
+  grid-row: 1;
+}
+.contact-item:nth-child(2) .contact-text {
+  grid-column: 4;
+  grid-row: 1;
+}
+.contact-item:nth-child(3) .icon-wrapper {
+  grid-column: 1;
+  grid-row: 2;
+}
+.contact-item:nth-child(3) .contact-text {
+  grid-column: 2;
+  grid-row: 2;
+}
+.contact-item:nth-child(4) .icon-wrapper {
+  grid-column: 3;
+  grid-row: 2;
+}
+.contact-item:nth-child(4) .contact-text {
+  grid-column: 4;
+  grid-row: 2;
+}
 
 /* Address specific styling */
 .contact-text.multiline {
   line-height: 1.6;
-=======
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
 }
-
-.res-contact-info p {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-
-.res-contact-info svg {
-  margin-right: 8px;
-  color: #34495e;
-}
-
-.res-header-right {
-  flex-shrink: 0;
-}
-
-.res-profile-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ddd;
-
-}
-
 /* Section Styles */
 .res-section-divider {
   border: 0;
@@ -237,7 +231,7 @@
   cursor: pointer;
   margin-top: 20px;
 }
-.res-add-project-button{
+.res-add-project-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 14px;
@@ -248,7 +242,7 @@
   cursor: pointer;
   margin-top: 20px;
 }
-.resume-downdload{
+.resume-downdload {
   display: inline-block;
   padding: 10px 20px;
   font-size: 14px;
@@ -365,7 +359,7 @@ a:hover {
   max-width: 210mm;
   margin: 0 auto;
   background: white;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .res-contact-info p {
@@ -444,7 +438,7 @@ a:hover {
     position: relative;
     top: 2px;
   }
-  
+
   /* Address specific alignment */
   .contact-item:nth-child(3) .icon-wrapper,
   .contact-item:nth-child(3) .contact-text {
@@ -462,4 +456,3 @@ a:hover {
   border-bottom: 2px solid #3498db;
   padding-bottom: 5px;
 }
-

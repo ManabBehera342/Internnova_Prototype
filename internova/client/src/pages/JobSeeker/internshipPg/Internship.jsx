@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import useGetAllJobs from "@/hooks/useGetAllJobs";
 import Browse from "@/components/Browse";
 import SearchBar from "@/components/SearchBar";
-import JobRecommend from "@/components/Recommendations/JobRecommend";
+/* import JobRecommend from "@/components/Recommendations/JobRecommend"; */
 const JobPg = () => {
   const navigate = useNavigate();
   /*  const { allJobs } = useSelector((store) => store.job); */
@@ -30,7 +30,7 @@ const JobPg = () => {
         <JobHeader />
         <div className="full-width-image-jobs">
           <img
-            src=".\images\jobpage.png"
+            src=".\images\originalInternshiphead.png"
             alt="FullWidthImage"
             className="full-image-jobs"
           />
@@ -54,15 +54,13 @@ const JobPg = () => {
           </button>
         </div>
         <div className="jobcards-container-jobs">
-          
           {/* <Jobs /> */}
 
-          
           {/*  <LatestJobCards /> */}
         </div>
         <LatestJobs />
         <h3>Recommendations</h3>
-        <JobRecommend />
+        {/*  <JobRecommend /> */}
       </div>
     </>
   );

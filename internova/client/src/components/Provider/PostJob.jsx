@@ -126,6 +126,16 @@ const PostJob = () => {
               />
             </div>
             <div>
+              <Label>Sector</Label>
+              <Input
+                type="text"
+                name="Sector"
+                value={input.sector}
+                onChange={changeEventHandler}
+                className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+              />
+            </div>
+            <div>
               <Label>Location</Label>
               <Input
                 type="text"
@@ -165,27 +175,30 @@ const PostJob = () => {
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
               />
             </div>
-            {companies.length > 0 && (
-              <Select onValueChange={selectChangeHandler}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select a Company" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {companies.map((company) => {
-                      return (
-                        <SelectItem
-                          key={company._id}
-                          value={company?.name?.toLowerCase()}
-                        >
-                          {company.name}
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            )}
+            <div>
+              <Label>Choose your company</Label>
+              {companies.length > 0 && (
+                <Select onValueChange={selectChangeHandler}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Select a Company" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {companies.map((company) => {
+                        return (
+                          <SelectItem
+                            key={company._id}
+                            value={company?.name?.toLowerCase()}
+                          >
+                            {company.name}
+                          </SelectItem>
+                        );
+                      })}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              )}
+            </div>
           </div>
           {loading ? (
             <Button className="w-full my-4">
