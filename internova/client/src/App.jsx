@@ -50,7 +50,7 @@ function App() {
         <Route path="/mentorlogin" element={<MentorLogin />} />
         <Route path="/jobseeker" element={<SeekHm />} />
         <Route path="/mentorship" element={<Mentorship />} />
-        <Route path="/internship" element={<Internship />} />
+        <Route path="/internships" element={<Internship />} />
         <Route path="/jobpg" element={<JobPg />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/jobs/:id" element={<JobDescription />} />
