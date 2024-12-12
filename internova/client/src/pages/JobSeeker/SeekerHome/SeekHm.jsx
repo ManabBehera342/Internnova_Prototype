@@ -1,5 +1,6 @@
 import JobHeader from "@/components/JobHeader/JobHeader";
 import React from "react";
+import SearchBar from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
 /* import Footer from "./footer"; */
 
@@ -13,7 +14,30 @@ const SeekHm = () => {
   }
   return (
     <>
-      <JobHeader />
+    <div className="bg-neutral-200">
+    <JobHeader />
+    </div>
+      
+      <div className="w-full aspect-[1728/1076] bg-gray-200 flex items-center justify-center">
+      {/* Replace the image src with your actual image URL */}
+      <img
+        src="./images/jobSeekhmHead.png"
+        alt="Responsive"
+        className="w-full h-full object-cover"
+      />
+      {/* SearchBar component in the center */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center mt-[36rem]">
+        {/* Search Bar */}
+        <div className="w-3/4 max-w-lg bg-white rounded-3xl shadow-md p-4">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-500"
+          />
+        </div>
+     </div>
+      
+    </div>
       <div className="flex flex-wrap lg:flex-nowrap min-h-screen lg:ml-56">
         {/* Left Section */}
         <div className="w-full lg:w-[60%] p-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -84,10 +108,27 @@ const SeekHm = () => {
             alt="Sample Image"
             className="w-[100%] h-[90] object-cover p-4 sm:p-6 lg:p-8"
           />
-          <button onClick={handleMentor} className="absolute top-16 right-20 bg-blue-500 text-white px-12 py-4 rounded-3xl shadow-2xl border-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold hover:bg-gray-400">
-            FIND MENTOR
-          </button>
-        </div>
+  <button
+  onClick={handleMentor}
+  className="
+    absolute 
+    top-8 right-16 
+    bg-blue-500 text-white 
+    px-8 py-3 
+    rounded-3xl shadow-2xl border-2 
+    text-base 
+    sm:right-12 sm:px-10 sm:py-3 sm:text-lg 
+    md:right-16 md:px-12 md:py-4 md:text-xl 
+    lg:top-12 lg:right-24 lg:text-2xl 
+    xl:top-16 xl:right-28 xl:text-3xl 
+    font-bold 
+    hover:bg-gray-400
+  "
+>
+  FIND MENTOR
+</button>
+
+    </div>
       </div>
 
       {/* Parent Container */}

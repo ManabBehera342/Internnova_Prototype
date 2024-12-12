@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 import "./Resume.css";
 import { FaPhone, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -115,24 +116,53 @@ function Resume() {
     );
     setResumeData({ ...resumeData, certifications: updatedCertifications });
   };
-  const handleDownload = () => {
-    const doc = new jsPDF("p", "pt", "a4");
+  // const handleDownload = () => {
+  //   const doc = new jsPDF("p", "pt", "a4");
+  //   const content = document.querySelector(".download-resume-Section");
   
-    const content = document.querySelector(".res-preview-section");
+  //   if (content) {
+  //     doc.html(content, {
+  //       callback: function (doc) {
+  //         doc.save("Resume.pdf");
+  //       },
+  //       html2canvas: {
+  //         scale: 0.7, // Adjust scaling if needed
+  //       },
+  //     });
+  //   } else {
+  //     console.error("No content found for the preview section.");
+  //   }
+  // };
+  
+  const handleDownload = () => {
+    const doc = new jsPDF("p", "mm", "a4"); // 'p' for portrait, 'mm' for millimeters, and 'a4' for the page size
+  
+    // Select the content you want to convert into the PDF
+    const content = document.querySelector(".download-resume-Section");
   
     if (content) {
-      doc.html(content, {
-        callback: function (doc) {
-          doc.save("Resume.pdf");
-        },
-        x: 20,
-        y: 20,
-        margin: [10, 10], // Add margin for better layout
+      // Use html2canvas to capture the content as an image
+      html2canvas(content, {
+        scale: 2, // Higher scale for better quality
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png"); // Convert canvas to image
+        const imgWidth = 190; // Width of the PDF (keeping margins in mind)
+        const pageHeight = 297; // Height of A4 page in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
+        let position = 10; // Starting position on the PDF
+  
+        // Add the image to the PDF
+        doc.addImage(imgData, "PNG", 10, position, imgWidth, imgHeight);
+  
+        // Save the PDF
+        doc.save("Resume.pdf");
       });
     } else {
       console.error("No content found for the preview section.");
     }
   };
+  
+  
   
 
   return (
@@ -465,36 +495,45 @@ function Resume() {
         <button className="resume-downdload" onClick={handleDownload}>Download Resume</button>
       </div>
       {/* preview section */}
+
+      
+
+
+      
       <div className="res-preview-section">
-        <h2>Resume Preview</h2>
-        <div className="res-resume-top-section">
+        <div className="download-resume-Section">
+          <div className="res-resume-top-section">
           <div className="res-header">
             <div className="res-header-name">
               <h1>{resumeData.name}</h1>
               <p className="res-objective">{resumeData.objective}</p>
-              <div className="res-contact-info">
-                <p>
-                  <FaPhone /> {resumeData.phone}
-                </p>
-                <p>
-                  <MdEmail /> {resumeData.email}
-                </p>
-                <p>
-                  <FaLocationDot /> {resumeData.address}
-                </p>
-                {resumeData.github && (
-                  <p>
-                    <FaGithub />{" "}
-                    <a
-                      href={resumeData.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {resumeData.github}
-                    </a>
-                  </p>
-                )}
-              </div>
+              <div className="res-contact-grid">
+  {/* First Row */}
+  <div className="contact-row">
+    <div className="contact-item">
+      <FaPhone className="contact-icon" />
+      <span style={{ marginTop: '-20px'}}>{resumeData.phone}</span>
+    </div>
+    <div className="contact-item">
+      <MdEmail className="contact-icon" />
+      <span style={{ marginTop: '-20px'}}>{resumeData.email}</span>
+    </div>
+  </div>
+  
+  {/* Second Row */}
+  <div className="contact-row">
+    <div className="contact-item">
+      <FaLocationDot className="contact-icon" />
+      <span style={{ marginTop: '-20px'}}>{resumeData.address}</span>
+    </div>
+    <div className="contact-item">
+      <FaGithub className="contact-icon" />
+      <a style={{ marginTop: '-20px'}} href={resumeData.github} target="_blank" rel="noopener noreferrer">
+        {resumeData.github}
+      </a>
+    </div>
+  </div>
+</div>
             </div>
             {profilePhoto && (
               <div className="res-header-right">
@@ -507,7 +546,6 @@ function Resume() {
             )}
           </div>
         </div>
-
         <div className="res-additional-info">
           <div className="res-summary section">
             <h3 className="res-heading-resume">SUMMARY</h3>
@@ -618,6 +656,10 @@ function Resume() {
             <p>{resumeData.hobbies}</p>
           </div>
         </div>
+      </div>
+        
+       
+
       </div>
     </div>
   );

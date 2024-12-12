@@ -11,7 +11,9 @@ import Landing from "./components/Landing/Landing";
 import SignUp from "./components/SignUp/SignUp";
 import SeekHm from "./pages/JobSeeker/SeekerHome/SeekHm";
 import Mentorship from "./pages/Mentorship/Mentorship";
+
 import MentorLogin from "./pages/Mentorship/MentorLogin";
+import Internship from "./pages/JobSeeker/internshipPg/Internship";
 import JobPg from "./pages/JobSeeker/JobPg/JobPg";
 import Jobs from "./components/Jobs/Jobs";
 import Profile from "./components/Profile";
@@ -47,6 +49,7 @@ function App() {
         <Route path="/mentorlogin" element={<MentorLogin />} />
         <Route path="/jobseeker" element={<SeekHm />} />
         <Route path="/mentorship" element={<Mentorship />} />
+        <Route path="/internships" element={<Internship />} />
         <Route path="/jobpg" element={<JobPg />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/jobs/:id" element={<JobDescription />} />
