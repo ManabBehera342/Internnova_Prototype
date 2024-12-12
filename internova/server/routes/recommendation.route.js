@@ -1,13 +1,9 @@
 import express from "express";
-import {
-  getJobRecommendations,
-  getCandidateRecommendations,
-} from "../controllers/recommendation.controller.js";
-import isAuthenticated from "../middlewares/isAuthenticated.js";
+import { getCandidateRecommendations } from "../controllers/recommendation.controller.js";
 
 const router = express.Router();
 
-router.post("/job-recommendations/:userId", getJobRecommendations);
+// Route to handle candidate recommendations
 router.post("/candidate-recommendations", getCandidateRecommendations);
 
 export default router;
