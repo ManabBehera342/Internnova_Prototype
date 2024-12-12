@@ -14,10 +14,7 @@ export const register = async (req, res) => {
         success: false,
       });
     }
-    //file uploading
-    /* const file = req.file;
-    const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content); */
+
     const user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
@@ -43,35 +40,6 @@ export const register = async (req, res) => {
       verificationToken,
     });
 
-    /* return res
-      .status(201)
-      .json({ message: "Account is created", success: true });
-  } catch (error) {
-    console.log(error);
-  }
-};
- */
-    // Send verification email
-    /*  const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
-    const mailOptions = {
-      from: process.env.USER,
-      to: email,
-      subject: "Email Verification",
-      html: `
-     <h1>Verify Your Email</h1>
-     <p>Please click the link below to verify your email address:</p>
-     <a href="${verificationUrl}">Verify Email</a>
-   `,
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    return res.status(201).json({
-      message: "Account created. Please verify your email",
-      success: true,
-    }); */
-    // Create verification URL and email content
-
     const verificationUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
     const emailHtml = `
       <h1>Verify Your Email</h1>
@@ -91,14 +59,6 @@ export const register = async (req, res) => {
       message: "Account created. Please verify your email",
       success: true,
     });
-    /*  } catch (emailError) {
-      await User.findByIdAndDelete(newUser._id);
-      console.error("Email sending error:", emailError);
-      return res.status(500).json({
-        message: "Account creation failed due to email sending error",
-        success: false,
-      });
-    } */
   } catch (error) {
     console.error("Registration error:", error);
     return res.status(500).json({
@@ -245,77 +205,6 @@ export const logout = async (req, res) => {
   }
 };
 
-/* export const updateProfile = async (req, res) => {
-  try {
-    // Debug log
-    console.log("Received request body:", req.body);
-    console.log("Received file:", req.file);
-    console.log("User ID from token:", req.id);
-
-    const { fullName, email, phoneNumber, bio, skills } = req.body;
-
-    const file = req.file; //resume file
-    if (!fullName || !email || !phoneNumber || !bio || !skills) {
-      return res.status(400).json({
-        message: "Something is missing",
-        success: false,
-      });
-    }
-
-    //cloudinary for uploading file
-    const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.v2.uploader.upload(fileUri.content);
-
-    let skillsArray;
-    if (skills) {
-      skillsArray = skills.split(",");
-    }
-    const userId = req.id; //from auth middleware
-    let user = await User.findById(userId);
-    if (!user) {
-      return res.status(400).json({
-        message: "User not found",
-        success: false,
-      });
-    }
-
-    //updating data
-    if (fullName) user.fullName = fullName;
-    if (email) user.email = email;
-    if (phoneNumber) user.phoneNumber = phoneNumber;
-    if (bio) user.bio = bio;
-    if (skills) user.skills = skillsArray;
-
-    //resume
-    if (cloudResponse) {
-      user.profile.resume = cloudResponse.secure_url; ///save the cloudinary url
-      user.profile.resumeOriginalName = file.originalname; //save the original file name
-    } else if (resume) {
-      user.profile.resume = resume;
-      user.profile.resumeOriginalName = "External Link";
-    }
-
-    await user.save();
-
-    //
-
-    user = {
-      _id: user._id,
-      fullName: user.fullName,
-      email: user.email,
-      phoneNumber: user.phoneNumber,
-      role: user.role,
-      profile: user.profile,
-    };
-    return res.status(200).json({
-      message: "Profile Updated successfully",
-      user,
-      success: true,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-}; */
 export const updateProfile = async (req, res) => {
   try {
     console.log("Received request body:", req.body);
