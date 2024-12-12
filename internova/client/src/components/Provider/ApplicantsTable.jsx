@@ -66,13 +66,7 @@ const ApplicantsTable = () => {
                 >
                   <TableCell>
                     <div className="flex items-center space-x-3">
-                      {/*  <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
-                        {item?.applicant?.fullname?.charAt(0).toUpperCase()}
-                      </div> */}
                       <div>
-                        {/* <div className="font-medium">
-                          {item?.applicant?.fullname || "Unknown Applicant"}
-                        </div> */}
                         <div className="text-sm text-gray-500">
                           {item?.applicant?.email}
                         </div>
