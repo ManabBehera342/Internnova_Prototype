@@ -53,7 +53,6 @@ function Resume() {
     updatedArray.splice(index, 1);
     setResumeData({ ...resumeData, [type]: updatedArray });
   };
-  
 
   const handleEducationChange = (level, field, value) => {
     setResumeData((prevData) => ({
@@ -119,7 +118,7 @@ function Resume() {
   // const handleDownload = () => {
   //   const doc = new jsPDF("p", "pt", "a4");
   //   const content = document.querySelector(".download-resume-Section");
-  
+
   //   if (content) {
   //     doc.html(content, {
   //       callback: function (doc) {
@@ -133,13 +132,13 @@ function Resume() {
   //     console.error("No content found for the preview section.");
   //   }
   // };
-  
+
   const handleDownload = () => {
     const doc = new jsPDF("p", "mm", "a4"); // 'p' for portrait, 'mm' for millimeters, and 'a4' for the page size
-  
+
     // Select the content you want to convert into the PDF
     const content = document.querySelector(".download-resume-Section");
-  
+
     if (content) {
       // Use html2canvas to capture the content as an image
       html2canvas(content, {
@@ -150,10 +149,10 @@ function Resume() {
         const pageHeight = 297; // Height of A4 page in mm
         const imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
         let position = 10; // Starting position on the PDF
-  
+
         // Add the image to the PDF
         doc.addImage(imgData, "PNG", 10, position, imgWidth, imgHeight);
-  
+
         // Save the PDF
         doc.save("Resume.pdf");
       });
@@ -161,9 +160,6 @@ function Resume() {
       console.error("No content found for the preview section.");
     }
   };
-  
-  
-  
 
   return (
     <div className="res-container">
@@ -436,7 +432,11 @@ function Resume() {
                   handleProjectsChange(index, "link", e.target.value)
                 }
               />
-              <button className="res-remove-btn" type="button" onClick={() => handleRemoveProject(index)}>
+              <button
+                className="res-remove-btn"
+                type="button"
+                onClick={() => handleRemoveProject(index)}
+              >
                 Remove Project
               </button>
             </div>
@@ -492,174 +492,180 @@ function Resume() {
           <label>Upload Profile Photo:</label>
           <input type="file" onChange={handlePhotoUpload} />
         </form>
-        <button className="resume-downdload" onClick={handleDownload}>Download Resume</button>
+        <button className="resume-downdload" onClick={handleDownload}>
+          Download Resume
+        </button>
       </div>
       {/* preview section */}
 
-      
-
-
-      
       <div className="res-preview-section">
         <div className="download-resume-Section">
           <div className="res-resume-top-section">
-          <div className="res-header">
-            <div className="res-header-name">
-              <h1>{resumeData.name}</h1>
-              <p className="res-objective">{resumeData.objective}</p>
-              <div className="res-contact-grid">
-  {/* First Row */}
-  <div className="contact-row">
-    <div className="contact-item">
-      <FaPhone className="contact-icon" />
-      <span style={{ marginTop: '-20px'}}>{resumeData.phone}</span>
-    </div>
-    <div className="contact-item">
-      <MdEmail className="contact-icon" />
-      <span style={{ marginTop: '-20px'}}>{resumeData.email}</span>
-    </div>
-  </div>
-  
-  {/* Second Row */}
-  <div className="contact-row">
-    <div className="contact-item">
-      <FaLocationDot className="contact-icon" />
-      <span style={{ marginTop: '-20px'}}>{resumeData.address}</span>
-    </div>
-    <div className="contact-item">
-      <FaGithub className="contact-icon" />
-      <a style={{ marginTop: '-20px'}} href={resumeData.github} target="_blank" rel="noopener noreferrer">
-        {resumeData.github}
-      </a>
-    </div>
-  </div>
-</div>
-            </div>
-            {profilePhoto && (
-              <div className="res-header-right">
-                <img
-                  src={profilePhoto}
-                  alt="Profile"
-                  className="res-profile-photo"
-                />
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="res-additional-info">
-          <div className="res-summary section">
-            <h3 className="res-heading-resume">SUMMARY</h3>
-            <hr className="res-section-divider" />
-            <p>{resumeData.summary}</p>
-          </div>
-          <div className="res-skills section">
-            <div className="res-section-header">
-              <h3>SKILLS</h3>
-            </div>
-            <hr className="res-section-divider" />{" "}
-            {/* The bar now directly under the heading */}
-            <div className="res-skills-columns">
-              <div className="res-skills-column">
-                {resumeData.programmingLanguages && (
-                  <p>
-                    <b>Languages:</b> {resumeData.programmingLanguages}
-                  </p>
-                )}
-                {resumeData.libraries && (
-                  <p>
-                    <b>Libraries/Frameworks:</b> {resumeData.libraries}
-                  </p>
-                )}
-                {resumeData.tools && (
-                  <p>
-                    <b>Tools:</b> {resumeData.tools}
-                  </p>
-                )}
-              </div>
-              <div className="res-skills-column">
-                {resumeData.technologies && (
-                  <p>
-                    <b>Technologies:</b> {resumeData.technologies}
-                  </p>
-                )}
-                {resumeData.softSkills && (
-                  <p>
-                    <b>Soft Skills:</b> {resumeData.softSkills}
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
+            <div className="res-header">
+              <div className="res-header-name">
+                <h1 style={{ fontSize: "40px" }}>{resumeData.name}</h1>
+                <p className="res-objective">{resumeData.objective}</p>
+                <div className="res-contact-grid">
+                  {/* First Row */}
+                  <div className="contact-row">
+                    <div className="contact-item">
+                      <FaPhone className="contact-icon" />
+                      <span style={{ marginTop: "-20px" }}>
+                        {resumeData.phone}
+                      </span>
+                    </div>
+                    <div className="contact-item">
+                      <MdEmail className="contact-icon" />
+                      <span style={{ marginTop: "-20px" }}>
+                        {resumeData.email}
+                      </span>
+                    </div>
+                  </div>
 
-          <div className="res-section">
-            <h3 className="res-heading-resume">EDUCATION</h3>
+                  {/* Second Row */}
+                  <div className="contact-row">
+                    <div className="contact-item">
+                      <FaLocationDot className="contact-icon" />
+                      <span style={{ marginTop: "-20px" }}>
+                        {resumeData.address}
+                      </span>
+                    </div>
+                    <div className="contact-item">
+                      <FaGithub className="contact-icon" />
+                      <a
+                        style={{ marginTop: "-20px" }}
+                        href={resumeData.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {resumeData.github}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {profilePhoto && (
+                <div className="res-header-right">
+                  <img
+                    src={profilePhoto}
+                    alt="Profile"
+                    className="res-profile-photo"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="res-additional-info">
+            <div className="res-summary section">
+              <h3 className="res-heading-resume">SUMMARY</h3>
+              <hr className="res-section-divider" />
+              <p>{resumeData.summary}</p>
+            </div>
+            <div className="res-skills section">
+              <div className="res-section-header">
+                <h3>SKILLS</h3>
+              </div>
+              <hr className="res-section-divider" />{" "}
+              {/* The bar now directly under the heading */}
+              <div className="res-skills-columns">
+                <div className="res-skills-column">
+                  {resumeData.programmingLanguages && (
+                    <p>
+                      <b>Languages:</b> {resumeData.programmingLanguages}
+                    </p>
+                  )}
+                  {resumeData.libraries && (
+                    <p>
+                      <b>Libraries/Frameworks:</b> {resumeData.libraries}
+                    </p>
+                  )}
+                  {resumeData.tools && (
+                    <p>
+                      <b>Tools:</b> {resumeData.tools}
+                    </p>
+                  )}
+                </div>
+                <div className="res-skills-column">
+                  {resumeData.technologies && (
+                    <p>
+                      <b>Technologies:</b> {resumeData.technologies}
+                    </p>
+                  )}
+                  {resumeData.softSkills && (
+                    <p>
+                      <b>Soft Skills:</b> {resumeData.softSkills}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="res-section">
+              <h3 className="res-heading-resume">EDUCATION</h3>
+              <hr className="res-section-divider" />
+              {resumeData.education.map((edu, index) => (
+                <div key={index} className="res-education-preview">
+                  <p className="left">
+                    <strong>{edu.degree}</strong> at {edu.school}
+                  </p>
+                  <p className="right">{edu.year}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="res-heading-resume">EXPERIENCE</h3>
             <hr className="res-section-divider" />
-            {resumeData.education.map((edu, index) => (
-              <div key={index} className="res-education-preview">
-                <p className="left">
-                  <strong>{edu.degree}</strong> at {edu.school}
+            {resumeData.experience.map((exp, index) => (
+              <div key={index} className="res-experience-preview">
+                <p>
+                  <strong>{exp.company}</strong> - {exp.role} ({exp.duration})
                 </p>
-                <p className="right">{edu.year}</p>
+                <p>{exp.details}</p>
               </div>
             ))}
-          </div>
 
-          <h3 className="res-heading-resume">EXPERIENCE</h3>
-          <hr className="res-section-divider" />
-          {resumeData.experience.map((exp, index) => (
-            <div key={index} className="res-experience-preview">
-              <p>
-                <strong>{exp.company}</strong> - {exp.role} ({exp.duration})
-              </p>
-              <p>{exp.details}</p>
-            </div>
-          ))}
-
-          {resumeData.projects.length > 0 && (
-            <div className="res-projects">
-              <h3 className="res-heading-resume">PROJECTS</h3>
+            {resumeData.projects.length > 0 && (
+              <div className="res-projects">
+                <h3 className="res-heading-resume">PROJECTS</h3>
+                <hr className="res-section-divider" />
+                {resumeData.projects.map((project, index) => (
+                  <p key={index}>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {project.name}
+                    </a>{" "}
+                    - {project.summary}
+                  </p>
+                ))}
+              </div>
+            )}
+            {resumeData.certifications.length > 0 && (
+              <div className="res-certifications">
+                <h3 className="res-heading-resume">CERTIFICATIONS</h3>
+                <hr className="res-section-divider" />
+                {resumeData.certifications.map((certification, index) => (
+                  <p key={index}>
+                    <a
+                      href={certification.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {certification.name}
+                    </a>
+                  </p>
+                ))}
+              </div>
+            )}
+            <div className="res-hobbies">
+              <h3 className="res-heading-resume">ACHIEVEMENTS</h3>
               <hr className="res-section-divider" />
-              {resumeData.projects.map((project, index) => (
-                <p key={index}>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {project.name}
-                  </a>{" "}
-                  - {project.summary}
-                </p>
-              ))}
+              <p>{resumeData.hobbies}</p>
             </div>
-          )}
-          {resumeData.certifications.length > 0 && (
-            <div className="res-certifications">
-              <h3 className="res-heading-resume">CERTIFICATIONS</h3>
-              <hr className="res-section-divider" />
-              {resumeData.certifications.map((certification, index) => (
-                <p key={index}>
-                  <a
-                    href={certification.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {certification.name}
-                  </a>
-                </p>
-              ))}
-            </div>
-          )}
-          <div className="res-hobbies">
-            <h3 className="res-heading-resume">ACHIEVEMENTS</h3>
-            <hr className="res-section-divider" />
-            <p>{resumeData.hobbies}</p>
           </div>
         </div>
-      </div>
-        
-       
-
       </div>
     </div>
   );
