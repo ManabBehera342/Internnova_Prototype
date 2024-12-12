@@ -17,25 +17,24 @@ import axios from "axios";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { FileText, Mail, Phone, Calendar } from "lucide-react";
+
 const shortlistingStatus = ["Accepted", "Rejected"];
 
 const ApplicantsTable = () => {
   const { applicants } = useSelector((store) => store.application);
 
   const statusHandler = async (status, id) => {
-    console.log("called");
     try {
       axios.defaults.withCredentials = true;
       const res = await axios.post(
         `${APPLICATION_API_END_POINT}/status/${id}/update`,
         { status }
       );
-      console.log(res);
       if (res.data.success) {
         toast.success(res.data.message);
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
 
@@ -67,13 +66,13 @@ const ApplicantsTable = () => {
                 >
                   <TableCell>
                     <div className="flex items-center space-x-3">
-                      <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
-                        {item?.applicant?.fullname.charAt(0).toUpperCase()}
-                      </div>
+                      {/*  <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
+                        {item?.applicant?.fullname?.charAt(0).toUpperCase()}
+                      </div> */}
                       <div>
-                        <div className="font-medium">
-                          {item?.applicant?.fullname}
-                        </div>
+                        {/* <div className="font-medium">
+                          {item?.applicant?.fullname || "Unknown Applicant"}
+                        </div> */}
                         <div className="text-sm text-gray-500">
                           {item?.applicant?.email}
                         </div>
@@ -88,12 +87,12 @@ const ApplicantsTable = () => {
                       </div>
                       <div className="flex items-center text-sm text-gray-600">
                         <Phone className="h-4 w-4 mr-2" />
-                        {item?.applicant?.phoneNumber}
+                        {item?.applicant?.phoneNumber || "N/A"}
                       </div>
                     </div>
                   </TableCell>
                   <TableCell>
-                    {item.applicant?.profile?.resume ? (
+                    {item?.applicant?.profile?.resume ? (
                       <Button
                         variant="outline"
                         size="sm"
@@ -116,7 +115,9 @@ const ApplicantsTable = () => {
                   <TableCell>
                     <div className="flex items-center text-sm text-gray-600">
                       <Calendar className="h-4 w-4 mr-2" />
-                      {new Date(item?.applicant.createdAt).toLocaleDateString()}
+                      {new Date(
+                        item?.applicant?.createdAt
+                      ).toLocaleDateString()}
                     </div>
                   </TableCell>
                   <TableCell className="text-right">
@@ -128,14 +129,14 @@ const ApplicantsTable = () => {
                       </PopoverTrigger>
                       <PopoverContent className="w-40 p-2">
                         <div className="space-y-1">
-                          {shortlistingStatus.map(({ label, color }) => (
+                          {shortlistingStatus.map((status, index) => (
                             <Button
-                              key={label}
+                              key={`${status}-${index}`} // Unique key with label and index
                               variant="ghost"
-                              className={`w-full justify-start ${color}`}
-                              onClick={() => statusHandler(label, item?._id)}
+                              className={`w-full justify-start`}
+                              onClick={() => statusHandler(status, item?._id)}
                             >
-                              {label}
+                              {status}
                             </Button>
                           ))}
                         </div>
