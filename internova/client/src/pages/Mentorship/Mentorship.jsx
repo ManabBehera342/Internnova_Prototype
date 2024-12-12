@@ -42,18 +42,28 @@ const Mentorship = () => {
         </button>
       </div>
       <div className="flex gap-6 justify-around">
+        
+          <MentorsCard imgSrc="./images/mentorpic2.png"
+                        Name="Gabriella Han"
+                        specialist="Innovation specialist" />
+        
         <div>
-          <MentorsCard />
+          <MentorsCard 
+            imgSrc="./images/mentorPic.png"
+                        Name="Arindam Chaudhuri"
+                        specialist="Entrepreneur"
+          />
         </div>
         <div>
-          <MentorsCard />
+          <MentorsCard 
+            imgSrc="./images/mentorpic3.png" 
+              Name="Surja Sen Das"
+              specialist="Product desginer"
+            />
         </div>
-        <div>
+        {/* <div>
           <MentorsCard />
-        </div>
-        <div>
-          <MentorsCard />
-        </div>
+        </div> */}
       </div>
       <div className="relative w-full py-6 flex justify-center items-center">
         {/* Center Image */}
