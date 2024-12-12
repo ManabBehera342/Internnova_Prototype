@@ -63,7 +63,7 @@
   display: flex;
   gap: 25px;
   /*  margin-top: -2%; */
-  /* margin-left: 10%; 
+/* margin-left: 10%; 
   font-size: 18px;
   font-weight: 500;
 }
@@ -203,7 +203,7 @@
 }
  */
 
- /* Navbar Container */
+/* Navbar Container */
 .navbar {
   padding: 10px 10px;
   position: fixed;
@@ -348,17 +348,17 @@
     display: none;
   }
 
-  .mobile-menu a{
+  .mobile-menu a {
     font-size: 18px;
     line-height: 20%;
     font-weight: 500;
   }
-  .mobile-menu button{
+  .mobile-menu button {
     font-weight: 500;
     font-size: 18px;
   }
 
-  .mobile-menu a:hover{
+  .mobile-menu a:hover {
     transform: scale(1.05);
   }
 }

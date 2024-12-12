@@ -37,23 +37,12 @@
   max-width: 70%;
 }
 
- .res-header-name h1 {
-  font-size: 32px;
-  color: #2c3e50;
-  margin: 0 0 10px 0;
-  text-align: left;
-  font-weight: normal;
-} 
 
- .res-header-name .res-objective {
-  color: #e67e22;
-  font-size: 15px;
-  margin: 0 0 15px 0;
-} 
 
 /* Contact Information Grid */
 .res-contact-info {
   display: grid;
+
   grid-template-columns: 25px 1fr 25px 1fr;
   gap: 12px 60px;
   margin-top: 15px;
@@ -101,14 +90,41 @@
 /* Address specific styling */
 .contact-text.multiline {
   line-height: 1.6;
+=======
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.res-contact-info p {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.res-contact-info svg {
+  margin-right: 8px;
+  color: #34495e;
+}
+
+.res-header-right {
+  flex-shrink: 0;
+}
+
+.res-profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+
 }
 
 /* Section Styles */
 .res-section-divider {
   border: 0;
   height: 2px;
-  background-color: #2980b9; 
-  margin-bottom: 15px; 
+  background-color: #2980b9;
+  margin-bottom: 15px;
 }
 
 /* Skills Section Styling */
@@ -119,30 +135,30 @@
 
 .res-skills .res-section-header {
   display: flex;
-  justify-content: flex-start; 
-  gap: 10px; 
-  margin-bottom: 10px; 
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
- .res-skills .res-section-divider {
-  width: 100%; 
-  margin: 5px auto 15px auto; 
+.res-skills .res-section-divider {
+  width: 100%;
+  margin: 5px auto 15px auto;
   height: 2px;
   background-color: #2980b9;
   border: none;
-} 
+}
 
- .res-skills-columns {
+.res-skills-columns {
   display: flex;
-  justify-content: center; 
-  gap: 40px; 
-  align-items: flex-start; 
-} 
+  justify-content: center;
+  gap: 40px;
+  align-items: flex-start;
+}
 
 .res-skills-column {
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
   font-size: 16px;
   color: #555;
 }
@@ -177,9 +193,9 @@
 }
 
 .res-summary p {
-  font-size: 16px; 
+  font-size: 16px;
   line-height: 1.8;
-  color: #555; 
+  color: #555;
 }
 
 .res-section {
@@ -299,7 +315,7 @@
   margin-bottom: 5px;
 }
 
-.res-form  input,
+.res-form input,
 form textarea {
   width: 100%;
   padding: 10px;
@@ -334,11 +350,11 @@ form textarea {
   font-size: 14px;
   margin-bottom: 10px;
 }
-
+/* 
 a {
   color: #2980b9;
   text-decoration: none;
-}
+} */
 
 a:hover {
   text-decoration: underline;

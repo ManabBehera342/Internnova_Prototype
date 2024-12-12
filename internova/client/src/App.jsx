@@ -38,7 +38,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route element={<Layout />}> */}
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />

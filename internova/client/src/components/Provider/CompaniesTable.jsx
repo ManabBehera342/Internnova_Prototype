@@ -39,7 +39,7 @@ const CompaniesTable = () => {
         <TableCaption>A list of your recent registered companies</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Logo</TableHead>
+            {/*  <TableHead>Logo</TableHead> */}
             <TableHead>Name</TableHead>
             <TableHead>Date</TableHead>
             <TableHead className="text-right">Action</TableHead>
@@ -48,11 +48,11 @@ const CompaniesTable = () => {
         <TableBody>
           {filterCompany?.map((company) => (
             <TableRow key={company._id}>
-              <TableCell>
+              {/* <TableCell>
                 <Avatar>
                   <AvatarImage src={company.logo} />
                 </Avatar>
-              </TableCell>
+              </TableCell> */}
               <TableCell>{company.name}</TableCell>
               <TableCell>{company.createdAt.split("T")[0]}</TableCell>
               <TableCell className="text-right cursor-pointer">

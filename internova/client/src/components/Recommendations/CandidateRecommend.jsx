@@ -1,3 +1,52 @@
+/* /* import { useCandidateRecommendations } from "../../hooks/useCandidateRecommendations.js";
+import { useState } from "react";
+
+const CandidateRecommend = ({ jobId }) => {
+  const { loading, error, recommendations, getRecommendations } =
+    useCandidateRecommendations();
+  const [formData, setFormData] = useState({
+    country: "",
+    education: "",
+    gender: "",
+    age: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getRecommendations({
+      jobId,
+      ...formData,
+    });
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Country"
+          value={formData.country}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, country: e.target.value }))
+          }
+        />
+        
+        <button type="submit">Get Recommendations</button>
+      </form>
+
+      {loading && <div>Loading recommendations...</div>}
+      {error && <div>Error: {error}</div>}
+
+      {recommendations.map((candidate) => (
+        <div key={candidate._id}>
+          
+        </div>
+      ))}
+    </div>
+  );
+};
+export default CandidateRecommend;
+ */
 /* import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -217,51 +266,55 @@ const CandidateRecommend = ({ jobId }) => {
 
 export default CandidateRecommend;
  */
-import { useCandidateRecommendations } from "../../hooks/useCandidateRecommendations.js";
 import { useState } from "react";
 
-const CandidateRecommend = ({ jobId }) => {
-  const { loading, error, recommendations, getRecommendations } =
-    useCandidateRecommendations();
-  const [formData, setFormData] = useState({
-    country: "",
-    education: "",
-    gender: "",
-    age: "",
-  });
+function CandidateRecommend() {
+  const [matchResult, setMatchResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    getRecommendations({
-      jobId,
-      ...formData,
-    });
+  const handleMatchCandidates = async () => {
+    setLoading(true);
+    try {
+      // Get job_id from props or state
+      const candidateData = {
+        job_id: jobId,
+        Country: "Sweden",
+        Education: "Master",
+        Gender: "Male",
+        age: 35,
+      };
+
+      const response = await fetch("/api/candidates/match", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(candidateData),
+      });
+
+      const data = await response.json();
+      setMatchResult(data);
+    } catch (error) {
+      console.error("Error matching candidates:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Country"
-          value={formData.country}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, country: e.target.value }))
-          }
-        />
-        {/* Add other form fields */}
-        <button type="submit">Get Recommendations</button>
-      </form>
+      <button onClick={handleMatchCandidates} disabled={loading}>
+        {loading ? "Matching..." : "Match Candidates"}
+      </button>
 
-      {loading && <div>Loading recommendations...</div>}
-      {error && <div>Error: {error}</div>}
-
-      {recommendations.map((candidate) => (
-        <div key={candidate._id}>
-          {/* Display candidate recommendation details */}
+      {matchResult && (
+        <div>
+          <h3>Match Results:</h3>
+          <pre>{JSON.stringify(matchResult, null, 2)}</pre>
         </div>
-      ))}
+      )}
     </div>
   );
-};
+}
+
 export default CandidateRecommend;
