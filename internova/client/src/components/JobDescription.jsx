@@ -65,7 +65,7 @@ const JobDescription = () => {
   }, [jobId, dispatch, user?._id]);
 
   return (
-    <div className="max-w-7xl mx-auto my-10">
+    <div className="max-w-7xl mx-auto my-10 border-2 p-4">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-xl">{singleJob?.title}</h1>
@@ -84,7 +84,7 @@ const JobDescription = () => {
         <button
           onClick={isApplied ? null : applyJobHandler}
           disabled={isApplied}
-          className={`rounded-lg ${
+          className={`rounded-lg py-2 px-4 ${
             isApplied
               ? "bg-gray-600 cursor-not-allowed"
               : "bg-[#7209b7] hover:bg-[#5f32ad]"
