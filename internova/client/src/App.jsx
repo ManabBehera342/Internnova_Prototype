@@ -35,6 +35,7 @@ import FrontedRoadmap from "./pages/JobSeeker/resources/FrontendRoadmap";
 import ExamSection from "./pages/JobSeeker/resources/ExamSection";
 import EmailVerification from "./components/SignUp/EmailVerification";
 import CandidateRecommend from "./components/Recommendations/CandidateRecommend";
+import JobRecommend from "./components/Recommendations/JobRecommend";
 function App() {
   return (
     <BrowserRouter>
@@ -113,6 +114,7 @@ function App() {
           }
         />
         <Route path="/recommendations/:id" element={<CandidateRecommend />} />
+        {/* <Route path="/recommendations/:id" element={<JobRecommend />} /> */}
         {/*         <Route path="/recommendations/:id" element={<CandidateRecommend />} />
          */}{" "}
         {/* </Route> */}

@@ -7,6 +7,7 @@ import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from "@/utils/constant";
 import { setSingleJob } from "@/redux/jobSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
+import JobRecommend from "./Recommendations/JobRecommend";
 
 const JobDescription = () => {
   const { singleJob } = useSelector((store) => store.job);
@@ -140,6 +141,9 @@ const JobDescription = () => {
           </span>
         </h1>
       </div>
+      <h2>Recommendations</h2>
+      {/* Show candidate recommendations if jobId is available */}
+      {params.id && <JobRecommend jobId={params.id} />}
     </div>
   );
 };

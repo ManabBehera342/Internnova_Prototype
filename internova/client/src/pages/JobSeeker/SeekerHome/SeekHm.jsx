@@ -2,7 +2,7 @@ import JobHeader from "@/components/JobHeader/JobHeader";
 import React from "react";
 import SearchBar from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
-/* import Footer from "./footer"; */
+import Footer from "@/components/Footer/Footer";
 
 const SeekHm = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const SeekHm = () => {
         <img
           src="./images/jobSeekhmHead.png"
           alt="Responsive"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover "
         />
         {/* SearchBar component in the center */}
       </div>
@@ -148,7 +148,7 @@ const SeekHm = () => {
           className="w-full h-auto object-cover"
         />
       </div>
-      {/*  <Footer /> */}
+      <Footer />
     </>
   );
 };

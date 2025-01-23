@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import useGetAllJobs from "@/hooks/useGetAllJobs";
 import Browse from "@/components/Browse";
 import SearchBar from "@/components/SearchBar";
+import Footer from "@/components/Footer/Footer";
 /* import JobRecommend from "@/components/Recommendations/JobRecommend"; */
 const JobPg = () => {
   const navigate = useNavigate();
@@ -59,8 +60,11 @@ const JobPg = () => {
           {/*  <LatestJobCards /> */}
         </div>
         <LatestJobs />
-        <h3>Recommendations</h3>
+        {/*    <h3>Recommendations</h3> */}
         {/* <JobRecommend /> */}
+        <div className="jobpg">
+          <Footer />
+        </div>
       </div>
     </>
   );
