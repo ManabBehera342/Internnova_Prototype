@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useNavigate, useParams } from "react-router-dom"; // Import useParams
 import { useDispatch } from "react-redux";
 import AdminJobsTable from "./AdminJobsTable";
 import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
 import { setSearchJobByText } from "@/redux/jobSlice";
-import JobHeader from "../JobHeader/JobHeader";
-import CandidateRecommend from "../Recommendations/CandidateRecommend";
+import JobHeader from "@/components/JobHeader/JobHeader";
+import CandidateRecommend from "@/components/Recommendations/CandidateRecommend";
 
 const AdminJobs = () => {
   const { id } = useParams(); // Get jobId from URL parameters
@@ -15,7 +15,7 @@ const AdminJobs = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading, error } = useGetAllAdminJobs(); // Call the hook to get jobs data
-  
+
   // Dispatch action whenever input changes
   useEffect(() => {
     dispatch(setSearchJobByText(input));
@@ -50,7 +50,7 @@ const AdminJobs = () => {
 
         {/* Render jobs table only when loading is false and error is not present */}
         {!loading && !error && <AdminJobsTable />}
-        
+
         {/* Recommendations Section */}
         <h2>Recommendations</h2>
         {/* Pass jobId (id from URL) to CandidateRecommend */}

@@ -48,6 +48,8 @@ const Form = ({ role }) => {
         navigate("/jobseeker");
       } else if (data.user.role === "recruiter") {
         navigate("/admin/companies");
+      } else {
+        navigate("/mentorProfile");
       }
     } catch (error) {
       toast.error(error.message || "Login failed");

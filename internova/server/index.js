@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 // CORS setup for frontend (adjust as necessary for production)
 const corsOptions = {
-  origin: "http://localhost:5173", // Frontend URL
+  origin: "https://internnova-inky.vercel.app/", // http://localhost:5173, // Frontend URL
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -32,49 +32,57 @@ app.use(cors(corsOptions));
 const PORT = process.env.PORT || 4000;
 
 // Recommendation API Route (candidate recommendations)
-app.post("/api/v1/recommendations/candidate-recommendations", async (req, res) => {
-  try {
-    const { jobId, country, education, gender, age } = req.body;
+app.post(
+  "/api/v1/recommendations/candidate-recommendations",
+  async (req, res) => {
+    try {
+      const { jobId, country, education, gender, age } = req.body;
 
-    // Log the request body for debugging
-    console.log("Received request body:", req.body);
+      // Log the request body for debugging
+      console.log("Received request body:", req.body);
 
-    // Validation
-    if (!jobId || !country || !education || !gender || !age) {
-      return res.status(400).json({
+      // Validation
+      if (!jobId || !country || !education || !gender || !age) {
+        return res.status(400).json({
+          success: false,
+          message:
+            "Missing required fields: jobId, country, education, gender, age",
+        });
+      }
+
+      // Call the third-party ML API for recommendations
+      const response = await axios.post(
+        "https://internova-api.onrender.com/match_candidates", // External ML API URL
+        {
+          job_id: jobId,
+          Country: country,
+          Education: education,
+          Gender: gender,
+          age: age,
+        }
+      );
+
+      // Return the response from the ML API
+      res.status(200).json({
+        success: true,
+        recommendations: response.data,
+      });
+    } catch (error) {
+      console.error(
+        "Error in candidate recommendations:",
+        error.message,
+        error.stack
+      );
+
+      res.status(500).json({
         success: false,
-        message: "Missing required fields: jobId, country, education, gender, age",
+        message: "Error fetching candidate recommendations",
+        error: error.message,
+        details: error.response?.data || "No further details",
       });
     }
-
-    // Call the third-party ML API for recommendations
-    const response = await axios.post(
-      "https://internova-api.onrender.com/match_candidates", // External ML API URL
-      {
-        job_id: jobId,
-        Country: country,
-        Education: education,
-        Gender: gender,
-        age: age,
-      }
-    );
-
-    // Return the response from the ML API
-    res.status(200).json({
-      success: true,
-      recommendations: response.data,
-    });
-  } catch (error) {
-    console.error("Error in candidate recommendations:", error.message, error.stack);
-
-    res.status(500).json({
-      success: false,
-      message: "Error fetching candidate recommendations",
-      error: error.message,
-      details: error.response?.data || "No further details",
-    });
   }
-});
+);
 
 // Other API routes
 app.use("/api/v1/user", userRoute); // Example: "http://localhost:4000/api/v1/user/register"

@@ -7,15 +7,19 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+} from "@/components/ui/table";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import { APPLICATION_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { FileText, Mail, Phone, Calendar } from "lucide-react";
 
 const shortlistingStatus = ["Accepted", "Rejected"];

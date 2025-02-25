@@ -5,8 +5,8 @@ import { APPLICATION_API_END_POINT } from "@/utils/constant";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllApplicants } from "@/redux/applicationSlice";
-import JobHeader from "../JobHeader/JobHeader";
-import CandidateRecommend from "../Recommendations/CandidateRecommend";
+import JobHeader from "@/components/JobHeader/JobHeader";
+import CandidateRecommend from "@/components/Recommendations/CandidateRecommend";
 
 const Applicants = () => {
   const params = useParams();
@@ -49,7 +49,9 @@ const Applicants = () => {
 
         {/* Loading or error state handling */}
         {loading && (
-          <div className="flex items-center justify-center h-[400px]">Loading...</div>
+          <div className="flex items-center justify-center h-[400px]">
+            Loading...
+          </div>
         )}
         {error && (
           <div className="flex items-center justify-center h-[400px] text-red-500">

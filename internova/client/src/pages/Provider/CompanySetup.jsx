@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/* import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { Label } from "../ui/label";
@@ -10,7 +10,9 @@ import { toast } from "sonner";
 import { useSelector } from "react-redux";
 import useGetCompanyById from "@/hooks/useGetCompanyById";
 import JobHeader from "../JobHeader/JobHeader";
-
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import JobRecommend from "../Recommendations/JobRecommend";
 const CompanySetup = () => {
   const params = useParams();
   useGetCompanyById(params.id);
@@ -152,8 +154,11 @@ const CompanySetup = () => {
           )}
         </form>
       </div>
+      <h2>Recommendations</h2>
+      {params.id && <CandidateRecommend jobId={params.id} />}
     </div>
   );
 };
 
 export default CompanySetup;
+ */

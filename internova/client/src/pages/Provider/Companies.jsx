@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import CompaniesTable from "./CompaniesTable";
 import { useNavigate } from "react-router-dom";
 import useGetAllCompanies from "@/hooks/useGetAllCompanies";
 import { useDispatch } from "react-redux";
 import { setSearchCompanyByText } from "@/redux/companySlice";
-import JobHeader from "../JobHeader/JobHeader";
+import JobHeader from "@/components/JobHeader/JobHeader";
 
 const Companies = () => {
   useGetAllCompanies();

@@ -7,9 +7,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import { Avatar, AvatarImage } from "../ui/avatar";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+} from "@/components/ui/table";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Edit2, Eye, MoreHorizontal } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +25,9 @@ const AdminJobsTable = () => {
   const { loading, error } = useGetAllAdminJobs(); // Add this if not already present
 
   // Redux selector to access job-related data
-  const { allAdminJobs = [], searchJobByText = "" } = useSelector((store) => store.job);
+  const { allAdminJobs = [], searchJobByText = "" } = useSelector(
+    (store) => store.job
+  );
 
   // State to hold filtered jobs
   const [filteredJobs, setFilteredJobs] = useState([]);
@@ -36,7 +42,9 @@ const AdminJobsTable = () => {
       if (!searchJobByText.trim()) return true;
       return (
         job?.title?.toLowerCase().includes(searchJobByText.toLowerCase()) ||
-        job?.company?.name?.toLowerCase().includes(searchJobByText.toLowerCase())
+        job?.company?.name
+          ?.toLowerCase()
+          .includes(searchJobByText.toLowerCase())
       );
     });
 
@@ -77,9 +85,7 @@ const AdminJobsTable = () => {
             // Map through filtered jobs and display them
             filteredJobs.map((job) => (
               <TableRow key={job._id}>
-                <TableCell>
-                  {job.company?.name || "N/A"}
-                </TableCell>
+                <TableCell>{job.company?.name || "N/A"}</TableCell>
                 <TableCell>{job?.title || "N/A"}</TableCell>
                 <TableCell>{job?.createdAt?.split("T")[0] || "N/A"}</TableCell>
                 <TableCell className="text-right">
@@ -96,7 +102,9 @@ const AdminJobsTable = () => {
                         <span>Edit</span>
                       </div>
                       <div
-                        onClick={() => navigate(`/admin/jobs/${job._id}/applicants`)}
+                        onClick={() =>
+                          navigate(`/admin/jobs/${job._id}/applicants`)
+                        }
                         className="flex items-center gap-2 cursor-pointer mt-2"
                       >
                         <Eye className="w-4" />
