@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useNavigate, useParams } from "react-router-dom"; // Import useParams
 import { useDispatch } from "react-redux";
 import AdminJobsTable from "./AdminJobsTable";
 import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
 import { setSearchJobByText } from "@/redux/jobSlice";
-import JobHeader from "../JobHeader/JobHeader";
+import JobHeader from "@/components/JobHeader/JobHeader";
+import CandidateRecommend from "@/components/Recommendations/CandidateRecommend";
 
 const AdminJobs = () => {
-  /*  useGetAllAdminJobs(); */
+  const { id } = useParams(); // Get jobId from URL parameters
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error } = useGetAllAdminJobs();
+  const { loading, error } = useGetAllAdminJobs(); // Call the hook to get jobs data
+
+  // Dispatch action whenever input changes
   useEffect(() => {
     dispatch(setSearchJobByText(input));
   }, [input, dispatch]);
@@ -26,26 +29,32 @@ const AdminJobs = () => {
           <Input
             className="w-fit"
             placeholder="Filter by name, role"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)} // Update input value
           />
           <Button onClick={() => navigate("/admin/jobs/create")}>
             New Jobs
           </Button>
         </div>
+
+        {/* Show loading or error message */}
         {loading && (
           <div className="flex items-center justify-center h-[400px]">
             Loading...
           </div>
         )}
-
         {error && (
           <div className="flex items-center justify-center h-[400px] text-red-500">
             Error: {error.message}
           </div>
         )}
 
-        {/* Only render table when not loading and no error */}
+        {/* Render jobs table only when loading is false and error is not present */}
         {!loading && !error && <AdminJobsTable />}
+
+        {/* Recommendations Section */}
+        <h2>Recommendations</h2>
+        {/* Pass jobId (id from URL) to CandidateRecommend */}
+        {id && <CandidateRecommend jobId={id} />}
       </div>
     </div>
   );

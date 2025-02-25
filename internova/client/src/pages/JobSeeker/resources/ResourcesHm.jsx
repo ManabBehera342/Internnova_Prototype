@@ -1,7 +1,8 @@
-import React, { useState,useEffect } from "react";
-import { NavLink ,useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
 import { IoMdRefreshCircle } from "react-icons/io";
+import Footer from "@/components/Footer/Footer";
 import JobHeader from "@/components/JobHeader/JobHeader";
 const ResourcesHm = () => {
   useEffect(() => {
@@ -133,6 +134,9 @@ const ResourcesHm = () => {
       {/* Footer Section */}
       <div className="mt-12 text-center text-gray-700 text-sm sm:text-base md:text-lg">
         INTERNOVA
+      </div>
+      <div>
+        <Footer />
       </div>
     </>
   );

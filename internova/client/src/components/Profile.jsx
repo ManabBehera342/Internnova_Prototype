@@ -28,8 +28,12 @@ const Profile = () => {
               />
             </Avatar>
             <div>
-              <h1 className="font-semibold text-2xl text-gray-800">{user?.fullName || "John Doe"}</h1>
-              <p className="text-gray-600 mt-1">{user?.profile?.bio || "Your bio goes here."}</p>
+              <h1 className="font-semibold text-2xl text-gray-800">
+                {user?.fullName || "John Doe"}
+              </h1>
+              <p className="text-gray-600 mt-1">
+                {user?.profile?.bio || "Your bio goes here."}
+              </p>
             </div>
           </div>
           <button

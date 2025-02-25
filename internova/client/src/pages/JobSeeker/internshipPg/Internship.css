@@ -121,6 +121,32 @@
     max-width: 350px;
     margin: 0 auto; /* Center the cards */
   }
+  .intern .footer-container,.intern .footer-bottom{
+    background-color: #FFC107;
+    color: #242424;
+  }
+  .intern .footer-bottom p{
+    color: #242424;
+  }
+  .intern .newsletter-input button {
+background: linear-gradient(1.36deg, #242424 -22.29%, #FFC107 98.84%), #000000;
+border-radius: 17px;
+  }
+
+  
+  
+  .intern .social-media-section  {
+    
+background: linear-gradient(11.92deg, #000000 -8.13%, #FFC107 77.89%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+
+  }
+  .intern .social-icons a ,.intern .links-section ul li a{
+    color: #242424;
+  }
   
   /* Responsive Adjustments */
   

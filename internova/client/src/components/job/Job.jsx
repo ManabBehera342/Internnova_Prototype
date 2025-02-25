@@ -41,10 +41,6 @@ const Job = ({ job }) => {
         </div>
       </div>
 
-      {/*   <div>
-        <h1 className="font-bold text-lg my-2">{job?.title}</h1>
-        <p className="text-sm text-gray-600">{job?.description.trim()}</p>
-      </div> */}
       <div>
         <h1 className="font-bold text-lg my-2">{job?.title}</h1>
         <p className="text-sm text-gray-600">
@@ -60,7 +56,7 @@ const Job = ({ job }) => {
           {job?.jobType}
         </Badge>
         <Badge className={"text-[#7209b7] font-bold"} variant="ghost">
-          {job?.salary}LPA
+          {job?.salary}PA
         </Badge>
       </div>
       <div className="flex items-center gap-4 mt-4">

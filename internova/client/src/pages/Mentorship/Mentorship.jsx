@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import MentorsCard from "./MentorsCard";
 import JobHeader from "@/components/JobHeader/JobHeader";
+import Footer from "@/components/Footer/Footer";
 const Mentorship = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top on page load
@@ -62,6 +63,9 @@ const Mentorship = () => {
           alt="Centered Image"
           className="w-[500px] h-auto object-cover"
         />
+      </div>
+      <div className="jobpg">
+        <Footer />
       </div>
     </>
   );

@@ -7,15 +7,19 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+} from "@/components/ui/table";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import { APPLICATION_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { FileText, Mail, Phone, Calendar } from "lucide-react";
 
 const shortlistingStatus = ["Accepted", "Rejected"];
@@ -66,13 +70,7 @@ const ApplicantsTable = () => {
                 >
                   <TableCell>
                     <div className="flex items-center space-x-3">
-                      {/*  <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
-                        {item?.applicant?.fullname?.charAt(0).toUpperCase()}
-                      </div> */}
                       <div>
-                        {/* <div className="font-medium">
-                          {item?.applicant?.fullname || "Unknown Applicant"}
-                        </div> */}
                         <div className="text-sm text-gray-500">
                           {item?.applicant?.email}
                         </div>

@@ -7,39 +7,52 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import { Avatar, AvatarImage } from "../ui/avatar";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+} from "@/components/ui/table";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Edit2, Eye, MoreHorizontal } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
+
 const AdminJobsTable = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, error } = useGetAllAdminJobs(); // Add this if not already present
 
-  const { allAdminJobs = [], searchJobByText = "" } = useSelector((store) => {
-    console.log("Current Redux Store:", store); // Add this debug log
-    return store.job;
-  });
+  // Redux selector to access job-related data
+  const { allAdminJobs = [], searchJobByText = "" } = useSelector(
+    (store) => store.job
+  );
 
-  // Move console logs here for better debugging
+  // State to hold filtered jobs
+  const [filteredJobs, setFilteredJobs] = useState([]);
+
+  // Filter jobs based on search text
   useEffect(() => {
     console.log("allAdminJobs updated:", allAdminJobs);
     console.log("searchJobByText:", searchJobByText);
+
+    // Apply filtering logic
+    const filtered = allAdminJobs.filter((job) => {
+      if (!searchJobByText.trim()) return true;
+      return (
+        job?.title?.toLowerCase().includes(searchJobByText.toLowerCase()) ||
+        job?.company?.name
+          ?.toLowerCase()
+          .includes(searchJobByText.toLowerCase())
+      );
+    });
+
+    // Set filtered jobs in state
+    setFilteredJobs(filtered);
   }, [allAdminJobs, searchJobByText]);
 
-  const filteredJobs = allAdminJobs.filter((job) => {
-    if (!searchJobByText.trim()) return true;
-    return (
-      job?.title?.toLowerCase().includes(searchJobByText.toLowerCase()) ||
-      job?.company?.name?.toLowerCase().includes(searchJobByText.toLowerCase())
-    );
-  });
-
-  // Add loading state handling
+  // Loading and error handling UI
   if (loading) {
     return <div>Loading jobs...</div>;
   }
@@ -47,6 +60,7 @@ const AdminJobsTable = () => {
   if (error) {
     return <div>Error loading jobs: {error.message}</div>;
   }
+
   return (
     <div>
       <Table>
@@ -60,7 +74,7 @@ const AdminJobsTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {/*      {filteredJobs?.map((job) => ( */}
+          {/* Handle case where no jobs are found */}
           {filteredJobs.length === 0 ? (
             <TableRow>
               <TableCell colSpan={4} className="text-center">
@@ -68,13 +82,10 @@ const AdminJobsTable = () => {
               </TableCell>
             </TableRow>
           ) : (
+            // Map through filtered jobs and display them
             filteredJobs.map((job) => (
               <TableRow key={job._id}>
-                {/* <TableCell>{job?.company?.name || "N/A"}</TableCell> */}
-                <TableCell>
-                  {job.company?.name ||
-                    (typeof job.company === "string" ? "Loading..." : "N/A")}
-                </TableCell>
+                <TableCell>{job.company?.name || "N/A"}</TableCell>
                 <TableCell>{job?.title || "N/A"}</TableCell>
                 <TableCell>{job?.createdAt?.split("T")[0] || "N/A"}</TableCell>
                 <TableCell className="text-right">
@@ -112,27 +123,3 @@ const AdminJobsTable = () => {
 };
 
 export default AdminJobsTable;
-
-/* const AdminJobsTable = () => {
-  const dispatch = useDispatch();
-  const { allAdminJobs = [], searchJobByText = "" } = useSelector(
-    (store) => store.job
-  );
-  // Add these console logs
-  console.log("allAdminJobs:", allAdminJobs);
-  console.log("searchJobByText:", searchJobByText);
-
-  const navigate = useNavigate();
-  const filteredJobs = allAdminJobs.filter((job) => {
-    if (!searchJobByText.trim()) return true;
-    // Add trim() to handle empty strings better
-    return (
-      job?.title?.toLowerCase().includes(searchJobByText.toLowerCase()) ||
-      job?.company?.name?.toLowerCase().includes(searchJobByText.toLowerCase())
-    );
-  });
-
-  console.log("filteredJobs:", filteredJobs); */
-
-/*   setFilterJobs(filteredJobs);
-  }, [allAdminJobs, searchJobByText]); */

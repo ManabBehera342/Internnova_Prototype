@@ -7,6 +7,7 @@ import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from "@/utils/constant";
 import { setSingleJob } from "@/redux/jobSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
+import JobRecommend from "./Recommendations/JobRecommend";
 
 const JobDescription = () => {
   const { singleJob } = useSelector((store) => store.job);
@@ -77,14 +78,14 @@ const JobDescription = () => {
               {singleJob?.jobType}
             </Badge>
             <Badge className={"text-[#7209b7] font-bold"} variant="ghost">
-              {singleJob?.salary}LPA
+              {singleJob?.salary}PA
             </Badge>
           </div>
         </div>
         <button
           onClick={isApplied ? null : applyJobHandler}
           disabled={isApplied}
-          className={`rounded-lg py-2 px-4 ${
+          className={`rounded-lg py-2 px-4 text-white ${
             isApplied
               ? "bg-gray-600 cursor-not-allowed"
               : "bg-[#7209b7] hover:bg-[#5f32ad]"
@@ -124,7 +125,7 @@ const JobDescription = () => {
         <h1 className="font-bold my-1">
           Salary:{" "}
           <span className="pl-4 font-normal text-gray-800">
-            {singleJob?.salary}LPA
+            {singleJob?.salary}PA
           </span>
         </h1>
         <h1 className="font-bold my-1">
@@ -140,6 +141,9 @@ const JobDescription = () => {
           </span>
         </h1>
       </div>
+      <h2>Recommendations</h2>
+      {/* Show candidate recommendations if jobId is available */}
+      {params.id && <JobRecommend jobId={params.id} />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useSelector } from "react-redux";
 import {
   Select,
@@ -10,13 +10,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from "@/components/ui/select";
 import axios from "axios";
 import { JOB_API_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
-import JobHeader from "../JobHeader/JobHeader";
+import JobHeader from "@/components/JobHeader/JobHeader";
 
 const companyArray = [];
 
