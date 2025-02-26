@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 // CORS setup for frontend (adjust as necessary for production)
 const corsOptions = {
-  origin: "https://internnova-inky.vercel.app/", // http://localhost:5173, // Frontend URL
+  origin: process.env.FRONTEND_URL, //http://localhost:5173" /* "https://internnova-inky.vercel.app/", */, // Frontend URL
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
