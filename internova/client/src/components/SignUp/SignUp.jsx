@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../redux/authSlice";
 import axios from "axios";
+import { USER_API_END_POINT } from "@/utils/constant";
 
 const SignUp = () => {
   const [fullName, setFullName] = useState("");
@@ -21,14 +22,11 @@ const SignUp = () => {
     e.preventDefault();
     try {
       dispatch(setLoading(true));
-      const response = await fetch(
-        "http://localhost:4000/api/v1/user/register",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ fullName, email, password, role }),
-        }
-      );
+      const response = await fetch(`${USER_API_END_POINT}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, email, password, role }),
+      });
 
       const result = await response.json();
 
