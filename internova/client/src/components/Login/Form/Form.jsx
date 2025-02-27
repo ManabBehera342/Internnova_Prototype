@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "sonner";
 import { setLoading, setUser } from "../../../redux/authSlice";
 import "./Form.css";
+import { USER_API_END_POINT } from "@/utils/constant";
 
 const Form = ({ role }) => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ const Form = ({ role }) => {
 
     try {
       dispatch(setLoading(true));
-      const response = await fetch("http://localhost:4000/api/v1/user/login", {
+      const response = await fetch(`${USER_API_END_POINT}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, role }),
