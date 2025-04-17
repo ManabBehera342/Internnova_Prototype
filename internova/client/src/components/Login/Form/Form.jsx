@@ -68,7 +68,7 @@ const Form = ({ role }) => {
     try {
       dispatch(setLoading(true));
       const response = await fetch(
-        "http://localhost:4000/api/v1/user/resend-verification",
+        `${USER_API_END_POINT}/resend-verification`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
