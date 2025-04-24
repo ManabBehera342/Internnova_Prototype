@@ -10,6 +10,7 @@ export const postJob = async (req, res) => {
       salary,
       location,
       jobType,
+      /*  sector, */
       experience,
       position,
       companyId,
@@ -23,6 +24,7 @@ export const postJob = async (req, res) => {
       !salary ||
       !location ||
       !jobType ||
+      /*  !sector || */
       !experience ||
       !position ||
       !companyId
@@ -39,6 +41,7 @@ export const postJob = async (req, res) => {
       salary: Number(salary),
       location,
       jobType,
+      /*   sector, */
       experienceLevel: experience,
       position,
       company: companyId,

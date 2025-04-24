@@ -1,4 +1,3 @@
-
 #emplog .yellow-gradient {
   opacity: 0.5;
 }
@@ -16,41 +15,49 @@
 .emplog-container {
   display: flex;
   justify-content: space-around;
-align-items: center;
- /*  margin-bottom: 28px; */
- margin-top: 10%;
+  align-items: center;
+  /*  margin-bottom: 28px; */
+  margin-top: 10%;
   z-index: 2;
   padding: 20px;
 }
 
-.emplog-page>.emplog-container>.sec>.head-sec{
+.emplog-page > .emplog-container > .sec > .head-sec {
   font-size: 35px;
   text-align: start;
   margin-top: -30%;
-  margin-left: 5%;
+  font-weight: 700;
+  margin-left: 15%;
+}
+
+.emplog-page > .emplog-container > .sec {
+  width: 100%;
+}
+
+.para-sec {
+  color: dimgray;
 }
 @media (max-width: 768px) {
   .emplog-container {
-      flex-direction: column; 
+    flex-direction: column;
   }
 
   .emplog-page {
-      justify-content: flex-start; 
-      height: auto; 
+    justify-content: flex-start;
+    height: auto;
   }
 }
 
 @media (max-width: 480px) {
   .emplog-container {
-      justify-content: center; 
-      padding: 10px; 
+    justify-content: center;
+    padding: 10px;
   }
 }
 
-
 .globe-wrapper {
   position: absolute;
-  /* top: -25px; */
+  top: -25px;
   width: 100%;
   height: 100%;
 }

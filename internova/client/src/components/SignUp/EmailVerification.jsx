@@ -61,9 +61,7 @@ const EmailVerification = () => {
             <h2 className="text-2xl font-bold text-red-600">
               Verification Failed
             </h2>
-            <p className="mt-2">
-              The verification link is invalid or has expired.
-            </p>
+            <p className="mt-2">The verification link is ...</p>
             <button
               onClick={() => navigate("/login")}
               className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"

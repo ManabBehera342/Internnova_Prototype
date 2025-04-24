@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 import "./JobHeader.css";
 import { NavLink } from "react-router-dom";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
@@ -35,7 +35,7 @@ const JobHeader = () => {
     
   }; */
 
-  const logoutHandler = async () => {
+/* const logoutHandler = async () => {
     try {
       const res = await axios.get(`${USER_API_END_POINT}/logout`, {
         withCredentials: true,
@@ -58,14 +58,14 @@ const JobHeader = () => {
         </NavLink>
       </div>
 
-      {/* Hamburger Menu */}
+      {/* Hamburger Menu 
       <div className="jobhamburger" onClick={toggleMenu}>
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
 
-      {/* Navbar Links */}
+      {/* Navbar Links 
       <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
         {user && user.role === "recruiter" ? (
           <>
@@ -91,8 +91,9 @@ const JobHeader = () => {
               <NavLink to="/resources">Resources</NavLink>
             </li>
           </>
-        )}
-        {/* {user?(
+        )} */
+{
+  /* {user?(
         <li className="profile-toggle">
           <img
             src={profilePic} // Use the state variable for the profile image
@@ -106,23 +107,28 @@ const JobHeader = () => {
               <button onClick="./profile">Profile</button>
               <button onClick={handleLogout}>Logout</button>
             </div>
-          )} */}
-        {/* {!user ? (
+          )} */
+}
+{
+  /* {!user ? (
           <div className="flex items-center gap-2">
             <Link to="/login">
               <button variant="outline">Login</button>
             </Link>
           </div>
-        ) : ( */}
-        {/*   </ul> */}
-        {!user ? (
+        ) : ( */
+}
+{
+  /*   </ul> */
+}
+/* {!user ? (
           ""
         ) : (
           <Popover>
             <PopoverTrigger asChild>
               {/* <Avatar className="cursor-pointer">
               <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
-            </Avatar> */}
+            </Avatar> *
               <User2 />
             </PopoverTrigger>
             <PopoverContent className="w-50 h-30 my-2">
@@ -161,7 +167,7 @@ const JobHeader = () => {
 };
 
 export default JobHeader;
-
+ */
 /* import React, { useState } from "react";
 import "./JobHeader.css";
 import { NavLink } from "react-router-dom";

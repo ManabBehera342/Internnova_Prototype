@@ -1,9 +1,14 @@
 import React from "react";
+import { useEffect } from "react";
 import { FaDownload } from "react-icons/fa"; // Import the download icon from React Icons
 
 const ExamSection = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on page load
+  }, []);
   return (
     <>
+
       <div className="flex flex-col md:flex-row items-center bg-gray-100 p-6 rounded-lg shadow-lg">
         {/* Left Side: Image */}
         <div className="flex-1 mb-6 md:mb-0">

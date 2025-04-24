@@ -30,12 +30,7 @@ export const questions = [
     answer:
       "If you experience any technical issues, please contact our support team or use the contact form on our website. We’ll assist you as soon as possible.",
   },
-  /*   {
-    id: 6,
-    question: "Will there be updates or new features added to the platform?",
-    answer:
-      "Yes, we continuously strive to improve the platform based on user feedback and industry trends.",
-  }, */
+
   {
     id: 7,
     question: "What kind of counseling services do you offer?",

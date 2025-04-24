@@ -1,9 +1,16 @@
 import React from "react";
+import { useEffect } from "react";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import MentorsCard from "./MentorsCard";
+import JobHeader from "@/components/JobHeader/JobHeader";
+import Footer from "@/components/Footer/Footer";
 const Mentorship = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on page load
+  }, []);
   return (
     <>
+      <JobHeader />
       <div className="relative w-full">
         {/* Full-width image */}
         <img
@@ -11,7 +18,6 @@ const Mentorship = () => {
           alt="Full Width"
           className="w-full h-[300px] md:h-[500px] lg:h-[600px] object-cover"
         />
-
         {/* Button */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-8">
           <button
@@ -57,6 +63,9 @@ const Mentorship = () => {
           alt="Centered Image"
           className="w-[500px] h-auto object-cover"
         />
+      </div>
+      <div className="jobpg">
+        <Footer />
       </div>
     </>
   );

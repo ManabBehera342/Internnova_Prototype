@@ -25,11 +25,11 @@ const Login = () => {
         {/* Content Container */}
         <div className="log-container">
           <div className="sec">
-            <h1 className="head">For Employers</h1>
+            <h1 className="head">For Recruiters</h1>
             <h5>
-              Discovering tomorrow's talent today by <br />
+              Discover tomorrow's talent by hiring <br />
               <span className="highlight" style={{ color: "purple" }}>
-                recruiting interns ready to make an impact.
+                interns to experienced professionals.
               </span>
             </h5>
             <button className="login-btn" onClick={handleEmpLogClick}>
@@ -51,7 +51,7 @@ const Login = () => {
             <h5>
               Unlock Your Future: Find the Perfect <br />
               <span className="highlight" style={{ color: "purple" }}>
-                Internship to Kickstart Your Career!
+                Navigation to Kickstart Your Career!
               </span>
             </h5>
             <button className="login-btn" onClick={handleStdLogClick}>

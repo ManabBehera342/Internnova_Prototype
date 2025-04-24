@@ -12,31 +12,34 @@ import SignUp from "./components/SignUp/SignUp";
 import SeekHm from "./pages/JobSeeker/SeekerHome/SeekHm";
 import Mentorship from "./pages/Mentorship/Mentorship";
 import MentorLogin from "./pages/Mentorship/MentorLogin";
+import Internship from "./pages/JobSeeker/internshipPg/Internship";
 import JobPg from "./pages/JobSeeker/JobPg/JobPg";
 import Jobs from "./components/Jobs/Jobs";
 import Profile from "./components/Profile";
 import JobDescription from "./components/JobDescription";
 import Job from "./components/job/Job";
-import Companies from "./components/Provider/Companies";
-import CompanyCreate from "./components/Provider/CompanyCreate";
-import CompanySetup from "./components/Provider/CompanySetup";
-import PostJob from "./components/Provider/PostJob";
-import Applicants from "./components/Provider/Applicants";
-import AdminJobs from "./components/Provider/AdminJobs";
+import Companies from "./pages/Provider/Companies";
+import CompanyCreate from "./pages/Provider/CompanyCreate";
+/* import CompanySetup from "./pages/Provider/CompanySetup";
+ */ import PostJob from "./pages/Provider/PostJob";
+import Applicants from "./pages/Provider/Applicants";
+import AdminJobs from "./pages/Provider/AdminJobs";
 import Browse from "./components/Browse";
-import ProtectedRoute from "./components/Provider/ProtectedRoute";
-/* import ProtectedRoute from "./components/Provider/ProtectedRoute"; */
+import ProtectedRoute from "./pages/Provider/ProtectedRoute";
+/* import ProtectedRoute from "./pages/Provider/ProtectedRoute"; */
 import ResourcesHm from "./pages/JobSeeker/resources/ResourcesHm";
 import Resume from "./pages/JobSeeker/resources/Resume/Resume";
 import Roadmap from "./pages/JobSeeker/resources/Roadmap";
 import FrontedRoadmap from "./pages/JobSeeker/resources/FrontendRoadmap";
 import ExamSection from "./pages/JobSeeker/resources/ExamSection";
 import EmailVerification from "./components/SignUp/EmailVerification";
+import CandidateRecommend from "./components/Recommendations/CandidateRecommend";
+import JobRecommend from "./components/Recommendations/JobRecommend";
+import MentorProfile from "./pages/Mentorship/MentorProfile";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route element={<Layout />}> */}
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -48,6 +51,8 @@ function App() {
         <Route path="/mentorlogin" element={<MentorLogin />} />
         <Route path="/jobseeker" element={<SeekHm />} />
         <Route path="/mentorship" element={<Mentorship />} />
+        <Route path="/mentorProfile" element={<MentorProfile />} />
+        <Route path="/internships" element={<Internship />} />
         <Route path="/jobpg" element={<JobPg />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/jobs/:id" element={<JobDescription />} />
@@ -77,14 +82,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
+        {/*    <Route
           path="/admin/companies/:id"
           element={
             <ProtectedRoute>
               <CompanySetup />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/admin/jobs"
           element={
@@ -109,6 +114,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/recommendations/:id" element={<CandidateRecommend />} />
+        {/* <Route path="/recommendations/:id" element={<JobRecommend />} /> */}
+        {/*         <Route path="/recommendations/:id" element={<CandidateRecommend />} />
+         */}{" "}
         {/* </Route> */}
       </Routes>
     </BrowserRouter>

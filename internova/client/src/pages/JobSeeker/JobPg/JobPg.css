@@ -148,4 +148,30 @@
       margin: 2rem 2rem; /* Balanced left-right margin */
     }
   }
+  .jobpg .footer-container,.jobpg .footer-bottom{
+    background-color: #242424;
+    color: #e0e0e0;
+  }
+  .jobpg .footer-bottom p,.jobpg .links-section ul li a{
+    color: #e0e0e0;
+  }
+  .jobpg .newsletter-input button {
+   
+
+
+
+background: linear-gradient(1.36deg, #1E1E1E -22.29%, #FFC107 98.84%);
+border-radius: 17px;
+  }
   
+  .jobpg .social-media-section{
+background: linear-gradient(11.92deg, #FDBB20 -8.13%, #242424 77.89%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+
+  }
+  .jobpg .social-icons a {
+    color: #242424;
+  }
